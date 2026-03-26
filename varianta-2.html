@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INREKA PLOŠINY SERVIS — Pracovní plošiny od 12 do 75 metrů</title>
+    <meta name="description" content="Výroba, prodej, pronájem a servis pracovních plošin. Kompletní řešení pod jednou střechou. 25+ let zkušeností.">
+
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        outfit: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            DEFAULT: '#0d1b2a',
+                            light: '#1b2d44',
+                            dark: '#070f18',
+                        },
+                        brand: {
+                            red: '#cc2229',
+                            redDark: '#a81c22',
+                            yellow: '#f5a623',
+                            yellowLight: '#f7bc5e',
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        /* ================================ */
+        /* Safety stripe pattern            */
+        /* ================================ */
+        .safety-stripe {
+            background: repeating-linear-gradient(
+                -45deg,
+                #f5a623,
+                #f5a623 8px,
+                #0d1b2a 8px,
+                #0d1b2a 16px
+            );
+            height: 4px;
+        }
+
+        /* ================================ */
+        /* Header                           */
+        /* ================================ */
+        .header-nav {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .header-nav.scrolled {
+            background: rgba(13, 27, 42, 0.97);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-nav.scrolled .safety-stripe-header {
+            opacity: 1;
+        }
+
+        .safety-stripe-header {
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        /* Nav link hover underline */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #cc2229;
+            border-radius: 1px;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* ================================ */
+        /* Hero decorative rings            */
+        /* ================================ */
+        .hero-ring {
+            position: absolute;
+            border: 3px solid rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-ring-1 {
+            width: 700px;
+            height: 700px;
+            top: -100px;
+            right: -200px;
+        }
+
+        .hero-ring-2 {
+            width: 500px;
+            height: 500px;
+            bottom: -150px;
+            left: -100px;
+        }
+
+        .hero-ring-3 {
+            width: 300px;
+            height: 300px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-color: rgba(204, 34, 41, 0.1);
+            border-width: 2px;
+        }
+
+        /* ================================ */
+        /* Stat circles                     */
+        /* ================================ */
+        .stat-circle {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: rgba(13, 27, 42, 0.7);
+            backdrop-filter: blur(10px);
+            border: 3px solid rgba(245, 166, 35, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+        }
+
+        .stat-circle:hover {
+            border-color: #f5a623;
+            transform: scale(1.08);
+            box-shadow: 0 0 30px rgba(245, 166, 35, 0.2);
+        }
+
+        /* ================================ */
+        /* Circular icon containers         */
+        /* ================================ */
+        .circle-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+        }
+
+        /* ================================ */
+        /* Service cards                    */
+        /* ================================ */
+        .service-card {
+            border-radius: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(204, 34, 41, 0.03) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(13, 27, 42, 0.15);
+        }
+
+        .service-card:hover .circle-icon {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(204, 34, 41, 0.25);
+        }
+
+        /* ================================ */
+        /* Product cards                    */
+        /* ================================ */
+        .product-card {
+            border-radius: 1.25rem;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: white;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(13, 27, 42, 0.12);
+        }
+
+        .product-card .product-img-wrap {
+            border-radius: 1rem;
+            overflow: hidden;
+            margin: 0.75rem;
+            background: #f8f9fa;
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-card .product-img-wrap img {
+            max-height: 100%;
+            max-width: 90%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-img-wrap img {
+            transform: scale(1.05);
+        }
+
+        /* ================================ */
+        /* USP number badges                */
+        /* ================================ */
+        .usp-number {
+            width: 56px;
+            height: 56px;
+            min-width: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        /* ================================ */
+        /* Partner & energy logos            */
+        /* ================================ */
+        .partner-logo {
+            filter: grayscale(100%) opacity(0.6);
+            transition: all 0.4s ease;
+            max-height: 50px;
+            max-width: 140px;
+            object-fit: contain;
+        }
+
+        .partner-logo:hover {
+            filter: grayscale(0%) opacity(1);
+            transform: scale(1.08);
+        }
+
+        .energy-logo {
+            filter: grayscale(100%) opacity(0.5);
+            transition: all 0.4s ease;
+            max-height: 36px;
+            max-width: 100px;
+            object-fit: contain;
+        }
+
+        .energy-logo:hover {
+            filter: grayscale(0%) opacity(1);
+        }
+
+        /* ================================ */
+        /* Testimonial cards                */
+        /* ================================ */
+        .testimonial-card {
+            border-radius: 1.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(13, 27, 42, 0.1);
+        }
+
+        .testimonial-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #cc2229, #f5a623);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* Rating circle */
+        .rating-circle {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0d1b2a, #1b2d44);
+            border: 4px solid #f5a623;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 40px rgba(245, 166, 35, 0.2);
+        }
+
+        /* ================================ */
+        /* News cards                       */
+        /* ================================ */
+        .news-card {
+            border-radius: 1.25rem;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(13, 27, 42, 0.12);
+        }
+
+        /* ================================ */
+        /* Reference gallery scroll         */
+        /* ================================ */
+        .gallery-scroll {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .gallery-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .gallery-scroll::-webkit-scrollbar-track {
+            background: #e5e7eb;
+            border-radius: 3px;
+        }
+
+        .gallery-scroll::-webkit-scrollbar-thumb {
+            background: #cc2229;
+            border-radius: 3px;
+        }
+
+        .gallery-scroll img {
+            flex-shrink: 0;
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 1rem;
+            scroll-snap-align: start;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-scroll img:hover {
+            transform: scale(1.03);
+        }
+
+        /* ================================ */
+        /* Contact form                     */
+        /* ================================ */
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            border-radius: 0.75rem;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            padding: 0.875rem 1.25rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: rgba(255, 255, 255, 0.45);
+        }
+
+        .contact-form input:focus,
+        .contact-form select:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #f5a623;
+            box-shadow: 0 0 0 3px rgba(245, 166, 35, 0.15);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-form select option {
+            background: #0d1b2a;
+            color: white;
+        }
+
+        .contact-form select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ffffff' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+
+        /* ================================ */
+        /* Decorative circles (absolute)    */
+        /* ================================ */
+        .deco-circle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* Grid overlay for dark sections */
+        .grid-overlay {
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        /* ================================ */
+        /* Scroll reveal                    */
+        /* ================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ================================ */
+        /* Mobile menu                      */
+        /* ================================ */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        /* ================================ */
+        /* Language dropdown                */
+        /* ================================ */
+        .lang-dropdown {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .lang-trigger:hover .lang-dropdown,
+        .lang-dropdown:hover {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* ================================ */
+        /* Radial gradient backgrounds      */
+        /* ================================ */
+        .radial-bg-red {
+            background: radial-gradient(ellipse at 20% 50%, rgba(204, 34, 41, 0.06) 0%, transparent 60%);
+        }
+
+        .radial-bg-yellow {
+            background: radial-gradient(ellipse at 80% 30%, rgba(245, 166, 35, 0.06) 0%, transparent 60%);
+        }
+
+        .radial-bg-navy {
+            background: radial-gradient(ellipse at 50% 50%, rgba(13, 27, 42, 0.04) 0%, transparent 70%);
+        }
+
+        /* ================================ */
+        /* CTA pulse animation              */
+        /* ================================ */
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(204, 34, 41, 0.4); }
+            70% { box-shadow: 0 0 0 12px rgba(204, 34, 41, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(204, 34, 41, 0); }
+        }
+
+        .pulse-cta {
+            animation: pulse-ring 2.5s infinite;
+        }
+
+        /* ================================ */
+        /* Floating animation               */
+        /* ================================ */
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes float-medium {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(-3deg); }
+        }
+
+        .float-slow { animation: float-slow 8s ease-in-out infinite; }
+        .float-medium { animation: float-medium 6s ease-in-out infinite; }
+
+        /* ================================ */
+        /* Map container                    */
+        /* ================================ */
+        .map-container {
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="font-outfit bg-white">
+
+    <!-- ============================================================ -->
+    <!-- HEADER - Centered Logo with Split Navigation                 -->
+    <!-- ============================================================ -->
+    <header id="header" class="header-nav fixed top-0 left-0 right-0 z-50 bg-transparent">
+        <div class="safety-stripe-header safety-stripe"></div>
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20 lg:h-24">
+
+                <!-- Left nav (desktop only) -->
+                <div class="hidden lg:flex items-center gap-8 flex-1 justify-end pr-8">
+                    <a href="#sluzby" class="nav-link text-white font-medium text-sm tracking-wide hover:text-brand-yellow">Služby</a>
+                    <a href="#plosiny" class="nav-link text-white font-medium text-sm tracking-wide hover:text-brand-yellow">Plošiny</a>
+                    <a href="#proc-inreka" class="nav-link text-white font-medium text-sm tracking-wide hover:text-brand-yellow">Proč Inreka</a>
+                </div>
+
+                <!-- Center logo -->
+                <div class="flex-shrink-0 lg:mx-0">
+                    <a href="#" class="block">
+                        <img src="https://inrekaplosinyservis.cz/images/logo.svg?v=1.0" alt="INREKA Plošiny Servis" class="h-12 lg:h-16 w-auto">
+                    </a>
+                </div>
+
+                <!-- Right nav (desktop only) -->
+                <div class="hidden lg:flex items-center gap-8 flex-1 pl-8">
+                    <a href="#reference" class="nav-link text-white font-medium text-sm tracking-wide hover:text-brand-yellow">Reference</a>
+                    <a href="#kontakt" class="nav-link text-white font-medium text-sm tracking-wide hover:text-brand-yellow">Kontakt</a>
+
+                    <!-- CTA -->
+                    <a href="#kontakt" class="ml-2 bg-brand-red hover:bg-brand-redDark text-white font-semibold text-sm px-6 py-2.5 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-red-900/25">
+                        Poptávka
+                    </a>
+
+                    <!-- Language switcher -->
+                    <div class="relative lang-trigger">
+                        <button class="flex items-center gap-1.5 text-white/80 hover:text-white text-sm font-medium transition-colors">
+                            <i class="fa-solid fa-globe text-xs"></i>
+                            CZ
+                            <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                        </button>
+                        <div class="lang-dropdown absolute right-0 top-full mt-2 bg-navy-light/95 backdrop-blur-md rounded-xl shadow-2xl border border-white/10 overflow-hidden min-w-[140px]">
+                            <a href="#" class="flex items-center gap-2.5 px-4 py-2.5 text-white/90 hover:bg-white/10 text-sm transition-colors">
+                                <span>&#127464;&#127487;</span> Čeština
+                            </a>
+                            <a href="#" class="flex items-center gap-2.5 px-4 py-2.5 text-white/70 hover:bg-white/10 text-sm transition-colors">
+                                <span>&#127480;&#127472;</span> Slovenčina
+                            </a>
+                            <a href="#" class="flex items-center gap-2.5 px-4 py-2.5 text-white/70 hover:bg-white/10 text-sm transition-colors">
+                                <span>&#127468;&#127463;</span> English
+                            </a>
+                            <a href="#" class="flex items-center gap-2.5 px-4 py-2.5 text-white/70 hover:bg-white/10 text-sm transition-colors">
+                                <span>&#127465;&#127466;</span> Deutsch
+                            </a>
+                            <a href="#" class="flex items-center gap-2.5 px-4 py-2.5 text-white/70 hover:bg-white/10 text-sm transition-colors">
+                                <span>&#127466;&#127480;</span> Espa&ntilde;ol
+                            </a>
+                            <a href="#" class="flex items-center gap-2.5 px-4 py-2.5 text-white/70 hover:bg-white/10 text-sm transition-colors">
+                                <span>&#127470;&#127481;</span> Italiano
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile hamburger -->
+                <button id="mobile-menu-btn" class="lg:hidden text-white text-2xl p-2 focus:outline-none" aria-label="Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile menu overlay -->
+        <div id="mobile-menu" class="mobile-menu fixed inset-0 bg-navy/98 backdrop-blur-lg z-50 flex flex-col">
+            <div class="flex items-center justify-between px-6 py-5">
+                <img src="https://inrekaplosinyservis.cz/images/logo.svg?v=1.0" alt="INREKA" class="h-10">
+                <button id="mobile-menu-close" class="text-white text-2xl p-2"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="flex-1 flex flex-col items-center justify-center gap-6">
+                <a href="#sluzby" class="mobile-nav-link text-white text-2xl font-semibold hover:text-brand-yellow transition-colors">Služby</a>
+                <a href="#plosiny" class="mobile-nav-link text-white text-2xl font-semibold hover:text-brand-yellow transition-colors">Plošiny</a>
+                <a href="#proc-inreka" class="mobile-nav-link text-white text-2xl font-semibold hover:text-brand-yellow transition-colors">Proč Inreka</a>
+                <a href="#reference" class="mobile-nav-link text-white text-2xl font-semibold hover:text-brand-yellow transition-colors">Reference</a>
+                <a href="#kontakt" class="mobile-nav-link text-white text-2xl font-semibold hover:text-brand-yellow transition-colors">Kontakt</a>
+                <a href="#kontakt" class="mobile-nav-link mt-4 bg-brand-red text-white font-semibold text-lg px-10 py-3.5 rounded-full hover:bg-brand-redDark transition-colors">Poptávka</a>
+                <div class="flex gap-4 mt-6 text-white/60 text-sm">
+                    <a href="#" class="hover:text-white transition-colors">CZ</a>
+                    <a href="#" class="hover:text-white transition-colors">SK</a>
+                    <a href="#" class="hover:text-white transition-colors">EN</a>
+                    <a href="#" class="hover:text-white transition-colors">DE</a>
+                    <a href="#" class="hover:text-white transition-colors">ES</a>
+                    <a href="#" class="hover:text-white transition-colors">IT</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================================ -->
+    <!-- HERO                                                         -->
+    <!-- ============================================================ -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background image -->
+        <div class="absolute inset-0">
+            <img src="https://inrekaplosinyservis.cz/userfiles/foto/original/14520810850.jpg" alt="" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/70 to-navy/90"></div>
+        </div>
+
+        <!-- Decorative rings -->
+        <div class="hero-ring hero-ring-1 float-slow"></div>
+        <div class="hero-ring hero-ring-2 float-medium"></div>
+        <div class="hero-ring hero-ring-3"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full border border-white/[0.03] pointer-events-none"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-white/[0.05] pointer-events-none"></div>
+
+        <!-- Content -->
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto pt-24">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight tracking-tight mb-6">
+                Pracovní plošiny<br>
+                <span class="text-brand-yellow">od 12 do 75 metrů</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-white/75 font-light max-w-2xl mx-auto mb-10 leading-relaxed">
+                Výroba&#8196;·&#8196;Prodej&#8196;·&#8196;Pronájem&#8196;·&#8196;Servis<br class="sm:hidden"> — Kompletní řešení pod jednou střechou
+            </p>
+
+            <!-- CTAs -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16 sm:mb-20">
+                <a href="#kontakt" class="pulse-cta inline-flex items-center justify-center bg-brand-red hover:bg-brand-redDark text-white font-semibold text-lg px-10 py-4 rounded-full transition-all duration-300 hover:shadow-2xl hover:shadow-red-900/30 hover:-translate-y-0.5">
+                    <i class="fa-solid fa-paper-plane mr-2.5"></i>
+                    Nezávazná poptávka
+                </a>
+                <a href="#plosiny" class="inline-flex items-center justify-center border-2 border-white/40 hover:border-white text-white font-semibold text-lg px-10 py-4 rounded-full transition-all duration-300 hover:bg-white/10 hover:-translate-y-0.5">
+                    <i class="fa-solid fa-th-large mr-2.5"></i>
+                    Prohlédnout plošiny
+                </a>
+            </div>
+
+            <!-- Stat circles -->
+            <div class="flex flex-wrap justify-center gap-5 sm:gap-8">
+                <div class="stat-circle">
+                    <span class="text-2xl sm:text-3xl font-extrabold text-white counter-value" data-target="25">0</span>
+                    <span class="text-xs text-white/60 font-medium mt-0.5">+ let</span>
+                </div>
+                <div class="stat-circle">
+                    <span class="text-2xl sm:text-3xl font-extrabold text-white counter-value" data-target="50">0</span>
+                    <span class="text-xs text-white/60 font-medium mt-0.5">+ modelů</span>
+                </div>
+                <div class="stat-circle">
+                    <span class="text-2xl sm:text-3xl font-extrabold text-white counter-value" data-target="6">0</span>
+                    <span class="text-xs text-white/60 font-medium mt-0.5">značek</span>
+                </div>
+                <div class="stat-circle">
+                    <div class="flex items-center gap-1">
+                        <span class="text-2xl sm:text-3xl font-extrabold text-white">4.7</span>
+                        <i class="fa-solid fa-star text-brand-yellow text-sm"></i>
+                    </div>
+                    <span class="text-xs text-white/60 font-medium mt-0.5">Google</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom arc -->
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full block">
+                <path d="M0 80V40C360 0 720 0 1080 0C1260 0 1350 10 1440 40V80H0Z" fill="white"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SLUŽBY (4 Pillars)                                           -->
+    <!-- ============================================================ -->
+    <section id="sluzby" class="relative py-20 sm:py-28 bg-white overflow-hidden">
+        <!-- Decorative circles -->
+        <div class="deco-circle w-64 h-64 bg-brand-red/[0.03] -top-32 -right-16"></div>
+        <div class="deco-circle w-48 h-48 bg-brand-yellow/[0.04] bottom-20 -left-20"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <!-- Section header -->
+            <div class="text-center mb-16 reveal">
+                <span class="inline-block bg-brand-red/10 text-brand-red font-semibold text-sm px-5 py-1.5 rounded-full mb-4 tracking-wide">
+                    Naše služby
+                </span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy leading-tight">
+                    Kompletní řešení<br><span class="text-brand-red">pod jednou střechou</span>
+                </h2>
+            </div>
+
+            <!-- Service cards grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+
+                <!-- Výroba -->
+                <div class="service-card bg-white border border-gray-100 p-8 text-center shadow-sm reveal">
+                    <div class="circle-icon bg-brand-red text-white text-2xl mx-auto mb-6">
+                        <i class="fa-solid fa-industry"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy mb-3">Výroba</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-5">Vlastní výroba a přestavby plošin na podvozky dle požadavků zákazníka. Certifikovaná kvalita.</p>
+                    <a href="#kontakt" class="text-brand-red font-semibold text-sm hover:text-brand-redDark transition-colors inline-flex items-center gap-1.5">
+                        Více <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Prodej -->
+                <div class="service-card bg-white border border-gray-100 p-8 text-center shadow-sm reveal" style="transition-delay: 0.1s;">
+                    <div class="circle-icon bg-brand-red text-white text-2xl mx-auto mb-6">
+                        <i class="fa-solid fa-handshake"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy mb-3">Prodej</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-5">Nové i repasované plošiny od 12 do 75 metrů. Italská kvalita, česká podpora, servisní zázemí.</p>
+                    <a href="#plosiny" class="text-brand-red font-semibold text-sm hover:text-brand-redDark transition-colors inline-flex items-center gap-1.5">
+                        Více <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Pronájem -->
+                <div class="service-card bg-white border border-gray-100 p-8 text-center shadow-sm reveal" style="transition-delay: 0.2s;">
+                    <div class="circle-icon bg-brand-red text-white text-2xl mx-auto mb-6">
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy mb-3">Pronájem</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-5">Krátkodobý i dlouhodobý pronájem plošin. Flexibilní podmínky, rychlá dostupnost, celá ČR.</p>
+                    <a href="#kontakt" class="text-brand-red font-semibold text-sm hover:text-brand-redDark transition-colors inline-flex items-center gap-1.5">
+                        Více <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Servis -->
+                <div class="service-card bg-white border border-gray-100 p-8 text-center shadow-sm reveal" style="transition-delay: 0.3s;">
+                    <div class="circle-icon bg-brand-red text-white text-2xl mx-auto mb-6">
+                        <i class="fa-solid fa-wrench"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy mb-3">Servis</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-5">Opravy, revize, generální opravy a náhradní díly. Servis do 24 hodin. Autorizované středisko.</p>
+                    <a href="#kontakt" class="text-brand-red font-semibold text-sm hover:text-brand-redDark transition-colors inline-flex items-center gap-1.5">
+                        Více <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Arc divider white to gray -->
+    <div class="relative">
+        <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full block -mb-px">
+            <path d="M0 0H1440V60C1080 10 360 10 0 60V0Z" fill="white"/>
+            <path d="M0 60C360 10 1080 10 1440 60H0Z" fill="#f9fafb"/>
+        </svg>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PRODUKTOVÉ KATEGORIE                                         -->
+    <!-- ============================================================ -->
+    <section id="plosiny" class="relative py-20 sm:py-28 bg-gray-50 overflow-hidden radial-bg-navy">
+        <!-- Decorative circles -->
+        <div class="deco-circle w-96 h-96 border-2 border-navy/[0.03] top-10 -left-48"></div>
+        <div class="deco-circle w-72 h-72 border-2 border-brand-red/[0.04] -bottom-20 right-10"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <!-- Section header -->
+            <div class="text-center mb-16 reveal">
+                <span class="inline-block bg-navy/10 text-navy font-semibold text-sm px-5 py-1.5 rounded-full mb-4 tracking-wide">
+                    Nabídka plošin
+                </span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy leading-tight">
+                    Najděte <span class="text-brand-red">správnou plošinu</span>
+                </h2>
+                <p class="text-gray-500 max-w-xl mx-auto mt-4">Více než 50 modelů v 8 kategoriích. Od kompaktních dodávkových po 75metrové hasičské.</p>
+            </div>
+
+            <!-- Product grid 4x2 -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- Do 3,5t -->
+                <div class="product-card border border-gray-100 shadow-sm reveal">
+                    <div class="product-img-wrap">
+                        <img src="https://inrekaplosinyservis.cz/images/plosina/do_3_5_tuny.png" alt="Plošiny do 3,5t" loading="lazy">
+                    </div>
+                    <div class="p-5 pt-2 text-center">
+                        <h3 class="font-bold text-navy text-lg">Do 3,5 tuny</h3>
+                        <p class="text-gray-400 text-sm mt-1">20 modelů &middot; 14–27 m</p>
+                    </div>
+                </div>
+
+                <!-- Nad 3,5t -->
+                <div class="product-card border border-gray-100 shadow-sm reveal" style="transition-delay: 0.05s;">
+                    <div class="product-img-wrap">
+                        <img src="https://inrekaplosinyservis.cz/images/plosina/nad_3_5_tuny.png" alt="Plošiny nad 3,5t" loading="lazy">
+                    </div>
+                    <div class="p-5 pt-2 text-center">
+                        <h3 class="font-bold text-navy text-lg">Nad 3,5 tuny</h3>
+                        <p class="text-gray-400 text-sm mt-1">10 modelů &middot; 19–75 m</p>
+                    </div>
+                </div>
+
+                <!-- Terénní 4x4 -->
+                <div class="product-card border border-gray-100 shadow-sm reveal" style="transition-delay: 0.1s;">
+                    <div class="product-img-wrap">
+                        <img src="https://inrekaplosinyservis.cz/images/plosina/4x4.png?v=1.1" alt="Terénní 4x4 plošiny" loading="lazy">
+                    </div>
+                    <div class="p-5 pt-2 text-center">
+                        <h3 class="font-bold text-navy text-lg">Terénní 4&times;4</h3>
+                        <p class="text-gray-400 text-sm mt-1">Pro náročný terén</p>
+                    </div>
+                </div>
+
+                <!-- Dodávkové -->
+                <div class="product-card border border-gray-100 shadow-sm reveal" style="transition-delay: 0.15s;">
+                    <div class="product-img-wrap">
+                        <img src="https://inrekaplosinyservis.cz/images/plosina/dodavky.png" alt="Dodávkové plošiny KLUBB" loading="lazy">
+                    </div>
+                    <div class="p-5 pt-2 text-center">
+                        <h3 class="font-bold text-navy text-lg">Dodávkové</h3>
+                        <p class="text-gray-400 text-sm mt-1">KLUBB &middot; kompaktní</p>
+                    </div>
+                </div>
+
+                <!-- Samohybné -->
+                <div class="product-card border border-gray-100 shadow-sm reveal" style="transition-delay: 0.2s;">
+                    <div class="product-img-wrap">
+                        <img src="https://inrekaplosinyservis.cz/images/plosina/samohybne.png" alt="Samohybné pásové plošiny" loading="lazy">
+                    </div>
+                    <div class="p-5 pt-2 text-center">
+                        <h3 class="font-bold text-navy text-lg">Samohybné pásové</h3>
+                        <p class="text-gray-400 text-sm mt-1">Spider + JIBBI</p>
+                    </div>
+                </div>
+
+                <!-- Hasičské -->
+                <div class="product-card border border-gray-100 shadow-sm reveal" style="transition-delay: 0.25s;">
+                    <div class="product-img-wrap">
+                        <img src="https://inrekaplosinyservis.cz/images/plosina/hasicske.png" alt="Hasičské plošiny VEMA" loading="lazy">
+                    </div>
+                    <div class="p-5 pt-2 text-center">
+                        <h3 class="font-bold text-navy text-lg">Hasičské</h3>
+                        <p class="text-gray-400 text-sm mt-1">VEMA &middot; 32–60 m</p>
+                    </div>
+                </div>
+
+                <!-- Repase -->
+                <div class="product-card border border-gray-100 shadow-sm reveal" style="transition-delay: 0.3s;">
+                    <div class="product-img-wrap">
+                        <img src="https://inrekaplosinyservis.cz/images/plosina/repase_prestavby.png" alt="Repase a přestavby" loading="lazy">
+                    </div>
+                    <div class="p-5 pt-2 text-center">
+                        <h3 class="font-bold text-navy text-lg">Repase a přestavby</h3>
+                        <p class="text-gray-400 text-sm mt-1">Nový život pro plošiny</p>
+                    </div>
+                </div>
+
+                <!-- Přívěsové -->
+                <div class="product-card border border-gray-100 shadow-sm reveal" style="transition-delay: 0.35s;">
+                    <div class="product-img-wrap">
+                        <img src="https://inrekaplosinyservis.cz/images/plosina/privesove.png" alt="Přívěsové plošiny" loading="lazy">
+                    </div>
+                    <div class="p-5 pt-2 text-center">
+                        <h3 class="font-bold text-navy text-lg">Přívěsové</h3>
+                        <p class="text-gray-400 text-sm mt-1">Snadný transport</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CTA -->
+            <div class="text-center mt-14 reveal">
+                <a href="#kontakt" class="inline-flex items-center justify-center bg-navy hover:bg-navy-light text-white font-semibold px-10 py-4 rounded-full transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5">
+                    <i class="fa-solid fa-paper-plane mr-2.5"></i>
+                    Potřebuji poradit s výběrem
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Arc divider gray to white -->
+    <div class="relative bg-gray-50">
+        <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full block -mb-px">
+            <path d="M0 0H1440V60C1080 10 360 10 0 60V0Z" fill="#f9fafb"/>
+            <path d="M0 60C360 10 1080 10 1440 60H0Z" fill="white"/>
+        </svg>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PROČ INREKA (USP)                                            -->
+    <!-- ============================================================ -->
+    <section id="proc-inreka" class="relative py-20 sm:py-28 bg-white overflow-hidden radial-bg-yellow">
+        <!-- Decorative -->
+        <div class="deco-circle w-[500px] h-[500px] border border-navy/[0.03] -top-64 left-1/2 -translate-x-1/2"></div>
+        <div class="deco-circle w-40 h-40 bg-brand-yellow/[0.04] bottom-10 right-10"></div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <!-- Section header -->
+            <div class="text-center mb-16 reveal">
+                <span class="inline-block bg-brand-yellow/15 text-brand-yellow font-semibold text-sm px-5 py-1.5 rounded-full mb-4 tracking-wide">
+                    Proč právě my
+                </span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy leading-tight">
+                    6 důvodů proč <span class="text-brand-red">Inreka</span>
+                </h2>
+            </div>
+
+            <!-- USP grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+
+                <!-- 01 -->
+                <div class="flex gap-5 items-start reveal">
+                    <div class="usp-number bg-navy text-white shrink-0">01</div>
+                    <div>
+                        <h3 class="font-bold text-navy text-lg mb-1.5">Jediný kompletní dodavatel v ČR</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Výroba, prodej, pronájem i servis — vše na jednom místě. Nemusíte řešit více dodavatelů.</p>
+                    </div>
+                </div>
+
+                <!-- 02 -->
+                <div class="flex gap-5 items-start reveal" style="transition-delay: 0.1s;">
+                    <div class="usp-number bg-brand-red text-white shrink-0">02</div>
+                    <div>
+                        <h3 class="font-bold text-navy text-lg mb-1.5">Italská technologie</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Výhradní zastoupení Multitel, Isoli, Platform Basket a AlmaCrawler pro ČR a Slovensko.</p>
+                    </div>
+                </div>
+
+                <!-- 03 -->
+                <div class="flex gap-5 items-start reveal" style="transition-delay: 0.15s;">
+                    <div class="usp-number bg-navy text-white shrink-0">03</div>
+                    <div>
+                        <h3 class="font-bold text-navy text-lg mb-1.5">25+ let zkušeností</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Stovky dodaných plošin, tisíce hodin servisu. Znalosti, které se nedají nahradit.</p>
+                    </div>
+                </div>
+
+                <!-- 04 -->
+                <div class="flex gap-5 items-start reveal" style="transition-delay: 0.2s;">
+                    <div class="usp-number bg-brand-red text-white shrink-0">04</div>
+                    <div>
+                        <h3 class="font-bold text-navy text-lg mb-1.5">Servis do 24 hodin</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Rychlý servisní zásah kdekoliv v ČR. Minimalizace prostojů, maximální spolehlivost.</p>
+                    </div>
+                </div>
+
+                <!-- 05 -->
+                <div class="flex gap-5 items-start reveal" style="transition-delay: 0.25s;">
+                    <div class="usp-number bg-navy text-white shrink-0">05</div>
+                    <div>
+                        <h3 class="font-bold text-navy text-lg mb-1.5">Mezinárodní dosah</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Web a podpora v 6 jazycích. Export a servis pro zákazníky v celé Evropě.</p>
+                    </div>
+                </div>
+
+                <!-- 06 -->
+                <div class="flex gap-5 items-start reveal" style="transition-delay: 0.3s;">
+                    <div class="usp-number bg-brand-red text-white shrink-0">06</div>
+                    <div>
+                        <h3 class="font-bold text-navy text-lg mb-1.5">Důvěra energetických firem</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Reference jako ČEZ, E.ON, ZSE a další. Plošiny v nejnáročnějších podmínkách.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Service images -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-16 reveal">
+                <div class="rounded-2xl overflow-hidden h-64 sm:h-72">
+                    <img src="https://inrekaplosinyservis.cz/userfiles/foto/original/14860254820.jpg" alt="Prodej plošin" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                </div>
+                <div class="rounded-2xl overflow-hidden h-64 sm:h-72">
+                    <img src="https://inrekaplosinyservis.cz/userfiles/foto/original/17273459110.jpg" alt="Pronájem plošin" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- PARTNERSKÉ ZNAČKY                                            -->
+    <!-- ============================================================ -->
+    <section class="py-16 sm:py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 reveal">
+                <span class="inline-block bg-navy/10 text-navy font-semibold text-sm px-5 py-1.5 rounded-full tracking-wide">
+                    Oficiální zastoupení
+                </span>
+            </div>
+            <div class="flex flex-wrap items-center justify-center gap-8 sm:gap-12 lg:gap-16 bg-white rounded-2xl py-10 px-8 shadow-sm border border-gray-100 reveal">
+                <img src="https://images.seeklogo.com/logo-png/19/1/multitel-logo-png_seeklogo-197997.png" alt="Multitel" class="partner-logo" loading="lazy">
+                <img src="https://www.isoli.com/wp-content/uploads/2025/02/logo-isoli-2025.png" alt="Isoli" class="partner-logo" loading="lazy">
+                <img src="https://images.seeklogo.com/logo-png/22/1/platform-basket-logo-png_seeklogo-227825.png" alt="Platform Basket" class="partner-logo" loading="lazy">
+                <img src="https://www.almac-italia.com/wp-content/uploads/2025/02/LOGO-ORIZZONTALE-NERO.jpg" alt="AlmaCrawler" class="partner-logo" loading="lazy">
+                <img src="https://www.klubb.com/Klubb.png" alt="KLUBB" class="partner-logo" loading="lazy">
+                <img src="https://vema.fi/wp-content/uploads/2023/10/vema-logo-1.svg" alt="VEMA" class="partner-logo" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Arc divider gray to white -->
+    <div class="relative bg-gray-50">
+        <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full block -mb-px">
+            <path d="M0 0H1440V60C1080 10 360 10 0 60V0Z" fill="#f9fafb"/>
+            <path d="M0 60C360 10 1080 10 1440 60H0Z" fill="white"/>
+        </svg>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- REFERENCE & HODNOCENÍ                                        -->
+    <!-- ============================================================ -->
+    <section id="reference" class="relative py-20 sm:py-28 bg-white overflow-hidden radial-bg-red">
+        <!-- Decorative -->
+        <div class="deco-circle w-80 h-80 border border-brand-red/[0.04] -top-40 right-20"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <!-- Section header -->
+            <div class="text-center mb-16 reveal">
+                <span class="inline-block bg-brand-red/10 text-brand-red font-semibold text-sm px-5 py-1.5 rounded-full mb-4 tracking-wide">
+                    Reference
+                </span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy leading-tight">
+                    Co říkají <span class="text-brand-red">naši zákazníci</span>
+                </h2>
+            </div>
+
+            <!-- Rating + testimonials row -->
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16 mb-16">
+
+                <!-- Google rating circle -->
+                <div class="flex flex-col items-center gap-4 shrink-0 reveal">
+                    <div class="rating-circle">
+                        <span class="text-4xl font-extrabold text-white">4.7</span>
+                        <div class="flex gap-0.5 mt-1">
+                            <i class="fa-solid fa-star text-brand-yellow text-xs"></i>
+                            <i class="fa-solid fa-star text-brand-yellow text-xs"></i>
+                            <i class="fa-solid fa-star text-brand-yellow text-xs"></i>
+                            <i class="fa-solid fa-star text-brand-yellow text-xs"></i>
+                            <i class="fa-solid fa-star-half-stroke text-brand-yellow text-xs"></i>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" class="h-5 mx-auto">
+                        <p class="text-gray-400 text-sm mt-1">24 recenzí</p>
+                    </div>
+                </div>
+
+                <!-- Testimonials -->
+                <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+                    <div class="testimonial-card bg-gray-50 border border-gray-100 p-7 reveal" style="transition-delay: 0.1s;">
+                        <div class="flex gap-0.5 mb-4">
+                            <i class="fa-solid fa-star text-brand-yellow text-sm"></i>
+                            <i class="fa-solid fa-star text-brand-yellow text-sm"></i>
+                            <i class="fa-solid fa-star text-brand-yellow text-sm"></i>
+                            <i class="fa-solid fa-star text-brand-yellow text-sm"></i>
+                            <i class="fa-solid fa-star text-brand-yellow text-sm"></i>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-5 italic">
+                            &ldquo;Perfektní spolupráce při pronájmu plošiny. Velmi solidní firma a ochotní zaměstnanci. Rozhodně doporučuji.&rdquo;
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <div class="testimonial-avatar">P</div>
+                            <div>
+                                <p class="font-semibold text-navy text-sm">Petr M.</p>
+                                <p class="text-gray-400 text-xs">Zákazník &middot; Pronájem</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card bg-gray-50 border border-gray-100 p-7 reveal" style="transition-delay: 0.2s;">
+                        <div class="flex gap-0.5 mb-4">
+                            <i class="fa-solid fa-star text-brand-yellow text-sm"></i>
+                            <i class="fa-solid fa-star text-brand-yellow text-sm"></i>
+                            <i class="fa-solid fa-star text-brand-yellow text-sm"></i>
+                            <i class="fa-solid fa-star text-brand-yellow text-sm"></i>
+                            <i class="fa-solid fa-star text-brand-yellow text-sm"></i>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-5 italic">
+                            &ldquo;Solidní jednání, vše v pořádku. Rychlá domluva, bezproblémový průběh. Děkujeme za spolupráci.&rdquo;
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <div class="testimonial-avatar">J</div>
+                            <div>
+                                <p class="font-semibold text-navy text-sm">Jan K.</p>
+                                <p class="text-gray-400 text-xs">Zákazník &middot; Prodej</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Energy companies strip -->
+            <div class="text-center mb-6 reveal">
+                <p class="text-gray-400 text-sm font-medium tracking-wide uppercase">Důvěřují nám energetické společnosti</p>
+            </div>
+            <div class="flex flex-wrap items-center justify-center gap-8 sm:gap-12 mb-14 reveal">
+                <img src="https://www.cez.cz/webpublic/file/edee/2022/06/symbol-cez_barva_pozitiv_rgb.png" alt="ČEZ" class="energy-logo" loading="lazy">
+                <img src="https://www.eon.cz/img/illust/eon-logo.svg" alt="E.ON" class="energy-logo" loading="lazy">
+                <img src="https://www.zse.sk/wp-content/themes/zse/assets/logo_zse.svg" alt="ZSE" class="energy-logo" loading="lazy">
+                <img src="https://www.sse.sk/buxus/images/design/logo.png" alt="SSE" class="energy-logo" loading="lazy">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/V%C3%BDchodoslovensk%C3%A1_energetika_logo.svg/1280px-V%C3%BDchodoslovensk%C3%A1_energetika_logo.svg.png" alt="VSE" class="energy-logo" loading="lazy">
+            </div>
+
+            <!-- Reference photo gallery (horizontal scroll) -->
+            <div class="reveal">
+                <div class="gallery-scroll">
+                    <img src="https://inrekaplosinyservis.cz/userfiles/foto/original/14860255294.jpg" alt="Reference" loading="lazy">
+                    <img src="https://inrekaplosinyservis.cz/userfiles/foto/original/14860255281.jpg" alt="Reference" loading="lazy">
+                    <img src="https://inrekaplosinyservis.cz/userfiles/foto/original/14670231820.jpg" alt="Reference" loading="lazy">
+                    <img src="https://inrekaplosinyservis.cz/userfiles/foto/original/14407613630.jpg" alt="Reference" loading="lazy">
+                    <img src="https://inrekaplosinyservis.cz/userfiles/foto/original/14593308080.jpg" alt="Reference" loading="lazy">
+                    <img src="https://inrekaplosinyservis.cz/userfiles/foto/original/14520810850.jpg" alt="Reference" loading="lazy">
+                    <img src="https://inrekaplosinyservis.cz/userfiles/foto/original/14860254820.jpg" alt="Reference" loading="lazy">
+                    <img src="https://inrekaplosinyservis.cz/userfiles/foto/original/14670232290.jpg" alt="Reference" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- NOVINKY                                                      -->
+    <!-- ============================================================ -->
+    <section class="py-20 sm:py-24 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section header -->
+            <div class="text-center mb-14 reveal">
+                <span class="inline-block bg-brand-yellow/15 text-brand-yellow font-semibold text-sm px-5 py-1.5 rounded-full mb-4 tracking-wide">
+                    Novinky
+                </span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy leading-tight">
+                    Co je <span class="text-brand-red">nového</span>
+                </h2>
+            </div>
+
+            <!-- News cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <!-- News 1 - AlmaCrawler -->
+                <div class="news-card bg-white border border-gray-100 shadow-sm reveal">
+                    <div class="overflow-hidden h-48">
+                        <img src="https://inrekaplosinyservis.cz/userfiles/aktualita/nahled/1716463508.jpg" alt="AlmaCrawler" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-brand-red text-xs font-semibold tracking-wide uppercase">2026</span>
+                        <h3 class="font-bold text-navy mt-2 mb-2 leading-snug">Nové zastoupení AlmaCrawler pro ČR a SK</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Stali jsme se výhradním distributorem italských pásových plošin AlmaCrawler pro český a slovenský trh.</p>
+                    </div>
+                </div>
+
+                <!-- News 2 - JIBBI 1250 -->
+                <div class="news-card bg-white border border-gray-100 shadow-sm reveal" style="transition-delay: 0.1s;">
+                    <div class="overflow-hidden h-48 bg-gradient-to-br from-navy to-navy-light flex items-center justify-center">
+                        <i class="fa-solid fa-truck-monster text-5xl text-brand-yellow/30"></i>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-brand-red text-xs font-semibold tracking-wide uppercase">2026</span>
+                        <h3 class="font-bold text-navy mt-2 mb-2 leading-snug">JIBBI 1250 — pásová plošina bez podpěr</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Nově v nabídce: samohybná pásová plošina JIBBI 1250 s pracovní výškou 12,5 m — bez potřeby stabilizačních podpěr.</p>
+                    </div>
+                </div>
+
+                <!-- News 3 - AI konfigurátor -->
+                <div class="news-card bg-white border border-gray-100 shadow-sm reveal" style="transition-delay: 0.2s;">
+                    <div class="overflow-hidden h-48 bg-gradient-to-br from-brand-red to-brand-redDark flex items-center justify-center">
+                        <i class="fa-solid fa-robot text-5xl text-white/20"></i>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-brand-yellow text-xs font-semibold tracking-wide uppercase">Připravujeme</span>
+                        <h3 class="font-bold text-navy mt-2 mb-2 leading-snug">AI konfigurátor plošin</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Pracujeme na inteligentním konfigurátoru, který vám pomůže vybrat správnou plošinu na základě vašich požadavků.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Arc divider gray to navy -->
+    <div class="relative bg-gray-50">
+        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full block -mb-px">
+            <path d="M0 0H1440V30C1200 80 720 80 240 80C120 80 60 65 0 30V0Z" fill="#f9fafb"/>
+            <path d="M0 80H1440C1200 30 720 30 240 80H0Z" fill="#0d1b2a"/>
+        </svg>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- KONTAKT                                                      -->
+    <!-- ============================================================ -->
+    <section id="kontakt" class="relative py-20 sm:py-28 bg-navy overflow-hidden">
+        <!-- Grid overlay -->
+        <div class="absolute inset-0 grid-overlay"></div>
+
+        <!-- Decorative circles -->
+        <div class="deco-circle w-96 h-96 border border-white/[0.03] -top-48 -right-32"></div>
+        <div class="deco-circle w-64 h-64 border border-brand-red/[0.06] bottom-20 left-10"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Section header -->
+            <div class="text-center mb-14 reveal">
+                <span class="inline-block bg-brand-red/20 text-brand-red font-semibold text-sm px-5 py-1.5 rounded-full mb-4 tracking-wide">
+                    Kontaktujte nás
+                </span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
+                    Nezávazná <span class="text-brand-yellow">poptávka</span>
+                </h2>
+                <p class="text-white/50 max-w-xl mx-auto mt-4">Napište nám nebo zavolejte. Ozveme se zpět do 24 hodin.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16">
+
+                <!-- Form (3/5) -->
+                <div class="lg:col-span-3 reveal">
+                    <form class="contact-form space-y-5" onsubmit="event.preventDefault(); alert('Děkujeme za poptávku! Ozveme se vám co nejdříve.');">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <input type="text" placeholder="Jméno a příjmení *" required>
+                            <input type="text" placeholder="Firma">
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <input type="email" placeholder="E-mail *" required>
+                            <input type="tel" placeholder="Telefon">
+                        </div>
+                        <select required>
+                            <option value="" disabled selected>Zajímá mě...</option>
+                            <option value="prodej">Prodej nové plošiny</option>
+                            <option value="repas">Repasovaná plošina</option>
+                            <option value="pronajem">Pronájem plošiny</option>
+                            <option value="servis">Servis / revize</option>
+                            <option value="nahradni-dily">Náhradní díly</option>
+                            <option value="jine">Jiné</option>
+                        </select>
+                        <textarea rows="4" placeholder="Vaše zpráva..."></textarea>
+                        <button type="submit" class="w-full sm:w-auto bg-brand-red hover:bg-brand-redDark text-white font-semibold text-lg px-12 py-4 rounded-full transition-all duration-300 hover:shadow-xl hover:shadow-red-900/30 hover:-translate-y-0.5">
+                            <i class="fa-solid fa-paper-plane mr-2"></i>
+                            Odeslat poptávku
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact info (2/5) -->
+                <div class="lg:col-span-2 reveal" style="transition-delay: 0.15s;">
+                    <div class="space-y-7">
+
+                        <!-- Jiří Strnad -->
+                        <div class="flex gap-4 items-start">
+                            <div class="w-12 h-12 rounded-full bg-brand-red/20 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-user text-brand-red"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-white">Jiří Strnad</p>
+                                <p class="text-white/40 text-sm">Majitel</p>
+                                <a href="tel:+420605260765" class="text-brand-yellow hover:text-brand-yellowLight text-sm font-medium transition-colors">+420 605 260 765</a><br>
+                                <a href="mailto:strnad@inrekaplosiny.cz" class="text-white/60 hover:text-white text-sm transition-colors">strnad@inrekaplosiny.cz</a>
+                            </div>
+                        </div>
+
+                        <!-- Vít Doležálek -->
+                        <div class="flex gap-4 items-start">
+                            <div class="w-12 h-12 rounded-full bg-brand-red/20 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-user text-brand-red"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-white">Mgr. Vít Doležálek</p>
+                                <p class="text-white/40 text-sm">Obchod a zahraničí</p>
+                                <a href="tel:+420731651547" class="text-brand-yellow hover:text-brand-yellowLight text-sm font-medium transition-colors">+420 731 651 547</a><br>
+                                <a href="mailto:dolezalek@inrekaplosiny.cz" class="text-white/60 hover:text-white text-sm transition-colors">dolezalek@inrekaplosiny.cz</a>
+                            </div>
+                        </div>
+
+                        <!-- Josef Žampach -->
+                        <div class="flex gap-4 items-start">
+                            <div class="w-12 h-12 rounded-full bg-brand-red/20 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-wrench text-brand-red"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-white">Josef Žampach</p>
+                                <p class="text-white/40 text-sm">Servis</p>
+                                <a href="tel:+420731615919" class="text-brand-yellow hover:text-brand-yellowLight text-sm font-medium transition-colors">+420 731 615 919</a>
+                            </div>
+                        </div>
+
+                        <!-- Address -->
+                        <div class="flex gap-4 items-start">
+                            <div class="w-12 h-12 rounded-full bg-brand-yellow/20 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-location-dot text-brand-yellow"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-white">Adresa</p>
+                                <p class="text-white/60 text-sm leading-relaxed">Nivnice<br>Česká republika</p>
+                            </div>
+                        </div>
+
+                        <!-- Map -->
+                        <div class="map-container mt-4">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10434.5!2d17.6!3d48.96!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47137780f58c0001%3A0x400af0f6615e830!2sNivnice!5e0!3m2!1scs!2scz!4v1700000000000!5m2!1scs!2scz" width="100%" height="180" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="rounded-xl"></iframe>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- FOOTER                                                       -->
+    <!-- ============================================================ -->
+    <footer class="bg-navy-dark">
+        <!-- Safety stripe -->
+        <div class="safety-stripe"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
+
+                <!-- Company info + social -->
+                <div>
+                    <img src="https://inrekaplosinyservis.cz/images/logo.svg?v=1.0" alt="INREKA" class="h-12 mb-5">
+                    <p class="text-white/40 text-sm leading-relaxed mb-5">
+                        Výroba, prodej, pronájem a servis pracovních plošin. Kompletní řešení pod jednou střechou od roku 1999.
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand-red flex items-center justify-center text-white/60 hover:text-white transition-all duration-300">
+                            <i class="fa-brands fa-facebook-f text-sm"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand-red flex items-center justify-center text-white/60 hover:text-white transition-all duration-300">
+                            <i class="fa-brands fa-linkedin-in text-sm"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand-red flex items-center justify-center text-white/60 hover:text-white transition-all duration-300">
+                            <i class="fa-brands fa-youtube text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Služby links -->
+                <div>
+                    <h4 class="font-bold text-white mb-5 text-sm tracking-wide uppercase">Služby</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#sluzby" class="text-white/50 hover:text-brand-yellow text-sm transition-colors">Výroba plošin</a></li>
+                        <li><a href="#sluzby" class="text-white/50 hover:text-brand-yellow text-sm transition-colors">Prodej plošin</a></li>
+                        <li><a href="#sluzby" class="text-white/50 hover:text-brand-yellow text-sm transition-colors">Pronájem plošin</a></li>
+                        <li><a href="#sluzby" class="text-white/50 hover:text-brand-yellow text-sm transition-colors">Servis a revize</a></li>
+                        <li><a href="#sluzby" class="text-white/50 hover:text-brand-yellow text-sm transition-colors">Náhradní díly</a></li>
+                    </ul>
+                </div>
+
+                <!-- Plošiny links -->
+                <div>
+                    <h4 class="font-bold text-white mb-5 text-sm tracking-wide uppercase">Plošiny</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#plosiny" class="text-white/50 hover:text-brand-yellow text-sm transition-colors">Do 3,5 tuny</a></li>
+                        <li><a href="#plosiny" class="text-white/50 hover:text-brand-yellow text-sm transition-colors">Nad 3,5 tuny</a></li>
+                        <li><a href="#plosiny" class="text-white/50 hover:text-brand-yellow text-sm transition-colors">Terénní 4&times;4</a></li>
+                        <li><a href="#plosiny" class="text-white/50 hover:text-brand-yellow text-sm transition-colors">Dodávkové KLUBB</a></li>
+                        <li><a href="#plosiny" class="text-white/50 hover:text-brand-yellow text-sm transition-colors">Samohybné pásové</a></li>
+                        <li><a href="#plosiny" class="text-white/50 hover:text-brand-yellow text-sm transition-colors">Hasičské VEMA</a></li>
+                    </ul>
+                </div>
+
+                <!-- Kontakt + language switcher -->
+                <div>
+                    <h4 class="font-bold text-white mb-5 text-sm tracking-wide uppercase">Kontakt</h4>
+                    <ul class="space-y-3 mb-6">
+                        <li class="text-white/50 text-sm"><i class="fa-solid fa-phone text-brand-red mr-2 text-xs"></i> +420 605 260 765</li>
+                        <li class="text-white/50 text-sm"><i class="fa-solid fa-envelope text-brand-red mr-2 text-xs"></i> strnad@inrekaplosiny.cz</li>
+                        <li class="text-white/50 text-sm"><i class="fa-solid fa-location-dot text-brand-red mr-2 text-xs"></i> Nivnice, Česká republika</li>
+                    </ul>
+                    <div>
+                        <p class="text-white/30 text-xs font-medium tracking-wide uppercase mb-2">Jazyk</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="#" class="text-xs bg-white/10 hover:bg-brand-red text-white/60 hover:text-white px-3 py-1.5 rounded-full transition-all">CZ</a>
+                            <a href="#" class="text-xs bg-white/10 hover:bg-brand-red text-white/60 hover:text-white px-3 py-1.5 rounded-full transition-all">SK</a>
+                            <a href="#" class="text-xs bg-white/10 hover:bg-brand-red text-white/60 hover:text-white px-3 py-1.5 rounded-full transition-all">EN</a>
+                            <a href="#" class="text-xs bg-white/10 hover:bg-brand-red text-white/60 hover:text-white px-3 py-1.5 rounded-full transition-all">DE</a>
+                            <a href="#" class="text-xs bg-white/10 hover:bg-brand-red text-white/60 hover:text-white px-3 py-1.5 rounded-full transition-all">ES</a>
+                            <a href="#" class="text-xs bg-white/10 hover:bg-brand-red text-white/60 hover:text-white px-3 py-1.5 rounded-full transition-all">IT</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom bar -->
+            <div class="border-t border-white/10 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p class="text-white/30 text-sm">&copy; 2026 INREKA PLOŠINY SERVIS, s.r.o. Všechna práva vyhrazena.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="text-white/30 hover:text-white/60 text-sm transition-colors">Ochrana osobních údajů</a>
+                    <a href="#" class="text-white/30 hover:text-white/60 text-sm transition-colors">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================ -->
+    <!-- JAVASCRIPT                                                   -->
+    <!-- ============================================================ -->
+    <script>
+    (function() {
+        'use strict';
+
+        // ---- Sticky Header ----
+        var header = document.getElementById('header');
+
+        function handleScroll() {
+            if (window.scrollY > 60) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll();
+
+        // ---- Mobile Menu ----
+        var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        var mobileMenu = document.getElementById('mobile-menu');
+        var mobileMenuClose = document.getElementById('mobile-menu-close');
+        var mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function openMobileMenu() {
+            mobileMenu.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        mobileMenuBtn.addEventListener('click', openMobileMenu);
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+        mobileNavLinks.forEach(function(link) {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // ---- Scroll Reveal ----
+        var revealElements = document.querySelectorAll('.reveal');
+
+        var revealObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        revealElements.forEach(function(el) {
+            revealObserver.observe(el);
+        });
+
+        // ---- Counter Animation ----
+        var counterElements = document.querySelectorAll('.counter-value');
+        var counterAnimated = false;
+
+        function animateCounters() {
+            if (counterAnimated) return;
+            counterAnimated = true;
+
+            counterElements.forEach(function(counter) {
+                var target = parseInt(counter.getAttribute('data-target'));
+                if (!target) return;
+
+                var duration = 2000;
+                var startTime = performance.now();
+
+                function updateCounter(currentTime) {
+                    var elapsed = currentTime - startTime;
+                    var progress = Math.min(elapsed / duration, 1);
+                    var eased = 1 - Math.pow(1 - progress, 3);
+                    var current = Math.round(eased * target);
+                    counter.textContent = current;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target;
+                    }
+                }
+
+                requestAnimationFrame(updateCounter);
+            });
+        }
+
+        var firstStatCircle = document.querySelector('.stat-circle');
+        if (firstStatCircle) {
+            var counterObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            counterObserver.observe(firstStatCircle);
+        }
+
+        // ---- Smooth Scroll ----
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                var targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                var targetEl = document.querySelector(targetId);
+                if (targetEl) {
+                    e.preventDefault();
+                    var headerHeight = header.offsetHeight;
+                    var targetPosition = targetEl.getBoundingClientRect().top + window.scrollY - headerHeight - 20;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+    })();
+    </script>
+
+</body>
+</html>
