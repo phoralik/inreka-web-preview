@@ -3,33 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marketingová strategie — Inreka Plošiny</title>
+    <title>Marketingova strategie: Inreka Plosiny</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        brand: { 50:'#fffbeb', 100:'#fef3c7', 200:'#fde68a', 300:'#fcd34d', 400:'#fbbf24', 500:'#f59e0b', 600:'#d97706', 700:'#b45309', 800:'#92400e', 900:'#78350f' },
+                        navy: { 700:'#1b2d44', 800:'#152238', 900:'#0f1a2e' }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
+        html { scroll-behavior: smooth; scroll-padding-top: 8rem; }
         body { font-family: 'Inter', sans-serif; }
-        .prose h1 { font-size: 2rem; font-weight: 800; margin-bottom: 1rem; color: #111; border-bottom: 3px solid #f5a623; padding-bottom: 0.5rem; }
-        .prose h2 { font-size: 1.5rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 0.75rem; color: #1b2d44; }
-        .prose h3 { font-size: 1.15rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #333; }
-        .prose h4 { font-size: 1rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.5rem; }
-        .prose p { margin-bottom: 0.75rem; line-height: 1.7; color: #374151; }
-        .prose ul, .prose ol { margin-bottom: 0.75rem; padding-left: 1.5rem; color: #374151; }
-        .prose li { margin-bottom: 0.35rem; line-height: 1.6; }
-        .prose table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; font-size: 0.9rem; }
-        .prose th { background: #1b2d44; color: white; padding: 10px 12px; text-align: left; font-weight: 600; }
-        .prose td { padding: 8px 12px; border-bottom: 1px solid #e5e7eb; }
-        .prose tr:hover td { background: #fefce8; }
-        .prose blockquote { border-left: 4px solid #f5a623; padding: 0.75rem 1rem; margin: 1rem 0; background: #fffbeb; color: #92400e; }
-        .prose code { background: #f3f4f6; padding: 2px 6px; border-radius: 4px; font-size: 0.87rem; }
-        .prose pre { background: #1e293b; color: #e2e8f0; padding: 1rem; border-radius: 8px; overflow-x: auto; margin-bottom: 1rem; }
-        .prose pre code { background: transparent; padding: 0; color: inherit; }
-        .prose hr { border: none; border-top: 2px solid #e5e7eb; margin: 2rem 0; }
-        .prose strong { color: #111; }
+
+        /* Sticky section nav */
+        .section-nav { scrollbar-width: none; -ms-overflow-style: none; }
+        .section-nav::-webkit-scrollbar { display: none; }
+        .section-nav a { white-space: nowrap; }
+
+        /* Segment cards */
+        .segment-card { transition: box-shadow 0.2s ease; }
+        .segment-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+
+        /* Details/summary */
+        details summary { cursor: pointer; list-style: none; }
+        details summary::-webkit-details-marker { display: none; }
+        details summary::before { content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900; font-size: 0.7rem; display: inline-flex; align-items: center; justify-content: center; width: 1.5rem; height: 1.5rem; border-radius: 9999px; background: #f3f4f6; color: #6b7280; margin-right: 0.5rem; transition: transform 0.2s ease, background 0.2s ease; }
+        details[open] summary::before { transform: rotate(180deg); background: #fef3c7; color: #d97706; }
+        details[open] > .detail-content { animation: slideDown 0.25s ease-out; }
+        @keyframes slideDown { from { opacity:0; transform: translateY(-8px); } to { opacity:1; transform: translateY(0); } }
+
+        /* Tables */
+        .data-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 0.875rem; }
+        .data-table thead th { background: #1b2d44; color: white; padding: 10px 14px; text-align: left; font-weight: 600; }
+        .data-table thead th:first-child { border-radius: 8px 0 0 0; }
+        .data-table thead th:last-child { border-radius: 0 8px 0 0; }
+        .data-table td { padding: 10px 14px; border-bottom: 1px solid #e5e7eb; color: #374151; }
+        .data-table tr:hover td { background: #fffbeb; }
+        .data-table tr:last-child td:first-child { border-radius: 0 0 0 8px; }
+        .data-table tr:last-child td:last-child { border-radius: 0 0 8px 0; }
+
+        /* Blockquote templates */
+        .msg-template { position: relative; border-left: 4px solid #f59e0b; background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); padding: 1.25rem 1.25rem 1.25rem 1.5rem; border-radius: 0 12px 12px 0; margin: 1rem 0; }
+        .msg-template p { color: #92400e; font-style: italic; line-height: 1.7; margin: 0; }
+        .msg-template .copy-label { position: absolute; top: 0.5rem; right: 0.75rem; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; color: #d97706; font-weight: 600; font-style: normal; }
+
+        /* Progress timeline */
+        .timeline-step { position: relative; }
+        .timeline-step::before { content: ''; position: absolute; left: 1.25rem; top: 2.75rem; bottom: -0.75rem; width: 2px; background: #e5e7eb; }
+        .timeline-step:last-child::before { display: none; }
+
+        /* Callout cards */
+        .stat-card { background: white; border-radius: 16px; padding: 1.5rem; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.06); border: 1px solid #f3f4f6; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+        .stat-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+
+        /* Section dividers */
+        .section-divider { height: 4px; border-radius: 2px; margin: 3rem 0; }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
+
+    <!-- Top Navbar (same as original) -->
     <nav class="bg-white/95 backdrop-blur-sm border-b border-gray-200 py-3 px-6 sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto flex items-center justify-between">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
             <a href="./" class="text-amber-600 hover:text-amber-700 font-medium text-sm transition flex items-center gap-1.5">
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
                 Zpět na materiály
@@ -43,1447 +87,1479 @@
             </div>
         </div>
     </nav>
-    <main class="max-w-5xl mx-auto px-6 py-10">
-        <div class="prose max-w-none">
-            <h1>Marketing Outreach Strategie — Inreka Plošiny Servis</h1>
-<p><strong>Praktický manuál pro aktivní oslovování firem</strong>
-<strong>Připravil: Pavel Horalík | Březen 2026</strong></p>
-<hr />
-<h2>Úvod: Proč tohle děláme a jak to číst</h2>
-<p>Tohle není akademická strategie. Je to <strong>pracovní manuál</strong> — konkrétní kroky, které může Jiří nebo Vít vzít a udělat.</p>
-<p><strong>Klíčová fakta, ze kterých vycházíme:</strong></p>
-<table>
-<thead>
-<tr>
-<th>Fakt</th>
-<th>Co to znamená pro outreach</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>90% konverze při osobní návštěvě</td>
-<td>Celý funnel musí vést k <strong>"přijeďte se podívat do Nivnice"</strong></td>
-</tr>
-<tr>
-<td>Cold calling nefunguje</td>
-<td>Žádné volání naslepo — vždy s kontextem a důvodem</td>
-</tr>
-<tr>
-<td>Hromadný email nefunguje (200 mailů = 1-2 odezvy)</td>
-<td>Žádné masové rozesílky. 20 cílených &gt; 200 náhodných</td>
-</tr>
-<tr>
-<td>Cílovka: "chlapy z provozu, daleko k počítači"</td>
-<td>LinkedIn je sekundární. Primární je email + telefon po zahřátí</td>
-</tr>
-<tr>
-<td>"Pokud možno co nejméně naší práce"</td>
-<td>Pavel připraví, Inreka schválí a pošle. Max 3-4h/týden celkem</td>
-</tr>
-<tr>
-<td>Případ Tlačnov — "takových firem může být 100"</td>
-<td>AI identifikace firem, které neví, že řešení existuje</td>
-</tr>
-<tr>
-<td>Nikdo v ČR nenabízí AlmaCrawler Multiloader</td>
-<td>First mover advantage — kdo přijde první, vyhraje</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2>1. Segmentovaný outreach — kdo, s čím, jak</h2>
-<h3>SEGMENT 1: Stavební firmy</h3>
-<p><strong>Produkt:</strong> Spider plošiny (Platform Basket) + JIBBI (AlmaCrawler)</p>
-<h4>Kdo konkrétně kontaktovat</h4>
-<table>
-<thead>
-<tr>
-<th>Pozice</th>
-<th>Typ firmy</th>
-<th>Jak najít</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Vedoucí stavbyvedoucí / šéf provozu</td>
-<td>Střední stavební firmy (50-500 zaměstnanců)</td>
-<td>ARES/Justice.cz — NACE kódy 41, 42, 43 (stavebnictví)</td>
-</tr>
-<tr>
-<td>Technický ředitel / ředitel provozu</td>
-<td>Firmy specializované na rekonstrukce</td>
-<td>Firmo.cz — kategorie "Stavební firmy", filtr dle regionu</td>
-</tr>
-<tr>
-<td>Nákupčí / fleet manager</td>
-<td>Firmy, které už plošiny pronajímají</td>
-<td>Dotaz na půjčovny — kdo si nejčastěji půjčuje</td>
-</tr>
-<tr>
-<td>Majitel</td>
-<td>Menší stavební firmy (10-50 lidí)</td>
-<td>Osobní síť, doporučení od stávajících zákazníků</td>
-</tr>
-</tbody>
-</table>
-<h4>Jaká zpráva / hodnotová nabídka</h4>
-<p><strong>Pro Spider plošiny:</strong></p>
-<blockquote>
-<p><em>"Pracujete na stavbách, kde musíte řešit stabilizátory a zabírají vám místo? Spider plošiny Platform Basket jedou na pásech — na jakémkoli terénu, bez nutnosti rozkládat podpěry na asfaltovém povrchu. 140 kusů jsme jich dodali po ČR/SR. Můžete si jednu vyzkoušet u nás v Nivnici — stačí se zastavit."</em></p>
-</blockquote>
-<p><strong>Pro JIBBI (úzké prostory):</strong></p>
-<blockquote>
-<p><em>"Potřebujete se dostat s plošinou tam, kde normální stroj neprojede? JIBBI 1250 má šířku od 1,15 m — projede dvoukřídlými dveřmi, nepotřebuje podpěry a nepoškodí podlahu. Nikdo jiný v ČR ji nenabízí."</em></p>
-</blockquote>
-<h4>Jak oslovit (kanál)</h4>
-<table>
-<thead>
-<tr>
-<th>Krok</th>
-<th>Akce</th>
-<th>Kdo dělá</th>
-<th>Čas</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>AI identifikuje 30 stavebních firem v regionu (viz sekce 3)</td>
-<td>Pavel</td>
-<td>2h</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Pavel připraví personalizovaný email (3 varianty dle velikosti firmy)</td>
-<td>Pavel</td>
-<td>1h</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Vít pošle email z firemní adresy (osobní, ne hromadný)</td>
-<td>Vít</td>
-<td>30 min (10 firem)</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Po 5 dnech bez odpovědi — krátký telefonát: "Dostal jste email? Chci se jen zeptat, jestli to pro vás má smysl."</td>
-<td>Vít/Jiří</td>
-<td>1h</td>
-</tr>
-<tr>
-<td>5</td>
-<td>Pozitivní odezva → pozvánka na prohlídku + demo</td>
-<td>Vít/Jiří</td>
-<td>individuálně</td>
-</tr>
-</tbody>
-</table>
-<h4>Kdy a co sledovat (triggery)</h4>
-<ul>
-<li><strong>Velké stavební projekty v regionu</strong> — sledovat stavební povolení na úředních deskách (kraje Zlín, JMK, Olomouc, Ostrava)</li>
-<li><strong>Veletrhy:</strong> FOR ARCH Praha, Stavební veletrh Brno — kdo vystavuje, koho potkat</li>
-<li><strong>Sezóna:</strong> Oslovit v <strong>únoru–březnu</strong> (před stavební sezónou duben–říjen)</li>
-<li><strong>Nové rekonstrukce historických budov</strong> — památkové zóny = potřeba šetrných plošin (JIBBI)</li>
-</ul>
-<hr />
-<h3>SEGMENT 2: Průmyslové firmy (Multiloader — případ Tlačnov)</h3>
-<p><strong>Produkt:</strong> AlmaCrawler Multiloader (1.5t, 3.0t, 6.0t)</p>
-<p><strong>TOTO JE STRATEGICKY NEJDŮLEŽITĚJŠÍ SEGMENT.</strong> Nikdo jiný v ČR Multiloader nenabízí. Firmy neví, že řešení existuje. Kdo přijde první, vyhraje.</p>
-<h4>Kdo konkrétně kontaktovat</h4>
-<table>
-<thead>
-<tr>
-<th>Pozice</th>
-<th>Typ firmy</th>
-<th>Jak najít</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Vedoucí výroby / výrobní ředitel</td>
-<td>Strojírenské a výrobní firmy s těžkými polotovary</td>
-<td>ARES — NACE 24-30 (výroba kovů, strojů, zařízení)</td>
-</tr>
-<tr>
-<td>Vedoucí logistiky / skladu</td>
-<td>Firmy s velkými sklady (&gt;2000 m²)</td>
-<td>Logistické parky — CTP, Prologis, P3 — nájemci</td>
-</tr>
-<tr>
-<td>Bezpečnostní technik / BOZP</td>
-<td>Firmy po požární kontrole (jako Tlačnov)</td>
-<td>Osobní síť Inreky — BOZP školitelé Jožka a Martina mají kontakty na desítky firem!</td>
-</tr>
-<tr>
-<td>Technický ředitel</td>
-<td>Firmy se zahraniční matkou (NL, DE, AT)</td>
-<td>Justice.cz — zahraniční vlastníci v regionu</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Klíčový insight:</strong> BOZP tým Inreky (Jožka, Martina) školí desítky firem — <strong>oni přesně vědí, kdo má jaký provoz, jaké problémy řeší</strong>. Tohle je nejlepší zdroj leadů pro Multiloader.</p>
-<h4>Jaká zpráva / hodnotová nabídka</h4>
-<blockquote>
-<p><em>"Převážíte těžké díly vysokozdvihem a narazili jste na limity — úzké uličky, nerovný povrch, požární přepážky? Multiloader od AlmaCrawler je pásový nosič na dálkové ovládání (1,5–6 tun), který projede tam, kde vysokozdvih nemůže. Jednomu zákazníku jsme tím vyřešili problém za miliony — rád vám ukážu jak."</em></p>
-</blockquote>
-<p>Klíčové: <strong>neříkat "máme produkt", říkat "vyřešili jsme problém"</strong>. Příběh Tlačnova je prodejní zbraň č. 1.</p>
-<h4>Jak oslovit</h4>
-<table>
-<thead>
-<tr>
-<th>Krok</th>
-<th>Akce</th>
-<th>Kdo dělá</th>
-<th>Čas</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Jožka/Martina projdou seznam firem, kde školí BOZP — kdo má velkou výrobu/sklad?</td>
-<td>Jožka/Martina</td>
-<td>1h (jednorázově)</td>
-</tr>
-<tr>
-<td>2</td>
-<td>AI identifikuje dalších 20-30 firem dle profilu "Tlačnov" (viz sekce 3)</td>
-<td>Pavel</td>
-<td>3h</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Pavel připraví email s příběhem Tlačnova (case study)</td>
-<td>Pavel</td>
-<td>1h</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Jiří/Vít pošle email OSOBNĚ (ne hromadně). Max 5-10 firem týdně</td>
-<td>Jiří/Vít</td>
-<td>30 min</td>
-</tr>
-<tr>
-<td>5</td>
-<td>Telefonát po 3-5 dnech: "Viděl jste ten email? Ptám se, protože jsme podobný problém řešili u firmy [Tlačnov] a napadlo mě, že by to mohlo být relevantní i pro vás."</td>
-<td>Jiří</td>
-<td>1h</td>
-</tr>
-<tr>
-<td>6</td>
-<td>Zájem → pozvat na demo do Nivnice NEBO nabídnout návštěvu s fotkama/videem</td>
-<td>Jiří</td>
-<td>individuálně</td>
-</tr>
-</tbody>
-</table>
-<h4>Triggery</h4>
-<ul>
-<li><strong>Požární kontroly v průmyslových areálech</strong> — nové požární úseky = vysokozdvih neprojede (přesně případ Tlačnov)</li>
-<li><strong>Rozšiřování výrobních hal</strong> — nové haly s omezeným přístupem</li>
-<li><strong>Firmy s holandskými/německými/rakouskými vlastníky</strong> — zvyklí na moderní řešení, mají budget</li>
-<li><strong>BOZP audity</strong> — Jožka/Martina přímo vidí problémy na místě</li>
-</ul>
-<hr />
-<h3>SEGMENT 3: Technické služby měst (Vítova databáze z ORPček)</h3>
-<p><strong>Produkt:</strong> Plošiny do 3,5t (Isoli), dodávkové (KLUBB), malé Spider</p>
-<h4>Kdo konkrétně kontaktovat</h4>
-<table>
-<thead>
-<tr>
-<th>Pozice</th>
-<th>Typ organizace</th>
-<th>Jak najít</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Ředitel technických služeb</td>
-<td>Technické služby ORP měst</td>
-<td><strong>Vítova databáze — 8 z 13 krajů UŽ EXISTUJE</strong></td>
-</tr>
-<tr>
-<td>Vedoucí údržby</td>
-<td>Technické služby menších měst (5000+ obyvatel)</td>
-<td>Zbývajících 5 krajů: doplnit z webu měst</td>
-</tr>
-<tr>
-<td>Starosta / místostarosta</td>
-<td>Malé obce bez technických služeb</td>
-<td>Relevantní jen pokud nakupují vlastní techniku</td>
-</tr>
-<tr>
-<td>Vedoucí veřejného osvětlení</td>
-<td>Správci VO</td>
-<td>Často spadá pod technické služby nebo externího správce</td>
-</tr>
-</tbody>
-</table>
-<h4>Jaká zpráva</h4>
-<blockquote>
-<p><em>"Spravujete městskou zeleň, veřejné osvětlení nebo údržbu budov? Nabízíme plošiny na podvozcích do 3,5t — stačí řidičák B, projede městem jako dodávka. Servisujeme je po celé ČR. 25 let na trhu, výhradní zastoupení italských výrobců Isoli a KLUBB. Rádi vám stroj představíme osobně."</em></p>
-</blockquote>
-<h4>Jak oslovit</h4>
-<table>
-<thead>
-<tr>
-<th>Krok</th>
-<th>Akce</th>
-<th>Kdo dělá</th>
-<th>Čas</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Vít doplní chybějících 5 krajů v databázi (nebo Pavel pomůže přes web)</td>
-<td>Vít + Pavel</td>
-<td>2-3h jednorázově</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Pavel připraví email — 2 varianty (pro TS měst vs. pro menší obce)</td>
-<td>Pavel</td>
-<td>1h</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Rozeslat po dávkách: 10-15 emailů týdně přes Ecomail (NE hromadně najednou)</td>
-<td>Vít</td>
-<td>15 min/týden</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Follow-up telefonát jen na ty, kdo otevřeli email (Ecomail to ukazuje)</td>
-<td>Vít</td>
-<td>dle statistik</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Specifika tohoto segmentu:</strong>
-- Veřejné zakázky — delší rozhodovací proces, ale stabilní zákazníci
-- Rozpočtový cyklus: Plánují v <strong>říjnu–listopadu</strong> na další rok. Oslovit v <strong>září</strong> s nabídkou
-- Technické služby mezi sebou komunikují — jedna dobrá reference = řetězový efekt</p>
-<h4>Triggery</h4>
-<ul>
-<li><strong>Rozpočtový cyklus obcí</strong> — září/říjen = plánování rozpočtu na příští rok</li>
-<li><strong>Dotační výzvy</strong> (IROP, SFŽP) — pokud je dotace na techniku, TS nakupují</li>
-<li><strong>Havárie staré techniky</strong> — "Praskla vám stará plošina? Máme náhradu."</li>
-<li><strong>Volby do zastupitelstev</strong> — noví starostové chtějí investovat</li>
-</ul>
-<hr />
-<h3>SEGMENT 4: Energetika a elektromontáže (stávající zákazníci — retence + upsell)</h3>
-<p><strong>Produkt:</strong> Multitel (velké plošiny 19-75m), Isoli (do 3,5t), KLUBB (dodávkové)</p>
-<h4>Kdo konkrétně kontaktovat</h4>
-<table>
-<thead>
-<tr>
-<th>Pozice</th>
-<th>Typ firmy</th>
-<th>Jak najít</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Fleet manager / vedoucí techniky</td>
-<td>ČEZ, E.ON, slovenské distribučky</td>
-<td><strong>UŽ JE ZNÁTE — stávající zákazníci</strong></td>
-</tr>
-<tr>
-<td>Vedoucí údržby sítí</td>
-<td>Elektromontážní firmy (Eltodo, Elektro Přerov, atd.)</td>
-<td>Stávající kontakty + ARES — NACE 42.22 (elektřina)</td>
-</tr>
-<tr>
-<td>Obchodní ředitel</td>
-<td>Regionální elektromontážní firmy</td>
-<td>Databáze firem — kdo má zakázky na VN/VVN vedení</td>
-</tr>
-</tbody>
-</table>
-<h4>Jaká zpráva (upsell existujícím zákazníkům)</h4>
-<blockquote>
-<p><em>"[Jméno], víme, že vaše plošiny [model] u nás servisujeme už X let. Chtěl jsem vám dát vědět o dvou věcech: (1) Multitel má novou generaci s telemetrií — vzdálená diagnostika, prediktivní údržba, méně prostojů. (2) Na menší práce nabízíme nově KLUBB plošiny na dodávkách — řidičák B, nižší provozní náklady. Stojí to za 15 minut vašeho času?"</em></p>
-</blockquote>
-<h4>Jak oslovit</h4>
-<table>
-<thead>
-<tr>
-<th>Krok</th>
-<th>Akce</th>
-<th>Kdo dělá</th>
-<th>Čas</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Projít databázi stávajících zákazníků — kdo nekoupil 2+ roky? Kdo má starou techniku?</td>
-<td>Vít</td>
-<td>2h jednorázově</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Pavel připraví personalizované emaily (template + konkrétní model/historie)</td>
-<td>Pavel</td>
-<td>1h</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Jiří/Vít pošle osobně — tady ZNAJÍ lidi jménem</td>
-<td>Jiří/Vít</td>
-<td>průběžně</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Pozvánka: "Máme tu nový Multitel MZ250 — přijeďte se podívat, uvaříme kafe"</td>
-<td>Jiří/Vít</td>
-<td>osobně/telefonicky</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Specifika:</strong>
-- Tohle jsou <strong>teplé kontakty</strong> — nejsnazší konverze
-- Každá servisní návštěva = příležitost zmínit novinky
-- Při výměně starší plošiny — nabídnout repasi nebo novou</p>
-<h4>Triggery</h4>
-<ul>
-<li><strong>Blížící se revize</strong> — "Vaší plošině končí revize za 30 dní. Chcete objednat? A mimochodem, máme novinku..."</li>
-<li><strong>Konec leasingu</strong> — zákazník řeší, co dál</li>
-<li><strong>Nové zakázky zákazníka</strong> (velký tendr na rekonstrukci sítí) — potřebují víc strojů</li>
-<li><strong>Legislativní změny</strong> — nové požadavky na techniku</li>
-</ul>
-<hr />
-<h3>SEGMENT 5: Facility management / správa budov</h3>
-<p><strong>Produkt:</strong> JIBBI (interiéry, citlivé povrchy), Spider (fasády), dodávkové (KLUBB)</p>
-<h4>Kdo konkrétně kontaktovat</h4>
-<table>
-<thead>
-<tr>
-<th>Pozice</th>
-<th>Typ firmy</th>
-<th>Jak najít</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Facility manažer</td>
-<td>Správcovské firmy (CBRE, Cushman &amp; Wakefield, JLL, ISS, Okin)</td>
-<td>LinkedIn — "facility manager" + region</td>
-</tr>
-<tr>
-<td>Vedoucí údržby</td>
-<td>Nákupní centra, logistické parky, administrativní budovy</td>
-<td>Přímo na webu center — kontakty na správu</td>
-</tr>
-<tr>
-<td>Technický správce</td>
-<td>Hotely, wellness, nemocnice</td>
-<td>ARES — NACE 68 (správa nemovitostí), 81.1 (facility)</td>
-</tr>
-<tr>
-<td>Property manager</td>
-<td>Developerské firmy</td>
-<td>Kontakty z CPI, Penta, HB Reavis</td>
-</tr>
-</tbody>
-</table>
-<h4>Jaká zpráva</h4>
-<blockquote>
-<p><em>"Řešíte údržbu fasád, výměnu osvětlení nebo čištění prosklených ploch? JIBBI plošina projede dveřmi (šířka od 1,15 m), nepotřebuje podpěry a nepoškodí podlahu ani dlažbu. Ideální do nákupních center, hotelů nebo administrativních budov. Jsme jediní v ČR, kdo ji nabízí — rádi vám ji předvedeme."</em></p>
-</blockquote>
-<h4>Jak oslovit</h4>
-<table>
-<thead>
-<tr>
-<th>Krok</th>
-<th>Akce</th>
-<th>Kdo dělá</th>
-<th>Čas</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>AI identifikuje 20 největších facility management firem v ČR + 20 velkých budov/center</td>
-<td>Pavel</td>
-<td>2h</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Pavel připraví email + krátké video (viz sekce 2)</td>
-<td>Pavel</td>
-<td>1h</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Vít pošle email. U velkých FM firem (CBRE, ISS) zkusit LinkedIn InMail</td>
-<td>Vít</td>
-<td>30 min</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Follow-up: nabídnout demo přímo u zákazníka ("Přijedeme s JIBBI k vám a ukážeme")</td>
-<td>Vít/Jiří</td>
-<td>individuálně</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Specifika:</strong>
-- FM firmy nakupují opakovaně a ve větších objemech
-- Rozhoduje <strong>cena provozu</strong> (TCO), ne jen pořizovací cena
-- Reference z jednoho centra = vstup do celé sítě správce</p>
-<h4>Triggery</h4>
-<ul>
-<li><strong>Nová nákupní centra / kancelářské budovy</strong> — správce potřebuje techniku od dne otevření</li>
-<li><strong>Rekonstrukce velkých budov</strong> — fasády, výtahy, prosklené plochy</li>
-<li><strong>Energetické úspory</strong> — výměna osvětlení v halách (LED retrofit) = potřeba plošin</li>
-</ul>
-<hr />
-<h3>SEGMENT 6: Telekomunikace (5G, anténní věže)</h3>
-<p><strong>Produkt:</strong> Multitel (velké výšky 25-75m), dodávkové plošiny (KLUBB)</p>
-<h4>Kdo konkrétně kontaktovat</h4>
-<table>
-<thead>
-<tr>
-<th>Pozice</th>
-<th>Typ firmy</th>
-<th>Jak najít</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Vedoucí výstavby sítí</td>
-<td>T-Mobile, O2, Vodafone, CETIN</td>
-<td>Přímo — velké firmy, veřejné kontakty</td>
-</tr>
-<tr>
-<td>Projektový manažer</td>
-<td>Subdodavatelé telco (Huawei CZ, Ericsson CZ, Nokia CZ)</td>
-<td>ARES — NACE 61 (telekomunikace)</td>
-</tr>
-<tr>
-<td>Ředitel / vedoucí provozu</td>
-<td>Towerco firmy (CETIN, Vantage Towers)</td>
-<td>Jejich web + LinkedIn</td>
-</tr>
-<tr>
-<td>Fleet manager</td>
-<td>Montážní firmy pro telco</td>
-<td>Dodavatelské seznamy operátorů (veřejné tendry)</td>
-</tr>
-</tbody>
-</table>
-<h4>Jaká zpráva</h4>
-<blockquote>
-<p><em>"Stavíte nebo udržujete anténní věže a telekomunikační infrastrukturu? Multitel plošiny (25–75m) jsou největší v EU výrobě — telemetrie v každém stroji, vzdálená diagnostika, prediktivní údržba. Pro menší práce na střechách nabízíme KLUBB plošiny na dodávkách (řidičák B). Servis po celé ČR/SR."</em></p>
-</blockquote>
-<h4>Jak oslovit</h4>
-<table>
-<thead>
-<tr>
-<th>Krok</th>
-<th>Akce</th>
-<th>Kdo dělá</th>
-<th>Čas</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Identifikovat subdodavatele telco operátorů (veřejné zakázky, tendry)</td>
-<td>Pavel</td>
-<td>2h</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Pavel připraví email zaměřený na Multitel telemetrii (USP pro tento segment)</td>
-<td>Pavel</td>
-<td>1h</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Jiří pošle osobně — tenhle segment řeší velké objemy, stojí za osobní přístup</td>
-<td>Jiří</td>
-<td>individuálně</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Nabídnout: "Přivezeme Multitel k vám na stavbu — uvidíte telemetrii v praxi"</td>
-<td>Jiří</td>
-<td>individuálně</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Specifika:</strong>
-- 5G výstavba v ČR pokračuje — stabilní poptávka na 3-5 let
-- Telco firmy mají budget a nakupují flotilově (5-20 strojů najednou)
-- Telemetrie Multitelu je obrovský diferenciátor — žádný jiný výrobce toto nemá tak dobře
-- Tendry — dlouhý cyklus (6-12 měsíců), ale velké objemy</p>
-<h4>Triggery</h4>
-<ul>
-<li><strong>5G aukce / nové licence</strong> — operátoři investují, subdodavatelé nakupují techniku</li>
-<li><strong>Veřejné zakázky na telco infrastrukturu</strong> — sledovat na Věstníku veřejných zakázek</li>
-<li><strong>Konec životnosti starých věží</strong> — modernizace = práce ve výškách</li>
-<li><strong>Pojistné události</strong> (bouřky, vichřice) — akutní potřeba plošin pro opravy</li>
-</ul>
-<hr />
-<h2>2. "Dostat zákazníka na dvůr" — cesta k osobní návštěvě</h2>
-<p><strong>90% konverze při návštěvě</strong> je nejsilnější číslo, které Inreka má. Celý marketing musí směřovat k jednomu cíli: <strong>zákazník přijede do Nivnice</strong>.</p>
-<h3>2.1 Pozvánka na prohlídku jako CTA v KAŽDÉ komunikaci</h3>
-<p>Každý email, newsletter, LinkedIn post, telefonát — vždy končí stejně:</p>
-<blockquote>
-<p><strong>"Rádi vám stroj ukážeme osobně v našem zázemí v Nivnici — přijeďte se podívat. Stačí se ozvat."</strong></p>
-</blockquote>
-<p>Varianty pro různé situace:</p>
-<table>
-<thead>
-<tr>
-<th>Situace</th>
-<th>CTA</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Newsletter</td>
-<td>"Chcete vidět [produkt] naživo? Zastavte se u nás v Nivnici."</td>
-</tr>
-<tr>
-<td>Email po poptávce</td>
-<td>"Než se rozhodnete, přijeďte si stroj vyzkoušet. 90 % zákazníků, co nás navštíví, si najde přesně to, co potřebují."</td>
-</tr>
-<tr>
-<td>Telefonát</td>
-<td>"Víte co, přijeďte se podívat. Máme to na dvoře, uvaříme kafe, za hodinu budete vědět."</td>
-</tr>
-<tr>
-<td>LinkedIn</td>
-<td>"Každý měsíc k nám přijede pár firem na prohlídku — a většina si najde přesně to, co hledala. Chcete se přidat?"</td>
-</tr>
-<tr>
-<td>Web (budoucí chatbot)</td>
-<td>"Máte zájem? Domluvte si návštěvu u nás v Nivnici →"</td>
-</tr>
-</tbody>
-</table>
-<h3>2.2 "Den otevřených dveří" — 1-2× ročně</h3>
-<p><strong>Formát:</strong> Půldenní akce (9:00–13:00), neformální, s občerstvením.</p>
-<table>
-<thead>
-<tr>
-<th>Aspekt</th>
-<th>Detail</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Kdy</strong></td>
-<td>Jaro (březen/duben — před sezónou) + podzim (září/říjen — plánování rozpočtů)</td>
-</tr>
-<tr>
-<td><strong>Koho pozvat</strong></td>
-<td>Stávající zákazníci + top 30 potenciálních kontaktů ze segmentů výše</td>
-</tr>
-<tr>
-<td><strong>Program</strong></td>
-<td>Prohlídka zázemí → demo 2-3 strojů na dvoře → občerstvení → individuální konzultace</td>
-</tr>
-<tr>
-<td><strong>Highlight</strong></td>
-<td>Vždy 1 novinka (např. JIBBI nebo Multiloader) — důvod přijít</td>
-</tr>
-<tr>
-<td><strong>Pozvánka</strong></td>
-<td>Osobní email od Jiřího/Víta + telefonát. NE hromadná pozvánka</td>
-</tr>
-<tr>
-<td><strong>Kapacita</strong></td>
-<td>15-25 lidí max. (aby to bylo osobní)</td>
-</tr>
-<tr>
-<td><strong>Dokumentace</strong></td>
-<td>Fotky + krátké video → obsah na LinkedIn + newsletter</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Časová náročnost pro Inreku:</strong>
-- Příprava: 4-6h (Jiří + Vít + někdo na občerstvení)
-- Samotný den: 5h
-- Celkem: 1 pracovní den 2× ročně</p>
-<p><strong>Pavel připraví:</strong> pozvánku (email), program, follow-up email po akci, fotky na LinkedIn.</p>
-<h3>2.3 Demo jízdy s konkrétní plošinou</h3>
-<p>Když zákazník nemůže přijet — přijeďte vy k němu. Ale jen pro vážné zájemce.</p>
-<table>
-<thead>
-<tr>
-<th>Varianta</th>
-<th>Kdy použít</th>
-<th>Jak</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Demo v Nivnici</strong></td>
-<td>Zákazník je do 2h jízdy</td>
-<td>"Přijeďte, máme to na dvoře, za hodinu budete vědět"</td>
-</tr>
-<tr>
-<td><strong>Demo u zákazníka</strong></td>
-<td>Velký potenciální obchod (&gt;500k Kč)</td>
-<td>Přivézt stroj na valníku, předvést přímo v provozu zákazníka</td>
-</tr>
-<tr>
-<td><strong>Demo na stavbě</strong></td>
-<td>Stavební firmy, telco</td>
-<td>"Máme příští týden Spider na zakázce 30 km od vás — chcete se podívat?"</td>
-</tr>
-<tr>
-<td><strong>Demo na veletrhu</strong></td>
-<td>FOR ARCH, Stavební veletrh Brno</td>
-<td>Expozice s 1-2 stroji, live ukázka</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Důležité:</strong> Demo u zákazníka dělat JEN pro kvalifikované leady. Není to pro každého — je to investice (čas + doprava).</p>
-<h3>2.4 Video prohlídka zázemí (pro ty, kdo nemohou přijet)</h3>
-<p>Jednorázová investice — 1 video, které se používá roky.</p>
-<p><strong>Co natočit:</strong></p>
-<table>
-<thead>
-<tr>
-<th>Záběr</th>
-<th>Délka</th>
-<th>Účel</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Záběr na areál z dronu (nebo z ulice)</td>
-<td>15s</td>
-<td>"Tohle je naše zázemí v Nivnici"</td>
-</tr>
-<tr>
-<td>Hala se stroji + servis</td>
-<td>30s</td>
-<td>Ukázat kapacity, profesionalitu</td>
-</tr>
-<tr>
-<td>Plošiny na dvoře (různé typy)</td>
-<td>30s</td>
-<td>"Tohle máme skladem — přijeďte si vybrat"</td>
-</tr>
-<tr>
-<td>Jiří/Vít — osobní slovo</td>
-<td>30s</td>
-<td>"Jsme tady 25 let, uděláme pro vás maximum"</td>
-</tr>
-<tr>
-<td>Novinka (JIBBI/Multiloader) v akci</td>
-<td>30s</td>
-<td>Wow efekt</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Celkem:</strong> 2-3 minuty. Natočit chytrým telefonem, Pavel sestříhá.
-<strong>Použití:</strong> Email, LinkedIn, web, WhatsApp zákazníkům.</p>
-<p><strong>Čas pro Inreku:</strong> 1-2 hodiny natáčení, pak už nic.</p>
-<hr />
-<h2>3. AI-powered identifikace leadů</h2>
-<h3>3.1 Princip: Hledáme "další Tlačnov"</h3>
-<p>Tlačnov je vzorový případ — firma sama netušila, že Multiloader existuje. Hledala na webu, náhodou našla AlmaCrawler, ti ji přeposlali na Inreku. <strong>Kolik takových firem v ČR existuje, které ale na webu nehledaly?</strong></p>
-<p>Cíl: Identifikovat <strong>20-50 konkrétních firem</strong>, které mají profil podobný Tlačnovu, a oslovit je cíleně.</p>
-<h3>3.2 Datové zdroje a co v nich hledat</h3>
-<table>
-<thead>
-<tr>
-<th>Zdroj</th>
-<th>Co hledat</th>
-<th>Jak</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>ARES (ares.gov.cz)</strong></td>
-<td>Výrobní firmy — NACE 24-30 (kovy, stroje), 100+ zaměstnanců, region Morava/ČR</td>
-<td>Filtr dle NACE + velikosti + regionu</td>
-</tr>
-<tr>
-<td><strong>Justice.cz</strong></td>
-<td>Firmy se zahraničním vlastníkem (NL, DE, AT) — mají budget a zvyklosti</td>
-<td>Vyhledat dle sídla zahraničního subjektu</td>
-</tr>
-<tr>
-<td><strong>Firmo.cz / Kompass</strong></td>
-<td>Strojírenské firmy, výrobní haly &gt;2000 m²</td>
-<td>Kategorie + filtr</td>
-</tr>
-<tr>
-<td><strong>Věstník veřejných zakázek</strong></td>
-<td>Tendry na manipulační techniku, plošiny, servis</td>
-<td>Klíčová slova: "plošina", "vysokozdvih", "manipulační technika"</td>
-</tr>
-<tr>
-<td><strong>LinkedIn Sales Navigator</strong></td>
-<td>Vedoucí výroby, fleet manažeři v průmyslových firmách</td>
-<td>Filtr: pozice + odvětví + region</td>
-</tr>
-<tr>
-<td><strong>Google Maps / Mapy.cz</strong></td>
-<td>Velké výrobní areály — kdo tam sídlí?</td>
-<td>Satelitní pohled na průmyslové zóny</td>
-</tr>
-<tr>
-<td><strong>BOZP síť Inreky</strong></td>
-<td>Jožka + Martina školí desítky firem — kdo má velkou výrobu?</td>
-<td>Interní databáze</td>
-</tr>
-<tr>
-<td><strong>Emailová historie Inreky</strong></td>
-<td>Staré poptávky, které nedopadly — proč ne? Změnila se situace?</td>
-<td>Export z IS/emailu</td>
-</tr>
-</tbody>
-</table>
-<h3>3.3 Profil ideálního zákazníka pro Multiloader</h3>
-<p><strong>"Další Tlačnov" vypadá takto:</strong></p>
-<ul>
-<li>Výrobní firma se zahraniční matkou (NL, DE, AT, FR)</li>
-<li>Výrobní hala &gt;1000 m², ideálně rozdělená na více úseků</li>
-<li>Manipuluje s těžkými díly (&gt;500 kg), ale ne obrovskými (do 6t)</li>
-<li>Vysokozdvih je na hranici použitelnosti (úzké uličky, nerovný povrch, požární přepážky)</li>
-<li>Investuje do bezpečnosti a modernizace (ISO certifikace, BOZP)</li>
-<li>V regionu s dostupností servisu Inreky (primárně Morava, sekundárně celá ČR)</li>
-</ul>
-<h3>3.4 Profil pro JIBBI (správa budov, interiéry)</h3>
-<ul>
-<li>Firmy spravující budovy &gt;5000 m² vnitřní plochy</li>
-<li>Nákupní centra, výstavní haly, letiště, nemocnice, hotely</li>
-<li>Potřebují pravidelnou údržbu ve výškách (osvětlení, VZT, čištění)</li>
-<li>Současně řeší: lešení (pomalé), žebříky (nebezpečné), pronájem plošin (drahé opakovaně)</li>
-</ul>
-<h3>3.5 Konkrétní postup AI identifikace</h3>
-<table>
-<thead>
-<tr>
-<th>Krok</th>
-<th>Co</th>
-<th>Kdo</th>
-<th>Výstup</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Definovat kritéria (viz profily výše)</td>
-<td>Pavel + Jiří</td>
-<td>Checklist parametrů</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Stáhnout data z ARES (NACE kódy, velikost, region)</td>
-<td>Pavel (AI)</td>
-<td>Seznam 200-500 firem</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Filtrovat dle profilu — zahraniční vlastník, velikost, odvětví</td>
-<td>Pavel (AI)</td>
-<td>Seznam 50-80 firem</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Cross-check s databází Inreky — kdo už je zákazník? Kdo ne?</td>
-<td>Vít</td>
-<td>Seznam 30-50 NOVÝCH firem</td>
-</tr>
-<tr>
-<td>5</td>
-<td>Prioritizovat: kdo je nejblíž profilu Tlačnova?</td>
-<td>Pavel + Jiří</td>
-<td>TOP 20 k oslovení</td>
-</tr>
-<tr>
-<td>6</td>
-<td>Připravit personalizovaný email pro každou firmu</td>
-<td>Pavel</td>
-<td>20 emailů</td>
-</tr>
-<tr>
-<td>7</td>
-<td>Oslovit po dávkách (5/týden)</td>
-<td>Vít</td>
-<td>Průběžně</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Časový odhad:</strong> Kroky 1-6 = cca 8-10 hodin Pavlovy práce. Kroky od Inreky = max 3-4 hodiny celkem.</p>
-<h3>3.6 LinkedIn Sales Navigator (budoucí)</h3>
-<p>Pokud se rozhodnou investovat (~100 USD/měsíc):</p>
-<ul>
-<li><strong>Vyhledávání:</strong> "vedoucí výroby" + "strojírenství" + "Česko" → stovky kontaktů</li>
-<li><strong>Lead alerts:</strong> Upozornění, když někdo změní pozici nebo firma roste</li>
-<li><strong>InMail:</strong> Přímé oslovení bez nutnosti být propojený</li>
-<li><strong>Doporučení:</strong> Zatím NE. Nejdřív otestovat identifikaci přes ARES/Justice a osobní síť. LinkedIn až ve fázi 2.</li>
-</ul>
-<hr />
-<h2>4. Obsahová strategie na 6 měsíců (duben–září 2026)</h2>
-<h3>4.1 Newsletter (Ecomail, 1× za 2-3 měsíce)</h3>
-<table>
-<thead>
-<tr>
-<th>#</th>
-<th>Měsíc</th>
-<th>Téma</th>
-<th>Hodnotový obsah</th>
-<th>Skrytý prodejní cíl</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td><strong>Duben 2026</strong></td>
-<td>"5 věcí, které prodlouží životnost plošiny"</td>
-<td>Praktické tipy údržby</td>
-<td>Ukázat servisní expertizu + zmínka AlmaCrawler JIBBI</td>
-</tr>
-<tr>
-<td>2</td>
-<td><strong>Červen/Červenec 2026</strong></td>
-<td>"Novinka: Plošina bez podpěr — JIBBI v naší nabídce"</td>
-<td>Představení produktu, parametry, foto</td>
-<td>Generovat poptávky po JIBBI</td>
-</tr>
-<tr>
-<td>3</td>
-<td><strong>Září 2026</strong></td>
-<td>"Plánujete nákup techniky na 2027? Přijeďte se podívat"</td>
-<td>Pozvánka na Den otevřených dveří (podzim)</td>
-<td>Dostat lidi do Nivnice před rozpočtovým obdobím</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Databáze pro rozesílku:</strong>
-- Vítova databáze technických služeb z ORPček (8 krajů)
-- Emailová historie firmy (stávající zákazníci)
-- Nové kontakty z outreache (kdo souhlasí s newsletterem)</p>
-<p><strong>Celkový čas Inreky na 1 newsletter:</strong> 30-60 minut (schválení + dodání 1-2 fotek).</p>
-<h3>4.2 LinkedIn (1-2 posty měsíčně)</h3>
-<p><strong>Pozor:</strong> LinkedIn je sekundární kanál — cílovka Inreky ("chlapy z provozu") tam moc není. ALE rozhodovatelé v korporátech (fleet manažeři, facility manažeři, ředitelé TS) tam JSOU. LinkedIn buduje značku a důvěryhodnost.</p>
-<table>
-<thead>
-<tr>
-<th>Měsíc</th>
-<th>Post 1</th>
-<th>Post 2</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Duben</strong></td>
-<td>Foto: Nová plošina připravená k expedici + "25 let na trhu, stovky dodaných strojů"</td>
-<td>Tip: "Víte, že plošina JIBBI nepotřebuje podpěry?" + foto</td>
-</tr>
-<tr>
-<td><strong>Květen</strong></td>
-<td>Foto ze zákazky: "Právě jsme dodali [model] pro [typ práce]"</td>
-<td>Sdílení: Článek o bezpečnosti práce ve výškách + komentář</td>
-</tr>
-<tr>
-<td><strong>Červen</strong></td>
-<td>Video: 30s ukázka JIBBI v akci (úzký průjezd, gumové pásy)</td>
-<td>Foto: Servisní tým v akci + "Servisujeme po celé ČR/SR"</td>
-</tr>
-<tr>
-<td><strong>Červenec</strong></td>
-<td>Repost novinky od AlmaCrawler/Multitel + český komentář</td>
-<td>Foto: Plošiny na dvoře + "Takhle vypadá naše zázemí v Nivnici"</td>
-</tr>
-<tr>
-<td><strong>Srpen</strong></td>
-<td>Case study mini: "Jak jsme vyřešili [problém] pro [firmu]" (se souhlasem)</td>
-<td>Foto z veletrhu / setkání s italskými partnery</td>
-</tr>
-<tr>
-<td><strong>Září</strong></td>
-<td>Pozvánka na Den otevřených dveří</td>
-<td>Foto z Dne OD + "Díky všem, kdo přijeli"</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Kdo to dělá:</strong> Pavel připraví texty a grafiku. Vít/Jiří schválí a sdílí ze svých osobních profilů (osobní profily mají větší dosah než firemní stránky).</p>
-<p><strong>Čas Inreky:</strong> 10-15 minut/měsíc (schválení + sdílení).</p>
-<h3>4.3 Case studies k sepsání</h3>
-<table>
-<thead>
-<tr>
-<th>Case study</th>
-<th>Zákazník</th>
-<th>Co popsat</th>
-<th>Jak získat souhlas</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>#1: Tlačnov — Multiloader</strong></td>
-<td>Výrobní firma (holandský vlastník)</td>
-<td>Problém → řešení → výsledek. "Vysokozdvih neprojede, Multiloader ano."</td>
-<td>Zeptat se zákazníka — anonymizovat pokud nechce jméno</td>
-</tr>
-<tr>
-<td><strong>#2: Energetická firma</strong></td>
-<td>Některý ze stávajících zákazníků (ČEZ, E.ON)</td>
-<td>"Servisujeme X plošin, telemetrie Multitel = méně prostojů"</td>
-<td>Vybrat zákazníka, se kterým je nejlepší vztah</td>
-</tr>
-<tr>
-<td><strong>#3: Technické služby [město]</strong></td>
-<td>Konkrétní TS, které koupily od Inreky</td>
-<td>"Plošina do 3,5t — řidičák B, údržba VO a zeleně"</td>
-<td>Ředitel TS — obvykle nemají problém s referencí</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Formát:</strong> 1 strana A4. Problém → řešení → výsledek → citát zákazníka. S fotkou.
-<strong>Použití:</strong> Email příloha, web, LinkedIn, na osobní schůzce jako handout.</p>
-<h3>4.4 Video obsah</h3>
-<table>
-<thead>
-<tr>
-<th>Video</th>
-<th>Délka</th>
-<th>Co natočit</th>
-<th>Priorita</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Prohlídka zázemí Nivnice</strong></td>
-<td>2-3 min</td>
-<td>Areál, hala, plošiny na dvoře, servis, tým</td>
-<td>VYSOKÁ — jednorázová investice, trvalé použití</td>
-</tr>
-<tr>
-<td><strong>JIBBI v akci</strong></td>
-<td>60-90s</td>
-<td>Úzký průjezd, variabilní šířka pásů, bez podpěr</td>
-<td>VYSOKÁ — unikátní produkt, nikdo to v ČR nemá</td>
-</tr>
-<tr>
-<td><strong>Multiloader demo</strong></td>
-<td>60-90s</td>
-<td>Dálkové ovládání, přeprava těžkého dílu, pásový pojezd</td>
-<td>VYSOKÁ — příběh Tlačnova vizuálně</td>
-</tr>
-<tr>
-<td><strong>"Technik radí"</strong></td>
-<td>60s</td>
-<td>Vít/Jiří vysvětlí jednu věc (údržba, revize, tip)</td>
-<td>STŘEDNÍ — série krátkých tipů</td>
-</tr>
-<tr>
-<td><strong>Zákaznický testimonial</strong></td>
-<td>60s</td>
-<td>Spokojený zákazník řekne 2 věty</td>
-<td>NÍZKÁ (časově náročné získat)</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Kdo natáčí:</strong> Chytrý telefon. Jiří/Vít natočí, Pavel sestříhá.
-<strong>Kde publikovat:</strong> LinkedIn, email (odkaz), web, WhatsApp.</p>
-<h3>4.5 FAQ obsah pro web / budoucí chatbot</h3>
-<table>
-<thead>
-<tr>
-<th>Téma</th>
-<th>Obsah</th>
-<th>Status</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>FAQ JIBBI 1250 / 1670</td>
-<td>Parametry, průjezdnost, podpěry, pohon, servis</td>
-<td><strong>HOTOVO (draft)</strong> — čeká na schválení</td>
-</tr>
-<tr>
-<td>FAQ Multiloader</td>
-<td>Nosnost, ovládání, terén, použití</td>
-<td>Připravit po dodání manuálu</td>
-</tr>
-<tr>
-<td>FAQ Spider (Platform Basket)</td>
-<td>Dosah, podpěry, terén, přeprava</td>
-<td>Připravit z datasheetů</td>
-</tr>
-<tr>
-<td>FAQ "Jak vybrat plošinu"</td>
-<td>Rozhodovací průvodce pro zákazníka</td>
-<td>Připravit — základ pro budoucí konfigurátor</td>
-</tr>
-<tr>
-<td>FAQ "Revize a servis"</td>
-<td>Zákonné povinnosti, intervaly, co hrozí při nerevizi</td>
-<td>Připravit — využitelné i v newsletteru</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2>5. Měřitelné cíle (KPIs)</h2>
-<h3>Co sledovat — jednoduše, bez složitých nástrojů</h3>
-<table>
-<thead>
-<tr>
-<th>Metrika</th>
-<th>Jak měřit</th>
-<th>Cíl na 6 měsíců</th>
-<th>Poznámka</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Počet odeslaných cílených emailů</strong></td>
-<td>Počítat ručně nebo Ecomail</td>
-<td>100-150 emailů (ne hromadných, cílených!)</td>
-<td>5-10 týdně</td>
-</tr>
-<tr>
-<td><strong>Open rate newsletteru</strong></td>
-<td>Ecomail automaticky</td>
-<td>&gt;25 %</td>
-<td>Průměr v B2B ČR je 20-25 %</td>
-</tr>
-<tr>
-<td><strong>Počet odpovědí na outreach</strong></td>
-<td>Počítat ručně</td>
-<td>10-15 odpovědí</td>
-<td>10% response rate na cílený email je dobrý</td>
-</tr>
-<tr>
-<td><strong>Počet osobních návštěv v Nivnici</strong></td>
-<td>Počítat ručně (sešit/tabulka)</td>
-<td>8-12 návštěv za 6 měsíců</td>
-<td>Klíčový KPI — 90% konverze</td>
-</tr>
-<tr>
-<td><strong>Počet nových obchodních příležitostí</strong></td>
-<td>Počítat ručně</td>
-<td>5-8 nových poptávek</td>
-<td>Z toho konverze dle typu</td>
-</tr>
-<tr>
-<td><strong>Uzavřené obchody z outreache</strong></td>
-<td>Počítat ručně</td>
-<td>2-4 nové obchody</td>
-<td>Realistický cíl pro první půlrok</td>
-</tr>
-<tr>
-<td><strong>LinkedIn followers firemní stránky</strong></td>
-<td>LinkedIn analytika</td>
-<td>100-200 followers</td>
-<td>Start od nuly, budování postupně</td>
-</tr>
-<tr>
-<td><strong>Počet přeložených manuálů</strong></td>
-<td>Počítat</td>
-<td>3-5 manuálů</td>
-<td>Vedlejší KPI, ale důležitý pro efektivitu</td>
-</tr>
-</tbody>
-</table>
-<h3>Vyhodnocení — kdy a jak</h3>
-<table>
-<thead>
-<tr>
-<th>Kdy</th>
-<th>Co vyhodnotit</th>
-<th>Kdo</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Konec každého měsíce</strong></td>
-<td>Kolik emailů odesláno, kolik odpovědí, kolik návštěv</td>
-<td>Pavel shrne, Vít/Jiří dodá čísla</td>
-</tr>
-<tr>
-<td><strong>Po 3 měsících (červenec 2026)</strong></td>
-<td>Co funguje, co ne? Které segmenty reagují? Upravit strategii</td>
-<td>Pavel + Jiří + Vít — 1h schůzka</td>
-</tr>
-<tr>
-<td><strong>Po 6 měsících (říjen 2026)</strong></td>
-<td>Celkové vyhodnocení — ROI, pokračovat / změnit</td>
-<td>Pavel + Jiří + Vít — 1h schůzka</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Pravidlo:</strong> Pokud po 3 měsících segment nereaguje vůbec (0 odpovědí z 20+ emailů) → přesunout energii jinam. Pokud reaguje dobře → zdvojnásobit.</p>
-<hr />
-<h2>6. Časová náročnost a rozpočet</h2>
-<h3>Týdenní náročnost — co kdo dělá</h3>
-<h4>Jiří Strnad (majitel)</h4>
-<table>
-<thead>
-<tr>
-<th>Činnost</th>
-<th>Čas/týden</th>
-<th>Poznámka</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Schválení emailů (přečíst, OK/upravit)</td>
-<td>15 min</td>
-<td>Pavel předpřipraví</td>
-</tr>
-<tr>
-<td>Telefonáty follow-up (2-3 hovory)</td>
-<td>30 min</td>
-<td>Jen teplé kontakty — po emailu</td>
-</tr>
-<tr>
-<td>Osobní schůzky (když zákazník přijede)</td>
-<td>individuálně</td>
-<td>Tohle je to, co Jiří dělá nejlíp</td>
-</tr>
-<tr>
-<td><strong>CELKEM</strong></td>
-<td><strong>~45 min/týden</strong></td>
-<td>+ osobní schůzky dle poptávky</td>
-</tr>
-</tbody>
-</table>
-<h4>Vít Doležálek (obchod)</h4>
-<table>
-<thead>
-<tr>
-<th>Činnost</th>
-<th>Čas/týden</th>
-<th>Poznámka</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Odeslání připravených emailů (5-10 firem)</td>
-<td>30 min</td>
-<td>Copy-paste + personalizace jména</td>
-</tr>
-<tr>
-<td>Follow-up telefonáty (2-3 hovory)</td>
-<td>30 min</td>
-<td>Jen ti, kdo otevřeli email (vidí v Ecomail)</td>
-</tr>
-<tr>
-<td>Schválení LinkedIn postů (přečíst, OK)</td>
-<td>10 min</td>
-<td>Pavel předpřipraví</td>
-</tr>
-<tr>
-<td>Dodání fotek/info pro obsah (1× měsíčně)</td>
-<td>15 min</td>
-<td>Vyfotit strojem na dvoře</td>
-</tr>
-<tr>
-<td><strong>CELKEM</strong></td>
-<td><strong>~1,5 h/týden</strong></td>
-<td>Většinu týdnů méně</td>
-</tr>
-</tbody>
-</table>
-<h4>Pavel Horalík (AI + marketing)</h4>
-<table>
-<thead>
-<tr>
-<th>Činnost</th>
-<th>Čas/týden</th>
-<th>Poznámka</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Příprava emailů a obsahu</td>
-<td>2-3h</td>
-<td>AI drafty, personalizace, grafika</td>
-</tr>
-<tr>
-<td>AI identifikace leadů</td>
-<td>1-2h</td>
-<td>Průběžně, hlavně na začátku</td>
-</tr>
-<tr>
-<td>LinkedIn posty + správa</td>
-<td>1h</td>
-<td>Texty, grafika, plánování</td>
-</tr>
-<tr>
-<td>Newsletter (1× za 2-3 měsíce)</td>
-<td>3-4h v daném týdnu</td>
-<td>Kompletní příprava</td>
-</tr>
-<tr>
-<td>Vyhodnocování + reporting</td>
-<td>30 min</td>
-<td>Měsíční shrnutí</td>
-</tr>
-<tr>
-<td><strong>CELKEM</strong></td>
-<td><strong>~4-6 h/týden</strong></td>
-<td>Více na začátku, pak méně</td>
-</tr>
-</tbody>
-</table>
-<h3>Celkový přehled — měsíční investice Inreky</h3>
-<table>
-<thead>
-<tr>
-<th>Měsíc</th>
-<th>Jiří</th>
-<th>Vít</th>
-<th>Pavel</th>
-<th>Speciální akce</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Duben 2026</strong></td>
-<td>3h</td>
-<td>6h</td>
-<td>20h</td>
-<td>Setup Ecomail + první newsletter + AI identifikace leadů</td>
-</tr>
-<tr>
-<td><strong>Květen 2026</strong></td>
-<td>3h</td>
-<td>6h</td>
-<td>16h</td>
-<td>Outreach průmyslové firmy + TS měst</td>
-</tr>
-<tr>
-<td><strong>Červen 2026</strong></td>
-<td>3h</td>
-<td>6h</td>
-<td>16h</td>
-<td>Outreach pokračuje + 2. newsletter</td>
-</tr>
-<tr>
-<td><strong>Červenec 2026</strong></td>
-<td>2h</td>
-<td>4h + 1h vyhodnocení</td>
-<td>12h</td>
-<td>Vyhodnocení 3 měsíců, úprava strategie</td>
-</tr>
-<tr>
-<td><strong>Srpen 2026</strong></td>
-<td>2h</td>
-<td>4h</td>
-<td>12h</td>
-<td>Dovolené — snížené tempo</td>
-</tr>
-<tr>
-<td><strong>Září 2026</strong></td>
-<td>3h + 5h DOD</td>
-<td>6h + 5h DOD</td>
-<td>16h</td>
-<td>3. newsletter + Den otevřených dveří (podzim)</td>
-</tr>
-</tbody>
-</table>
-<p><strong>DOD = Den otevřených dveří</strong></p>
-<h3>Finanční rozpočet</h3>
-<table>
-<thead>
-<tr>
-<th>Položka</th>
-<th>Měsíční náklad</th>
-<th>Poznámka</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Ecomail.cz</strong></td>
-<td>0–395 Kč/měsíc</td>
-<td>Zdarma do 200 kontaktů, pak Basic 395 Kč</td>
-</tr>
-<tr>
-<td><strong>Canva Pro</strong> (grafika)</td>
-<td>329 Kč/měsíc</td>
-<td>Šablony pro NL, LinkedIn, materiály</td>
-</tr>
-<tr>
-<td><strong>LinkedIn Sales Navigator</strong></td>
-<td>0 Kč (zatím)</td>
-<td>Až ve fázi 2, ~2 500 Kč/měsíc</td>
-</tr>
-<tr>
-<td><strong>Video (natočení + střih)</strong></td>
-<td>0 Kč</td>
-<td>Telefon + Pavel sestříhá</td>
-</tr>
-<tr>
-<td><strong>Pavel — příprava + AI</strong></td>
-<td>dle dohody</td>
-<td>Konzultační honorář</td>
-</tr>
-<tr>
-<td><strong>CELKEM (bez Pavla)</strong></td>
-<td><strong>~400-800 Kč/měsíc</strong></td>
-<td>Minimální investice do nástrojů</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2>Shrnutí: Top 5 akcí, se kterými začít HNED</h2>
-<table>
-<thead>
-<tr>
-<th>#</th>
-<th>Akce</th>
-<th>Kdo</th>
-<th>Kdy</th>
-<th>Proč první</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td><strong>Rozeslat 1. newsletter</strong> ("5 věcí pro údržbu" + zmínka JIBBI)</td>
-<td>Pavel připraví → Vít schválí → Ecomail rozešle</td>
-<td>Duben 2026</td>
-<td>Nejjednodušší start, databáze existuje, draft je hotový</td>
-</tr>
-<tr>
-<td>2</td>
-<td><strong>AI identifikace 20 firem</strong> pro Multiloader (profil Tlačnov)</td>
-<td>Pavel</td>
-<td>Duben 2026</td>
-<td>Strategicky nejcennější — first mover advantage</td>
-</tr>
-<tr>
-<td>3</td>
-<td><strong>Oslovit 10 technických služeb</strong> z Vítovy databáze ORPček</td>
-<td>Pavel připraví email → Vít pošle</td>
-<td>Květen 2026</td>
-<td>Databáze UŽ existuje, stačí napsat a poslat</td>
-</tr>
-<tr>
-<td>4</td>
-<td><strong>Natočit video zázemí Nivnice</strong> (2-3 min, telefonem)</td>
-<td>Jiří/Vít natočí → Pavel sestříhá</td>
-<td>Květen 2026</td>
-<td>Jednorázová investice, trvalé použití</td>
-</tr>
-<tr>
-<td>5</td>
-<td><strong>Založit LinkedIn firemní stránku</strong> + první 2 posty</td>
-<td>Pavel</td>
-<td>Duben 2026</td>
-<td>1 hodina práce, trvalý kanál pro budoucí obsah</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<p><em>Tento dokument je živý — budeme ho aktualizovat podle výsledků. Každé 3 měsíce vyhodnotíme, co funguje a co ne, a strategii upravíme.</em></p>
-<p><em>Připravil: Pavel Horalík | 26.3.2026</em></p>
+
+    <!-- Section Navigation (sticky, below navbar) -->
+    <div class="sticky top-[49px] z-40 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4">
+            <nav class="section-nav flex gap-1 overflow-x-auto py-2.5">
+                <a href="#segmenty" class="px-3 py-1.5 text-xs font-medium rounded-full bg-gray-100 text-gray-600 hover:bg-amber-100 hover:text-amber-700 transition">
+                    <i class="fa-solid fa-bullseye mr-1"></i>Segmenty
+                </a>
+                <a href="#dvur" class="px-3 py-1.5 text-xs font-medium rounded-full bg-gray-100 text-gray-600 hover:bg-amber-100 hover:text-amber-700 transition">
+                    <i class="fa-solid fa-route mr-1"></i>Cesta k návštěvě
+                </a>
+                <a href="#ai-leady" class="px-3 py-1.5 text-xs font-medium rounded-full bg-gray-100 text-gray-600 hover:bg-amber-100 hover:text-amber-700 transition">
+                    <i class="fa-solid fa-robot mr-1"></i>AI identifikace
+                </a>
+                <a href="#obsah" class="px-3 py-1.5 text-xs font-medium rounded-full bg-gray-100 text-gray-600 hover:bg-amber-100 hover:text-amber-700 transition">
+                    <i class="fa-solid fa-calendar-days mr-1"></i>Obsahová strategie
+                </a>
+                <a href="#kpis" class="px-3 py-1.5 text-xs font-medium rounded-full bg-gray-100 text-gray-600 hover:bg-amber-100 hover:text-amber-700 transition">
+                    <i class="fa-solid fa-chart-line mr-1"></i>KPIs
+                </a>
+                <a href="#cas" class="px-3 py-1.5 text-xs font-medium rounded-full bg-gray-100 text-gray-600 hover:bg-amber-100 hover:text-amber-700 transition">
+                    <i class="fa-solid fa-clock mr-1"></i>Čas a rozpočet
+                </a>
+                <a href="#shrnuti" class="px-3 py-1.5 text-xs font-medium rounded-full bg-amber-500 text-white hover:bg-amber-600 transition">
+                    <i class="fa-solid fa-rocket mr-1"></i>Začít hned
+                </a>
+            </nav>
         </div>
+    </div>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+
+        <!-- ===================== HERO SECTION ===================== -->
+        <section class="mb-10">
+            <div class="text-center mb-8">
+                <p class="text-sm font-semibold text-amber-600 uppercase tracking-wider mb-2">
+                    <i class="fa-solid fa-bullhorn mr-1"></i> Praktický manuál pro aktivní oslovování firem
+                </p>
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3">
+                    Marketing Outreach Strategie
+                </h1>
+                <p class="text-lg text-gray-500">Inreka Plošiny Servis</p>
+                <p class="text-sm text-gray-400 mt-1">Připravil: Pavel Horalík | Březen 2026</p>
+            </div>
+
+            <!-- 3 Stat Callout Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-8">
+                <div class="stat-card">
+                    <div class="text-3xl font-extrabold text-amber-500 mb-1">6</div>
+                    <div class="text-sm font-semibold text-gray-700">segmentů</div>
+                    <div class="text-xs text-gray-400 mt-1">cílených oborů k oslovení</div>
+                </div>
+                <div class="stat-card">
+                    <div class="text-3xl font-extrabold text-green-500 mb-1">90%</div>
+                    <div class="text-sm font-semibold text-gray-700">konverze při návštěvě</div>
+                    <div class="text-xs text-gray-400 mt-1">kdo přijede do Nivnice, koupí</div>
+                </div>
+                <div class="stat-card">
+                    <div class="text-3xl font-extrabold text-blue-500 mb-1">3-4h</div>
+                    <div class="text-sm font-semibold text-gray-700">týdně pro Inreku</div>
+                    <div class="text-xs text-gray-400 mt-1">Pavel připraví, vy schválíte</div>
+                </div>
+            </div>
+
+            <!-- Key facts table (compact) -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 max-w-4xl mx-auto">
+                <h2 class="text-base font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-lightbulb text-amber-500"></i> Klíčová fakta, ze kterých vycházíme
+                </h2>
+                <div class="grid gap-3 sm:grid-cols-2">
+                    <div class="flex gap-3 items-start p-3 bg-green-50 rounded-lg">
+                        <i class="fa-solid fa-check-circle text-green-500 mt-0.5"></i>
+                        <div><span class="font-semibold text-sm text-gray-800">90% konverze při návštěvě.</span> <span class="text-sm text-gray-600">Celý funnel vede k "přijeďte se podívat do Nivnice".</span></div>
+                    </div>
+                    <div class="flex gap-3 items-start p-3 bg-red-50 rounded-lg">
+                        <i class="fa-solid fa-xmark-circle text-red-400 mt-0.5"></i>
+                        <div><span class="font-semibold text-sm text-gray-800">Cold calling nefunguje.</span> <span class="text-sm text-gray-600">Vždy volat s kontextem a důvodem.</span></div>
+                    </div>
+                    <div class="flex gap-3 items-start p-3 bg-red-50 rounded-lg">
+                        <i class="fa-solid fa-xmark-circle text-red-400 mt-0.5"></i>
+                        <div><span class="font-semibold text-sm text-gray-800">Hromadný email = 1-2 odezvy z 200.</span> <span class="text-sm text-gray-600">20 cílených emailů vždy porazí 200 náhodných.</span></div>
+                    </div>
+                    <div class="flex gap-3 items-start p-3 bg-blue-50 rounded-lg">
+                        <i class="fa-solid fa-user-tie text-blue-500 mt-0.5"></i>
+                        <div><span class="font-semibold text-sm text-gray-800">Cílovka: "chlapy z provozu".</span> <span class="text-sm text-gray-600">LinkedIn je sekundární. Primárně email + telefon po zahřátí.</span></div>
+                    </div>
+                    <div class="flex gap-3 items-start p-3 bg-amber-50 rounded-lg">
+                        <i class="fa-solid fa-clock text-amber-500 mt-0.5"></i>
+                        <div><span class="font-semibold text-sm text-gray-800">"Co nejméně naší práce".</span> <span class="text-sm text-gray-600">Pavel připraví, Inreka schválí a pošle. Max 3-4h/týden celkem.</span></div>
+                    </div>
+                    <div class="flex gap-3 items-start p-3 bg-purple-50 rounded-lg">
+                        <i class="fa-solid fa-gem text-purple-500 mt-0.5"></i>
+                        <div><span class="font-semibold text-sm text-gray-800">Případ Lačnov: "takových firem je 100".</span> <span class="text-sm text-gray-600">AI identifikace firem, které neví, že řešení existuje.</span></div>
+                    </div>
+                    <div class="flex gap-3 items-start p-3 bg-emerald-50 rounded-lg sm:col-span-2">
+                        <i class="fa-solid fa-trophy text-emerald-500 mt-0.5"></i>
+                        <div><span class="font-semibold text-sm text-gray-800">Nikdo v ČR nenabízí AlmaCrawler Multiloader.</span> <span class="text-sm text-gray-600">First mover advantage. Kdo přijde první, vyhraje.</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== SECTION 1: SEGMENTED OUTREACH ===================== -->
+        <div class="section-divider bg-gradient-to-r from-amber-400 via-orange-400 to-red-400" id="segmenty"></div>
+
+        <section class="mb-8">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center">
+                    <i class="fa-solid fa-bullseye text-amber-600 text-lg"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900">Segmentovaný outreach</h2>
+                    <p class="text-sm text-gray-500">Kdo, s čím a jak. 6 segmentů s konkrétními kroky.</p>
+                </div>
+            </div>
+
+            <!-- ===== SEGMENT 1: Stavební firmy ===== -->
+            <div class="segment-card bg-white rounded-2xl border-l-4 border-blue-500 shadow-sm mb-5 overflow-hidden">
+                <div class="p-5 sm:p-6">
+                    <div class="flex items-center gap-3 mb-1">
+                        <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-blue-100 text-blue-600 font-bold text-sm">1</span>
+                        <h3 class="text-lg font-bold text-gray-900">Stavební firmy</h3>
+                    </div>
+                    <p class="text-sm text-gray-500 ml-11 mb-4">
+                        <i class="fa-solid fa-box-open mr-1"></i>
+                        <strong>Produkt:</strong> Spider plošiny (Platform Basket) + JIBBI (AlmaCrawler)
+                    </p>
+
+                    <!-- Message Templates -->
+                    <div class="mb-4">
+                        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 ml-1"><i class="fa-solid fa-envelope mr-1"></i> Šablony zpráv</p>
+                        <div class="msg-template mb-3">
+                            <span class="copy-label"><i class="fa-regular fa-copy mr-0.5"></i> Šablona: Spider</span>
+                            <p>"Pracujete na stavbách, kde musíte řešit stabilizátory a zabírají vám místo? Spider plošiny Platform Basket jedou na pásech, na jakémkoli terénu, bez nutnosti rozkládat podpěry na asfaltovém povrchu. 140 kusů jsme jich dodali po ČR/SR. Můžete si jednu vyzkoušet u nás v Nivnici, stačí se zastavit."</p>
+                        </div>
+                        <div class="msg-template">
+                            <span class="copy-label"><i class="fa-regular fa-copy mr-0.5"></i> Šablona: JIBBI</span>
+                            <p>"Potřebujete se dostat s plošinou tam, kde normální stroj neprojede? JIBBI 1250 má šířku od 1,15 m, projede dvoukřídlými dveřmi, nepotřebuje podpěry a nepoškodí podlahu. Nikdo jiný v ČR ji nenabízí."</p>
+                        </div>
+                    </div>
+
+                    <!-- Expandable: Contact details -->
+                    <details class="mb-3">
+                        <summary class="text-sm font-semibold text-gray-700 py-2">Koho konkrétně kontaktovat</summary>
+                        <div class="detail-content mt-3 overflow-x-auto">
+                            <table class="data-table">
+                                <thead><tr><th>Pozice</th><th>Typ firmy</th><th>Jak najít</th></tr></thead>
+                                <tbody>
+                                    <tr><td>Vedoucí stavbyvedoucí / šéf provozu</td><td>Střední stavební firmy (50-500 zaměstnanců)</td><td>ARES/Justice.cz, NACE kódy 41, 42, 43</td></tr>
+                                    <tr><td>Technický ředitel / ředitel provozu</td><td>Firmy na rekonstrukce</td><td>Firmo.cz, kategorie "Stavební firmy", filtr dle regionu</td></tr>
+                                    <tr><td>Nákupčí / fleet manager</td><td>Firmy, které si plošiny pronajímají</td><td>Dotaz na půjčovny: kdo si nejčastěji půjčuje</td></tr>
+                                    <tr><td>Majitel</td><td>Menší stavební firmy (10-50 lidí)</td><td>Osobní síť, doporučení stávajících zákazníků</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
+
+                    <!-- Expandable: Action steps -->
+                    <details class="mb-3">
+                        <summary class="text-sm font-semibold text-gray-700 py-2">Postup oslovení (5 kroků)</summary>
+                        <div class="detail-content mt-3 overflow-x-auto">
+                            <table class="data-table">
+                                <thead><tr><th>Krok</th><th>Akce</th><th>Kdo</th><th>Čas</th></tr></thead>
+                                <tbody>
+                                    <tr><td>1</td><td>AI identifikuje 30 stavebních firem v regionu (viz sekce AI identifikace)</td><td>Pavel</td><td>2h</td></tr>
+                                    <tr><td>2</td><td>Pavel připraví personalizovaný email (3 varianty dle velikosti firmy)</td><td>Pavel</td><td>1h</td></tr>
+                                    <tr><td>3</td><td>Vít pošle email z firemní adresy (osobní, ne hromadný)</td><td>Vít</td><td>30 min (10 firem)</td></tr>
+                                    <tr><td>4</td><td>Po 5 dnech bez odpovědi: krátký telefonát. "Dostal jste email? Chci se jen zeptat, jestli to pro vás má smysl."</td><td>Vít/Jiří</td><td>1h</td></tr>
+                                    <tr><td>5</td><td>Pozitivní odezva = pozvánka na prohlídku + demo</td><td>Vít/Jiří</td><td>individuálně</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
+
+                    <!-- Expandable: Triggers -->
+                    <details>
+                        <summary class="text-sm font-semibold text-gray-700 py-2">Triggery a správné načasování</summary>
+                        <div class="detail-content mt-3">
+                            <ul class="space-y-2 text-sm text-gray-600">
+                                <li class="flex gap-2"><i class="fa-solid fa-bolt text-amber-500 mt-0.5"></i><span><strong>Velké stavební projekty v regionu.</strong> Sledovat stavební povolení na úředních deskách (kraje Zlín, JMK, Olomouc, Ostrava).</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-bolt text-amber-500 mt-0.5"></i><span><strong>Veletrhy:</strong> FOR ARCH Praha, Stavební veletrh Brno. Kdo vystavuje, koho potkat.</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-bolt text-amber-500 mt-0.5"></i><span><strong>Sezóna:</strong> Oslovit v <strong>únoru/březnu</strong> (před stavební sezónou duben/říjen).</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-bolt text-amber-500 mt-0.5"></i><span><strong>Rekonstrukce historických budov.</strong> Památkové zóny = potřeba šetrných plošin (JIBBI).</span></li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+            </div>
+
+            <!-- ===== SEGMENT 2: Průmyslové firmy (Multiloader) ===== -->
+            <div class="segment-card bg-white rounded-2xl border-l-4 border-red-500 shadow-sm mb-5 overflow-hidden">
+                <div class="p-5 sm:p-6">
+                    <div class="flex items-center gap-3 mb-1">
+                        <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-red-100 text-red-600 font-bold text-sm">2</span>
+                        <h3 class="text-lg font-bold text-gray-900">Průmyslové firmy (Multiloader)</h3>
+                        <span class="ml-auto text-xs font-bold bg-red-100 text-red-700 px-2.5 py-1 rounded-full uppercase tracking-wide"><i class="fa-solid fa-star mr-0.5"></i> Strategicky nejdůležitější</span>
+                    </div>
+                    <p class="text-sm text-gray-500 ml-11 mb-2">
+                        <i class="fa-solid fa-box-open mr-1"></i>
+                        <strong>Produkt:</strong> AlmaCrawler Multiloader (1.5t, 3.0t, 6.0t)
+                    </p>
+                    <div class="bg-red-50 border border-red-100 rounded-lg p-3 mb-4 ml-11 text-sm text-red-800">
+                        <i class="fa-solid fa-fire mr-1"></i>
+                        Nikdo jiný v ČR Multiloader nenabízí. Firmy neví, že řešení existuje. Kdo přijde první, vyhraje.
+                    </div>
+
+                    <!-- Message Template -->
+                    <div class="mb-4">
+                        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 ml-1"><i class="fa-solid fa-envelope mr-1"></i> Šablona zprávy</p>
+                        <div class="msg-template">
+                            <span class="copy-label"><i class="fa-regular fa-copy mr-0.5"></i> Šablona</span>
+                            <p>"Převážíte těžké díly vysokozdvihem a narazili jste na limity, jako úzké uličky, nerovný povrch nebo požární přepážky? Multiloader od AlmaCrawler je pásový nosič na dálkové ovládání (1,5 až 6 tun), který projede tam, kde vysokozdvih nemůže. Jednomu zákazníku jsme tím vyřešili problém za miliony. Rád vám ukážu jak."</p>
+                        </div>
+                        <div class="bg-amber-50 rounded-lg p-3 text-sm text-amber-800 mt-2">
+                            <i class="fa-solid fa-key mr-1"></i>
+                            <strong>Klíčové:</strong> Neříkat "máme produkt", říkat "vyřešili jsme problém". Příběh Lačnova je prodejní zbraň č. 1.
+                        </div>
+                    </div>
+
+                    <details class="mb-3">
+                        <summary class="text-sm font-semibold text-gray-700 py-2">Koho konkrétně kontaktovat</summary>
+                        <div class="detail-content mt-3 overflow-x-auto">
+                            <table class="data-table">
+                                <thead><tr><th>Pozice</th><th>Typ firmy</th><th>Jak najít</th></tr></thead>
+                                <tbody>
+                                    <tr><td>Vedoucí výroby / výrobní ředitel</td><td>Strojírenské a výrobní firmy s těžkými polotovary</td><td>ARES, NACE 24-30 (výroba kovů, strojů, zařízení)</td></tr>
+                                    <tr><td>Vedoucí logistiky / skladu</td><td>Firmy s velkými sklady (&gt;2000 m2)</td><td>Logistické parky: CTP, Prologis, P3 (nájemci)</td></tr>
+                                    <tr><td>Bezpečnostní technik / BOZP</td><td>Firmy po požární kontrole (jako Lačnov)</td><td>Osobní síť Inreky. BOZP školitelé Jožka a Martina mají kontakty na desítky firem!</td></tr>
+                                    <tr><td>Technický ředitel</td><td>Firmy se zahraniční matkou (NL, DE, AT)</td><td>Justice.cz, zahraniční vlastníci v regionu</td></tr>
+                                </tbody>
+                            </table>
+                            <div class="bg-purple-50 rounded-lg p-3 text-sm text-purple-800 mt-3">
+                                <i class="fa-solid fa-lightbulb mr-1"></i>
+                                <strong>Klíčový insight:</strong> BOZP tým Inreky (Jožka, Martina) školí desítky firem. <strong>Oni přesně vědí, kdo má jaký provoz a jaké problémy řeší.</strong> Nejlepší zdroj leadů pro Multiloader.
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="mb-3">
+                        <summary class="text-sm font-semibold text-gray-700 py-2">Postup oslovení (6 kroků)</summary>
+                        <div class="detail-content mt-3 overflow-x-auto">
+                            <table class="data-table">
+                                <thead><tr><th>Krok</th><th>Akce</th><th>Kdo</th><th>Čas</th></tr></thead>
+                                <tbody>
+                                    <tr><td>1</td><td>Jožka/Martina projdou seznam firem, kde školí BOZP. Kdo má velkou výrobu/sklad?</td><td>Jožka/Martina</td><td>1h (jednorázově)</td></tr>
+                                    <tr><td>2</td><td>AI identifikuje dalších 20-30 firem dle profilu "Lačnov" (viz sekce AI identifikace)</td><td>Pavel</td><td>3h</td></tr>
+                                    <tr><td>3</td><td>Pavel připraví email s příběhem Lačnova (case study)</td><td>Pavel</td><td>1h</td></tr>
+                                    <tr><td>4</td><td>Jiří/Vít pošle email OSOBNĚ (ne hromadně). Max 5-10 firem týdně</td><td>Jiří/Vít</td><td>30 min</td></tr>
+                                    <tr><td>5</td><td>Telefonát po 3-5 dnech: "Viděl jste ten email? Ptám se, protože jsme podobný problém řešili u firmy [Lačnov] a napadlo mě, že by to mohlo být relevantní i pro vás."</td><td>Jiří</td><td>1h</td></tr>
+                                    <tr><td>6</td><td>Zájem = pozvat na demo do Nivnice NEBO nabídnout návštěvu s fotkama/videem</td><td>Jiří</td><td>individuálně</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary class="text-sm font-semibold text-gray-700 py-2">Triggery</summary>
+                        <div class="detail-content mt-3">
+                            <ul class="space-y-2 text-sm text-gray-600">
+                                <li class="flex gap-2"><i class="fa-solid fa-bolt text-red-500 mt-0.5"></i><span><strong>Požární kontroly v průmyslových areálech.</strong> Nové požární úseky = vysokozdvih neprojede (přesně případ Lačnov).</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-bolt text-red-500 mt-0.5"></i><span><strong>Rozšiřování výrobních hal.</strong> Nové haly s omezeným přístupem.</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-bolt text-red-500 mt-0.5"></i><span><strong>Firmy s holandskými/německými/rakouskými vlastníky.</strong> Zvyklí na moderní řešení, mají budget.</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-bolt text-red-500 mt-0.5"></i><span><strong>BOZP audity.</strong> Jožka/Martina přímo vidí problémy na místě.</span></li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+            </div>
+
+            <!-- ===== SEGMENT 3: Technické služby měst ===== -->
+            <div class="segment-card bg-white rounded-2xl border-l-4 border-emerald-500 shadow-sm mb-5 overflow-hidden">
+                <div class="p-5 sm:p-6">
+                    <div class="flex items-center gap-3 mb-1">
+                        <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 font-bold text-sm">3</span>
+                        <h3 class="text-lg font-bold text-gray-900">Technické služby měst</h3>
+                        <span class="ml-auto text-xs font-medium bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-full"><i class="fa-solid fa-database mr-0.5"></i> Vítova databáze z ORPček</span>
+                    </div>
+                    <p class="text-sm text-gray-500 ml-11 mb-4">
+                        <i class="fa-solid fa-box-open mr-1"></i>
+                        <strong>Produkt:</strong> Plošiny do 3,5t (Isoli), dodávkové (KLUBB), malé Spider
+                    </p>
+
+                    <div class="mb-4">
+                        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 ml-1"><i class="fa-solid fa-envelope mr-1"></i> Šablona zprávy</p>
+                        <div class="msg-template">
+                            <span class="copy-label"><i class="fa-regular fa-copy mr-0.5"></i> Šablona</span>
+                            <p>"Spravujete městskou zeleň, veřejné osvětlení nebo údržbu budov? Nabízíme plošiny na podvozcích do 3,5t. Stačí řidičák B, projede městem jako dodávka. Servisujeme je po celé ČR. 25 let na trhu, výhradní zastoupení italských výrobců Isoli a KLUBB. Rádi vám stroj představíme osobně."</p>
+                        </div>
+                    </div>
+
+                    <details class="mb-3">
+                        <summary class="text-sm font-semibold text-gray-700 py-2">Koho kontaktovat</summary>
+                        <div class="detail-content mt-3 overflow-x-auto">
+                            <table class="data-table">
+                                <thead><tr><th>Pozice</th><th>Typ organizace</th><th>Jak najít</th></tr></thead>
+                                <tbody>
+                                    <tr><td>Ředitel technických služeb</td><td>Technické služby ORP měst</td><td><strong>Vítova databáze: 8 z 13 krajů UŽ EXISTUJE</strong></td></tr>
+                                    <tr><td>Vedoucí údržby</td><td>TS menších měst (5000+ obyvatel)</td><td>Zbývajících 5 krajů: doplnit z webu měst</td></tr>
+                                    <tr><td>Starosta / místostarosta</td><td>Malé obce bez technických služeb</td><td>Relevantní jen pokud nakupují vlastní techniku</td></tr>
+                                    <tr><td>Vedoucí veřejného osvětlení</td><td>Správci VO</td><td>Často spadá pod TS nebo externího správce</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
+
+                    <details class="mb-3">
+                        <summary class="text-sm font-semibold text-gray-700 py-2">Postup oslovení (4 kroky)</summary>
+                        <div class="detail-content mt-3 overflow-x-auto">
+                            <table class="data-table">
+                                <thead><tr><th>Krok</th><th>Akce</th><th>Kdo</th><th>Čas</th></tr></thead>
+                                <tbody>
+                                    <tr><td>1</td><td>Vít doplní chybějících 5 krajů v databázi (nebo Pavel pomůže přes web)</td><td>Vít + Pavel</td><td>2-3h jednorázově</td></tr>
+                                    <tr><td>2</td><td>Pavel připraví email, 2 varianty (pro TS měst vs. menší obce)</td><td>Pavel</td><td>1h</td></tr>
+                                    <tr><td>3</td><td>Rozeslat po dávkách: 10-15 emailů týdně přes Ecomail (NE hromadně najednou)</td><td>Vít</td><td>15 min/týden</td></tr>
+                                    <tr><td>4</td><td>Follow-up telefonát jen na ty, kdo otevřeli email (Ecomail to ukazuje)</td><td>Vít</td><td>dle statistik</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
+
+                    <details class="mb-3">
+                        <summary class="text-sm font-semibold text-gray-700 py-2">Specifika tohoto segmentu</summary>
+                        <div class="detail-content mt-3">
+                            <ul class="space-y-2 text-sm text-gray-600">
+                                <li class="flex gap-2"><i class="fa-solid fa-info-circle text-emerald-500 mt-0.5"></i><span><strong>Veřejné zakázky</strong> = delší rozhodovací proces, ale stabilní zákazníci.</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-info-circle text-emerald-500 mt-0.5"></i><span><strong>Rozpočtový cyklus:</strong> Plánují v <strong>říjnu/listopadu</strong> na další rok. Oslovit v <strong>září</strong> s nabídkou.</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-info-circle text-emerald-500 mt-0.5"></i><span><strong>Řetězový efekt:</strong> Technické služby mezi sebou komunikují. Jedna dobrá reference = celá síť.</span></li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary class="text-sm font-semibold text-gray-700 py-2">Triggery</summary>
+                        <div class="detail-content mt-3">
+                            <ul class="space-y-2 text-sm text-gray-600">
+                                <li class="flex gap-2"><i class="fa-solid fa-bolt text-emerald-500 mt-0.5"></i><span><strong>Rozpočtový cyklus obcí</strong> (září/říjen = plánování na příští rok).</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-bolt text-emerald-500 mt-0.5"></i><span><strong>Dotační výzvy</strong> (IROP, SFŽP). Pokud je dotace na techniku, TS nakupují.</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-bolt text-emerald-500 mt-0.5"></i><span><strong>Havárie staré techniky.</strong> "Praskla vám stará plošina? Máme náhradu."</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-bolt text-emerald-500 mt-0.5"></i><span><strong>Volby do zastupitelstev.</strong> Noví starostové chtějí investovat.</span></li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+            </div>
+
+            <!-- ===== SEGMENT 4: Energetika ===== -->
+            <div class="segment-card bg-white rounded-2xl border-l-4 border-yellow-500 shadow-sm mb-5 overflow-hidden">
+                <div class="p-5 sm:p-6">
+                    <div class="flex items-center gap-3 mb-1">
+                        <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-yellow-100 text-yellow-600 font-bold text-sm">4</span>
+                        <h3 class="text-lg font-bold text-gray-900">Energetika a elektromontáže</h3>
+                        <span class="ml-auto text-xs font-medium bg-yellow-100 text-yellow-700 px-2.5 py-1 rounded-full"><i class="fa-solid fa-handshake mr-0.5"></i> Retence + upsell</span>
+                    </div>
+                    <p class="text-sm text-gray-500 ml-11 mb-4">
+                        <i class="fa-solid fa-box-open mr-1"></i>
+                        <strong>Produkt:</strong> Multitel (19-75m), Isoli (do 3,5t), KLUBB (dodávkové)
+                    </p>
+
+                    <div class="mb-4">
+                        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 ml-1"><i class="fa-solid fa-envelope mr-1"></i> Šablona: upsell existujícím zákazníkům</p>
+                        <div class="msg-template">
+                            <span class="copy-label"><i class="fa-regular fa-copy mr-0.5"></i> Šablona</span>
+                            <p>"[Jméno], víme, že vaše plošiny [model] u nás servisujeme už X let. Chtěl jsem vám dát vědět o dvou věcech: (1) Multitel má novou generaci s telemetrií, vzdálenou diagnostikou, prediktivní údržbou a méně prostojů. (2) Na menší práce nabízíme nově KLUBB plošiny na dodávkách, řidičák B, nižší provozní náklady. Stojí to za 15 minut vašeho času?"</p>
+                        </div>
+                    </div>
+
+                    <details class="mb-3">
+                        <summary class="text-sm font-semibold text-gray-700 py-2">Koho kontaktovat</summary>
+                        <div class="detail-content mt-3 overflow-x-auto">
+                            <table class="data-table">
+                                <thead><tr><th>Pozice</th><th>Typ firmy</th><th>Jak najít</th></tr></thead>
+                                <tbody>
+                                    <tr><td>Fleet manager / vedoucí techniky</td><td>ČEZ, E.ON, slovenské distribučky</td><td><strong>UŽ JE ZNÁTE, stávající zákazníci</strong></td></tr>
+                                    <tr><td>Vedoucí údržby sítí</td><td>Elektromontážní firmy (Eltodo, Elektro Přerov atd.)</td><td>Stávající kontakty + ARES, NACE 42.22</td></tr>
+                                    <tr><td>Obchodní ředitel</td><td>Regionální elektromontážní firmy</td><td>Databáze firem se zakázkami na VN/VVN vedení</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
+
+                    <details class="mb-3">
+                        <summary class="text-sm font-semibold text-gray-700 py-2">Postup oslovení (4 kroky)</summary>
+                        <div class="detail-content mt-3 overflow-x-auto">
+                            <table class="data-table">
+                                <thead><tr><th>Krok</th><th>Akce</th><th>Kdo</th><th>Čas</th></tr></thead>
+                                <tbody>
+                                    <tr><td>1</td><td>Projít databázi stávajících zákazníků. Kdo nekoupil 2+ roky? Kdo má starou techniku?</td><td>Vít</td><td>2h jednorázově</td></tr>
+                                    <tr><td>2</td><td>Pavel připraví personalizované emaily (template + konkrétní model/historie)</td><td>Pavel</td><td>1h</td></tr>
+                                    <tr><td>3</td><td>Jiří/Vít pošle osobně. Tady ZNAJÍ lidi jménem</td><td>Jiří/Vít</td><td>průběžně</td></tr>
+                                    <tr><td>4</td><td>Pozvánka: "Máme tu nový Multitel MZ250, přijeďte se podívat, uvaříme kafe"</td><td>Jiří/Vít</td><td>osobně/telefonicky</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
+
+                    <details class="mb-3">
+                        <summary class="text-sm font-semibold text-gray-700 py-2">Specifika segmentu</summary>
+                        <div class="detail-content mt-3">
+                            <ul class="space-y-2 text-sm text-gray-600">
+                                <li class="flex gap-2"><i class="fa-solid fa-fire text-yellow-500 mt-0.5"></i><span>Tohle jsou <strong>teplé kontakty</strong>, nejsnazší konverze.</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-fire text-yellow-500 mt-0.5"></i><span>Každá servisní návštěva = příležitost zmínit novinky.</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-fire text-yellow-500 mt-0.5"></i><span>Při výměně starší plošiny nabídnout repasi nebo novou.</span></li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary class="text-sm font-semibold text-gray-700 py-2">Triggery</summary>
+                        <div class="detail-content mt-3">
+                            <ul class="space-y-2 text-sm text-gray-600">
+                                <li class="flex gap-2"><i class="fa-solid fa-bolt text-yellow-500 mt-0.5"></i><span><strong>Blížící se revize.</strong> "Vaší plošině končí revize za 30 dní. Chcete objednat? A mimochodem, máme novinku..."</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-bolt text-yellow-500 mt-0.5"></i><span><strong>Konec leasingu.</strong> Zákazník řeší, co dál.</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-bolt text-yellow-500 mt-0.5"></i><span><strong>Nové zakázky zákazníka</strong> (velký tendr na rekonstrukci sítí) = potřebují víc strojů.</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-bolt text-yellow-500 mt-0.5"></i><span><strong>Legislativní změny.</strong> Nové požadavky na techniku.</span></li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+            </div>
+
+            <!-- ===== SEGMENT 5: Facility management ===== -->
+            <div class="segment-card bg-white rounded-2xl border-l-4 border-violet-500 shadow-sm mb-5 overflow-hidden">
+                <div class="p-5 sm:p-6">
+                    <div class="flex items-center gap-3 mb-1">
+                        <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-violet-100 text-violet-600 font-bold text-sm">5</span>
+                        <h3 class="text-lg font-bold text-gray-900">Facility management / správa budov</h3>
+                    </div>
+                    <p class="text-sm text-gray-500 ml-11 mb-4">
+                        <i class="fa-solid fa-box-open mr-1"></i>
+                        <strong>Produkt:</strong> JIBBI (interiéry, citlivé povrchy), Spider (fasády), dodávkové (KLUBB)
+                    </p>
+
+                    <div class="mb-4">
+                        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 ml-1"><i class="fa-solid fa-envelope mr-1"></i> Šablona zprávy</p>
+                        <div class="msg-template">
+                            <span class="copy-label"><i class="fa-regular fa-copy mr-0.5"></i> Šablona</span>
+                            <p>"Řešíte údržbu fasád, výměnu osvětlení nebo čištění prosklených ploch? JIBBI plošina projede dveřmi (šířka od 1,15 m), nepotřebuje podpěry a nepoškodí podlahu ani dlažbu. Ideální do nákupních center, hotelů nebo administrativních budov. Jsme jediní v ČR, kdo ji nabízí. Rádi vám ji předvedeme."</p>
+                        </div>
+                    </div>
+
+                    <details class="mb-3">
+                        <summary class="text-sm font-semibold text-gray-700 py-2">Koho kontaktovat</summary>
+                        <div class="detail-content mt-3 overflow-x-auto">
+                            <table class="data-table">
+                                <thead><tr><th>Pozice</th><th>Typ firmy</th><th>Jak najít</th></tr></thead>
+                                <tbody>
+                                    <tr><td>Facility manažer</td><td>Správcovské firmy (CBRE, Cushman &amp; Wakefield, JLL, ISS, Okin)</td><td>LinkedIn: "facility manager" + region</td></tr>
+                                    <tr><td>Vedoucí údržby</td><td>Nákupní centra, logistické parky, admin. budovy</td><td>Přímo na webu center, kontakty na správu</td></tr>
+                                    <tr><td>Technický správce</td><td>Hotely, wellness, nemocnice</td><td>ARES, NACE 68 (správa nemovitostí), 81.1 (facility)</td></tr>
+                                    <tr><td>Property manager</td><td>Developerské firmy</td><td>Kontakty z CPI, Penta, HB Reavis</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
+
+                    <details class="mb-3">
+                        <summary class="text-sm font-semibold text-gray-700 py-2">Postup oslovení (4 kroky)</summary>
+                        <div class="detail-content mt-3 overflow-x-auto">
+                            <table class="data-table">
+                                <thead><tr><th>Krok</th><th>Akce</th><th>Kdo</th><th>Čas</th></tr></thead>
+                                <tbody>
+                                    <tr><td>1</td><td>AI identifikuje 20 největších FM firem v ČR + 20 velkých budov/center</td><td>Pavel</td><td>2h</td></tr>
+                                    <tr><td>2</td><td>Pavel připraví email + krátké video (viz sekce "Dostat zákazníka na dvůr")</td><td>Pavel</td><td>1h</td></tr>
+                                    <tr><td>3</td><td>Vít pošle email. U velkých FM firem (CBRE, ISS) zkusit LinkedIn InMail</td><td>Vít</td><td>30 min</td></tr>
+                                    <tr><td>4</td><td>Follow-up: nabídnout demo přímo u zákazníka ("Přijedeme s JIBBI k vám a ukážeme")</td><td>Vít/Jiří</td><td>individuálně</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
+
+                    <details class="mb-3">
+                        <summary class="text-sm font-semibold text-gray-700 py-2">Specifika segmentu</summary>
+                        <div class="detail-content mt-3">
+                            <ul class="space-y-2 text-sm text-gray-600">
+                                <li class="flex gap-2"><i class="fa-solid fa-info-circle text-violet-500 mt-0.5"></i><span>FM firmy nakupují opakovaně a ve větších objemech.</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-info-circle text-violet-500 mt-0.5"></i><span>Rozhoduje <strong>cena provozu</strong> (TCO), ne jen pořizovací cena.</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-info-circle text-violet-500 mt-0.5"></i><span>Reference z jednoho centra = vstup do celé sítě správce.</span></li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary class="text-sm font-semibold text-gray-700 py-2">Triggery</summary>
+                        <div class="detail-content mt-3">
+                            <ul class="space-y-2 text-sm text-gray-600">
+                                <li class="flex gap-2"><i class="fa-solid fa-bolt text-violet-500 mt-0.5"></i><span><strong>Nová nákupní centra / kancelářské budovy.</strong> Správce potřebuje techniku od dne otevření.</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-bolt text-violet-500 mt-0.5"></i><span><strong>Rekonstrukce velkých budov.</strong> Fasády, výtahy, prosklené plochy.</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-bolt text-violet-500 mt-0.5"></i><span><strong>Energetické úspory.</strong> Výměna osvětlení v halách (LED retrofit) = potřeba plošin.</span></li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+            </div>
+
+            <!-- ===== SEGMENT 6: Telekomunikace ===== -->
+            <div class="segment-card bg-white rounded-2xl border-l-4 border-cyan-500 shadow-sm mb-5 overflow-hidden">
+                <div class="p-5 sm:p-6">
+                    <div class="flex items-center gap-3 mb-1">
+                        <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-cyan-100 text-cyan-600 font-bold text-sm">6</span>
+                        <h3 class="text-lg font-bold text-gray-900">Telekomunikace (5G, anténní věže)</h3>
+                    </div>
+                    <p class="text-sm text-gray-500 ml-11 mb-4">
+                        <i class="fa-solid fa-box-open mr-1"></i>
+                        <strong>Produkt:</strong> Multitel (velké výšky 25-75m), dodávkové plošiny (KLUBB)
+                    </p>
+
+                    <div class="mb-4">
+                        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 ml-1"><i class="fa-solid fa-envelope mr-1"></i> Šablona zprávy</p>
+                        <div class="msg-template">
+                            <span class="copy-label"><i class="fa-regular fa-copy mr-0.5"></i> Šablona</span>
+                            <p>"Stavíte nebo udržujete anténní věže a telekomunikační infrastrukturu? Multitel plošiny (25 až 75m) jsou největší v EU výrobě, telemetrie v každém stroji, vzdálená diagnostika, prediktivní údržba. Pro menší práce na střechách nabízíme KLUBB plošiny na dodávkách (řidičák B). Servis po celé ČR/SR."</p>
+                        </div>
+                    </div>
+
+                    <details class="mb-3">
+                        <summary class="text-sm font-semibold text-gray-700 py-2">Koho kontaktovat</summary>
+                        <div class="detail-content mt-3 overflow-x-auto">
+                            <table class="data-table">
+                                <thead><tr><th>Pozice</th><th>Typ firmy</th><th>Jak najít</th></tr></thead>
+                                <tbody>
+                                    <tr><td>Vedoucí výstavby sítí</td><td>T-Mobile, O2, Vodafone, CETIN</td><td>Přímo: velké firmy, veřejné kontakty</td></tr>
+                                    <tr><td>Projektový manažer</td><td>Subdodavatelé telco (Huawei CZ, Ericsson CZ, Nokia CZ)</td><td>ARES, NACE 61 (telekomunikace)</td></tr>
+                                    <tr><td>Ředitel / vedoucí provozu</td><td>Towerco firmy (CETIN, Vantage Towers)</td><td>Jejich web + LinkedIn</td></tr>
+                                    <tr><td>Fleet manager</td><td>Montážní firmy pro telco</td><td>Dodavatelské seznamy operátorů (veřejné tendry)</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
+
+                    <details class="mb-3">
+                        <summary class="text-sm font-semibold text-gray-700 py-2">Postup oslovení (4 kroky)</summary>
+                        <div class="detail-content mt-3 overflow-x-auto">
+                            <table class="data-table">
+                                <thead><tr><th>Krok</th><th>Akce</th><th>Kdo</th><th>Čas</th></tr></thead>
+                                <tbody>
+                                    <tr><td>1</td><td>Identifikovat subdodavatele telco operátorů (veřejné zakázky, tendry)</td><td>Pavel</td><td>2h</td></tr>
+                                    <tr><td>2</td><td>Pavel připraví email zaměřený na Multitel telemetrii (USP pro tento segment)</td><td>Pavel</td><td>1h</td></tr>
+                                    <tr><td>3</td><td>Jiří pošle osobně. Tenhle segment řeší velké objemy, stojí za osobní přístup</td><td>Jiří</td><td>individuálně</td></tr>
+                                    <tr><td>4</td><td>Nabídnout: "Přivezeme Multitel k vám na stavbu, uvidíte telemetrii v praxi"</td><td>Jiří</td><td>individuálně</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
+
+                    <details class="mb-3">
+                        <summary class="text-sm font-semibold text-gray-700 py-2">Specifika segmentu</summary>
+                        <div class="detail-content mt-3">
+                            <ul class="space-y-2 text-sm text-gray-600">
+                                <li class="flex gap-2"><i class="fa-solid fa-info-circle text-cyan-500 mt-0.5"></i><span>5G výstavba v ČR pokračuje. Stabilní poptávka na 3-5 let.</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-info-circle text-cyan-500 mt-0.5"></i><span>Telco firmy mají budget a nakupují flotilově (5-20 strojů najednou).</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-info-circle text-cyan-500 mt-0.5"></i><span>Telemetrie Multitelu je obrovský diferenciátor. Žádný jiný výrobce toto nemá tak dobře.</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-info-circle text-cyan-500 mt-0.5"></i><span>Tendry mají dlouhý cyklus (6-12 měsíců), ale velké objemy.</span></li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary class="text-sm font-semibold text-gray-700 py-2">Triggery</summary>
+                        <div class="detail-content mt-3">
+                            <ul class="space-y-2 text-sm text-gray-600">
+                                <li class="flex gap-2"><i class="fa-solid fa-bolt text-cyan-500 mt-0.5"></i><span><strong>5G aukce / nové licence.</strong> Operátoři investují, subdodavatelé nakupují techniku.</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-bolt text-cyan-500 mt-0.5"></i><span><strong>Veřejné zakázky na telco infrastrukturu.</strong> Sledovat na Věstníku veřejných zakázek.</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-bolt text-cyan-500 mt-0.5"></i><span><strong>Konec životnosti starých věží.</strong> Modernizace = práce ve výškách.</span></li>
+                                <li class="flex gap-2"><i class="fa-solid fa-bolt text-cyan-500 mt-0.5"></i><span><strong>Pojistné události</strong> (bouřky, vichřice) = akutní potřeba plošin pro opravy.</span></li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== SECTION 2: DOSTAT ZÁKAZNÍKA NA DVŮR ===================== -->
+        <div class="section-divider bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400" id="dvur"></div>
+
+        <section class="mb-8">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center">
+                    <i class="fa-solid fa-route text-green-600 text-lg"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900">"Dostat zákazníka na dvůr"</h2>
+                    <p class="text-sm text-gray-500">Cesta k osobní návštěvě v Nivnici</p>
+                </div>
+            </div>
+
+            <!-- Big stat callout -->
+            <div class="bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl p-6 text-white text-center mb-8">
+                <div class="text-5xl font-extrabold mb-2">90%</div>
+                <div class="text-lg font-semibold opacity-90">konverze při návštěvě</div>
+                <div class="text-sm opacity-75 mt-1">Celý marketing musí směřovat k jednomu cíli: zákazník přijede do Nivnice.</div>
+            </div>
+
+            <!-- 2.1 CTA v každé komunikaci -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 mb-5">
+                <h3 class="text-base font-bold text-gray-800 mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-bullhorn text-green-500"></i>
+                    Pozvánka na prohlídku jako CTA v KAŽDÉ komunikaci
+                </h3>
+                <p class="text-sm text-gray-600 mb-4">Každý email, newsletter, LinkedIn post, telefonát vždy končí stejně:</p>
+                <div class="msg-template mb-4">
+                    <span class="copy-label"><i class="fa-regular fa-copy mr-0.5"></i> Hlavní CTA</span>
+                    <p><strong>"Rádi vám stroj ukážeme osobně v našem zázemí v Nivnici. Přijeďte se podívat. Stačí se ozvat."</strong></p>
+                </div>
+
+                <details>
+                    <summary class="text-sm font-semibold text-gray-700 py-2">Varianty CTA pro různé situace</summary>
+                    <div class="detail-content mt-3 overflow-x-auto">
+                        <table class="data-table">
+                            <thead><tr><th>Situace</th><th>CTA</th></tr></thead>
+                            <tbody>
+                                <tr><td>Newsletter</td><td>"Chcete vidět [produkt] naživo? Zastavte se u nás v Nivnici."</td></tr>
+                                <tr><td>Email po poptávce</td><td>"Než se rozhodnete, přijeďte si stroj vyzkoušet. 90 % zákazníků, co nás navštíví, si najde přesně to, co potřebují."</td></tr>
+                                <tr><td>Telefonát</td><td>"Víte co, přijeďte se podívat. Máme to na dvoře, uvaříme kafe, za hodinu budete vědět."</td></tr>
+                                <tr><td>LinkedIn</td><td>"Každý měsíc k nám přijede pár firem na prohlídku a většina si najde přesně to, co hledala. Chcete se přidat?"</td></tr>
+                                <tr><td>Web (budoucí chatbot)</td><td>"Máte zájem? Domluvte si návštěvu u nás v Nivnici."</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+            </div>
+
+            <!-- 2.2 Den otevřených dveří -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 mb-5">
+                <h3 class="text-base font-bold text-gray-800 mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-door-open text-green-500"></i>
+                    "Den otevřených dveří" (1-2x ročně)
+                </h3>
+                <p class="text-sm text-gray-600 mb-4"><strong>Formát:</strong> Půldenní akce (9:00 - 13:00), neformální, s občerstvením.</p>
+
+                <details class="mb-3">
+                    <summary class="text-sm font-semibold text-gray-700 py-2">Detaily akce</summary>
+                    <div class="detail-content mt-3 overflow-x-auto">
+                        <table class="data-table">
+                            <thead><tr><th>Aspekt</th><th>Detail</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Kdy</strong></td><td>Jaro (březen/duben, před sezónou) + podzim (září/říjen, plánování rozpočtů)</td></tr>
+                                <tr><td><strong>Koho pozvat</strong></td><td>Stávající zákazníci + top 30 potenciálních kontaktů ze segmentů výše</td></tr>
+                                <tr><td><strong>Program</strong></td><td>Prohlídka zázemí -> demo 2-3 strojů na dvoře -> občerstvení -> individuální konzultace</td></tr>
+                                <tr><td><strong>Highlight</strong></td><td>Vždy 1 novinka (např. JIBBI nebo Multiloader) jako důvod přijít</td></tr>
+                                <tr><td><strong>Pozvánka</strong></td><td>Osobní email od Jiřího/Víta + telefonát. NE hromadná pozvánka</td></tr>
+                                <tr><td><strong>Kapacita</strong></td><td>15-25 lidí max. (aby to bylo osobní)</td></tr>
+                                <tr><td><strong>Dokumentace</strong></td><td>Fotky + krátké video -> obsah na LinkedIn + newsletter</td></tr>
+                            </tbody>
+                        </table>
+                        <div class="grid sm:grid-cols-2 gap-3 mt-3">
+                            <div class="bg-green-50 rounded-lg p-3 text-sm">
+                                <p class="font-semibold text-green-800 mb-1"><i class="fa-solid fa-clock mr-1"></i> Čas pro Inreku</p>
+                                <p class="text-green-700">Příprava: 4-6h (Jiří + Vít + občerstvení). Samotný den: 5h. Celkem: 1 pracovní den, 2x ročně.</p>
+                            </div>
+                            <div class="bg-amber-50 rounded-lg p-3 text-sm">
+                                <p class="font-semibold text-amber-800 mb-1"><i class="fa-solid fa-user mr-1"></i> Pavel připraví</p>
+                                <p class="text-amber-700">Pozvánku (email), program, follow-up email po akci, fotky na LinkedIn.</p>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- 2.3 Demo jízdy -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 mb-5">
+                <h3 class="text-base font-bold text-gray-800 mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-truck text-green-500"></i>
+                    Demo jízdy s konkrétní plošinou
+                </h3>
+                <p class="text-sm text-gray-600 mb-4">Když zákazník nemůže přijet, přijeďte vy k němu. Ale jen pro vážné zájemce.</p>
+
+                <div class="grid sm:grid-cols-2 gap-3 mb-3">
+                    <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
+                        <p class="font-bold text-sm text-gray-800 mb-1"><i class="fa-solid fa-location-dot text-green-500 mr-1"></i> Demo v Nivnici</p>
+                        <p class="text-xs text-gray-500 mb-1">Zákazník do 2h jízdy</p>
+                        <p class="text-sm text-gray-600">"Přijeďte, máme to na dvoře, za hodinu budete vědět"</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
+                        <p class="font-bold text-sm text-gray-800 mb-1"><i class="fa-solid fa-industry text-green-500 mr-1"></i> Demo u zákazníka</p>
+                        <p class="text-xs text-gray-500 mb-1">Velký obchod (&gt;500k Kč)</p>
+                        <p class="text-sm text-gray-600">Přivézt stroj na valníku, předvést přímo v provozu</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
+                        <p class="font-bold text-sm text-gray-800 mb-1"><i class="fa-solid fa-helmet-safety text-green-500 mr-1"></i> Demo na stavbě</p>
+                        <p class="text-xs text-gray-500 mb-1">Stavební firmy, telco</p>
+                        <p class="text-sm text-gray-600">"Máme příští týden Spider na zakázce 30 km od vás, chcete se podívat?"</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
+                        <p class="font-bold text-sm text-gray-800 mb-1"><i class="fa-solid fa-tent mr-1 text-green-500"></i> Demo na veletrhu</p>
+                        <p class="text-xs text-gray-500 mb-1">FOR ARCH, Stavební veletrh Brno</p>
+                        <p class="text-sm text-gray-600">Expozice s 1-2 stroji, live ukázka</p>
+                    </div>
+                </div>
+                <div class="bg-amber-50 rounded-lg p-3 text-sm text-amber-800">
+                    <i class="fa-solid fa-triangle-exclamation mr-1"></i>
+                    <strong>Důležité:</strong> Demo u zákazníka dělat JEN pro kvalifikované leady. Je to investice (čas + doprava).
+                </div>
+            </div>
+
+            <!-- 2.4 Video prohlídka -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6">
+                <h3 class="text-base font-bold text-gray-800 mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-video text-green-500"></i>
+                    Video prohlídka zázemí (pro ty, kdo nemohou přijet)
+                </h3>
+                <p class="text-sm text-gray-600 mb-4">Jednorázová investice: 1 video, které se používá roky.</p>
+
+                <details>
+                    <summary class="text-sm font-semibold text-gray-700 py-2">Co natočit (celkem 2-3 minuty)</summary>
+                    <div class="detail-content mt-3 overflow-x-auto">
+                        <table class="data-table">
+                            <thead><tr><th>Záběr</th><th>Délka</th><th>Účel</th></tr></thead>
+                            <tbody>
+                                <tr><td>Záběr na areál z dronu (nebo z ulice)</td><td>15s</td><td>"Tohle je naše zázemí v Nivnici"</td></tr>
+                                <tr><td>Hala se stroji + servis</td><td>30s</td><td>Ukázat kapacity, profesionalitu</td></tr>
+                                <tr><td>Plošiny na dvoře (různé typy)</td><td>30s</td><td>"Tohle máme skladem, přijeďte si vybrat"</td></tr>
+                                <tr><td>Jiří/Vít, osobní slovo</td><td>30s</td><td>"Jsme tady 25 let, uděláme pro vás maximum"</td></tr>
+                                <tr><td>Novinka (JIBBI/Multiloader) v akci</td><td>30s</td><td>Wow efekt</td></tr>
+                            </tbody>
+                        </table>
+                        <div class="grid sm:grid-cols-2 gap-3 mt-3">
+                            <div class="bg-blue-50 rounded-lg p-3 text-sm text-blue-800">
+                                <i class="fa-solid fa-play mr-1"></i> <strong>Natočit:</strong> chytrým telefonem, Pavel sestříhá.
+                            </div>
+                            <div class="bg-blue-50 rounded-lg p-3 text-sm text-blue-800">
+                                <i class="fa-solid fa-share-nodes mr-1"></i> <strong>Použití:</strong> Email, LinkedIn, web, WhatsApp.
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-3"><i class="fa-solid fa-clock mr-1"></i> <strong>Čas pro Inreku:</strong> 1-2 hodiny natáčení, pak už nic.</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- ===================== SECTION 3: AI IDENTIFIKACE LEADŮ ===================== -->
+        <div class="section-divider bg-gradient-to-r from-purple-400 via-violet-400 to-indigo-400" id="ai-leady"></div>
+
+        <section class="mb-8">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center">
+                    <i class="fa-solid fa-robot text-purple-600 text-lg"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900">AI identifikace leadů</h2>
+                    <p class="text-sm text-gray-500">Hledáme "další Lačnov"</p>
+                </div>
+            </div>
+
+            <!-- Principle -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 mb-5">
+                <h3 class="text-base font-bold text-gray-800 mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-magnifying-glass text-purple-500"></i>
+                    Princip
+                </h3>
+                <p class="text-sm text-gray-600 mb-3">Lačnov je vzorový případ: firma sama netušila, že Multiloader existuje. Hledala na webu, náhodou našla AlmaCrawler, ti ji přeposlali na Inreku.</p>
+                <div class="bg-purple-50 rounded-xl p-4 text-center">
+                    <p class="text-purple-800 font-semibold text-sm"><i class="fa-solid fa-question-circle mr-1"></i> Kolik takových firem v ČR existuje, které ale na webu nehledaly?</p>
+                    <p class="text-purple-600 text-sm mt-2">Cíl: Identifikovat <strong>20-50 konkrétních firem</strong> s profilem podobným Lačnovu a oslovit je cíleně.</p>
+                </div>
+            </div>
+
+            <!-- Data sources -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 mb-5">
+                <h3 class="text-base font-bold text-gray-800 mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-database text-purple-500"></i>
+                    Datové zdroje a co v nich hledat
+                </h3>
+                <details>
+                    <summary class="text-sm font-semibold text-gray-700 py-2">Zobrazit všech 8 datových zdrojů</summary>
+                    <div class="detail-content mt-3 overflow-x-auto">
+                        <table class="data-table">
+                            <thead><tr><th>Zdroj</th><th>Co hledat</th><th>Jak</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>ARES (ares.gov.cz)</strong></td><td>Výrobní firmy, NACE 24-30, 100+ zaměstnanců, region Morava/ČR</td><td>Filtr dle NACE + velikosti + regionu</td></tr>
+                                <tr><td><strong>Justice.cz</strong></td><td>Firmy se zahraničním vlastníkem (NL, DE, AT), mají budget</td><td>Vyhledat dle sídla zahraničního subjektu</td></tr>
+                                <tr><td><strong>Firmo.cz / Kompass</strong></td><td>Strojírenské firmy, výrobní haly &gt;2000 m2</td><td>Kategorie + filtr</td></tr>
+                                <tr><td><strong>Věstník veřejných zakázek</strong></td><td>Tendry na manipulační techniku, plošiny, servis</td><td>Klíčová slova: "plošina", "vysokozdvih", "manipulační technika"</td></tr>
+                                <tr><td><strong>LinkedIn Sales Navigator</strong></td><td>Vedoucí výroby, fleet manažeři v průmyslových firmách</td><td>Filtr: pozice + odvětví + region</td></tr>
+                                <tr><td><strong>Google Maps / Mapy.cz</strong></td><td>Velké výrobní areály. Kdo tam sídlí?</td><td>Satelitní pohled na průmyslové zóny</td></tr>
+                                <tr><td><strong>BOZP síť Inreky</strong></td><td>Jožka + Martina školí desítky firem. Kdo má velkou výrobu?</td><td>Interní databáze</td></tr>
+                                <tr><td><strong>Emailová historie Inreky</strong></td><td>Staré poptávky, které nedopadly. Proč ne? Změnila se situace?</td><td>Export z IS/emailu</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Ideal customer profiles -->
+            <div class="grid sm:grid-cols-2 gap-5 mb-5">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
+                    <h3 class="text-base font-bold text-gray-800 mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-crosshairs text-red-500"></i>
+                        Profil: "Další Lačnov" (Multiloader)
+                    </h3>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex gap-2"><i class="fa-solid fa-check text-red-400 mt-0.5 text-xs"></i><span>Výrobní firma se zahraniční matkou (NL, DE, AT, FR)</span></li>
+                        <li class="flex gap-2"><i class="fa-solid fa-check text-red-400 mt-0.5 text-xs"></i><span>Výrobní hala &gt;1000 m2, ideálně rozdělená na více úseků</span></li>
+                        <li class="flex gap-2"><i class="fa-solid fa-check text-red-400 mt-0.5 text-xs"></i><span>Manipuluje s těžkými díly (&gt;500 kg, do 6t)</span></li>
+                        <li class="flex gap-2"><i class="fa-solid fa-check text-red-400 mt-0.5 text-xs"></i><span>Vysokozdvih na hranici použitelnosti (úzké uličky, nerovný povrch, požární přepážky)</span></li>
+                        <li class="flex gap-2"><i class="fa-solid fa-check text-red-400 mt-0.5 text-xs"></i><span>Investuje do bezpečnosti a modernizace (ISO, BOZP)</span></li>
+                        <li class="flex gap-2"><i class="fa-solid fa-check text-red-400 mt-0.5 text-xs"></i><span>V regionu s dostupností servisu Inreky (primárně Morava)</span></li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
+                    <h3 class="text-base font-bold text-gray-800 mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-crosshairs text-violet-500"></i>
+                        Profil: JIBBI (správa budov)
+                    </h3>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex gap-2"><i class="fa-solid fa-check text-violet-400 mt-0.5 text-xs"></i><span>Firmy spravující budovy &gt;5000 m2 vnitřní plochy</span></li>
+                        <li class="flex gap-2"><i class="fa-solid fa-check text-violet-400 mt-0.5 text-xs"></i><span>Nákupní centra, výstavní haly, letiště, nemocnice, hotely</span></li>
+                        <li class="flex gap-2"><i class="fa-solid fa-check text-violet-400 mt-0.5 text-xs"></i><span>Potřebují pravidelnou údržbu ve výškách (osvětlení, VZT, čištění)</span></li>
+                        <li class="flex gap-2"><i class="fa-solid fa-check text-violet-400 mt-0.5 text-xs"></i><span>Současně řeší: lešení (pomalé), žebříky (nebezpečné), pronájem plošin (drahé opakovaně)</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Konkrétní postup AI identifikace -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 mb-5">
+                <h3 class="text-base font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-list-check text-purple-500"></i>
+                    Konkrétní postup AI identifikace (7 kroků)
+                </h3>
+                <div class="space-y-3">
+                    <div class="timeline-step flex gap-4">
+                        <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0 text-purple-700 font-bold text-sm">1</div>
+                        <div class="pt-1.5 pb-3">
+                            <p class="text-sm font-semibold text-gray-800">Definovat kritéria (viz profily výše)</p>
+                            <p class="text-xs text-gray-500">Pavel + Jiří | Výstup: Checklist parametrů</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step flex gap-4">
+                        <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0 text-purple-700 font-bold text-sm">2</div>
+                        <div class="pt-1.5 pb-3">
+                            <p class="text-sm font-semibold text-gray-800">Stáhnout data z ARES (NACE kódy, velikost, region)</p>
+                            <p class="text-xs text-gray-500">Pavel (AI) | Výstup: Seznam 200-500 firem</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step flex gap-4">
+                        <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0 text-purple-700 font-bold text-sm">3</div>
+                        <div class="pt-1.5 pb-3">
+                            <p class="text-sm font-semibold text-gray-800">Filtrovat dle profilu: zahraniční vlastník, velikost, odvětví</p>
+                            <p class="text-xs text-gray-500">Pavel (AI) | Výstup: Seznam 50-80 firem</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step flex gap-4">
+                        <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0 text-purple-700 font-bold text-sm">4</div>
+                        <div class="pt-1.5 pb-3">
+                            <p class="text-sm font-semibold text-gray-800">Cross-check s databází Inreky: kdo už je zákazník? Kdo ne?</p>
+                            <p class="text-xs text-gray-500">Vít | Výstup: Seznam 30-50 NOVÝCH firem</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step flex gap-4">
+                        <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0 text-purple-700 font-bold text-sm">5</div>
+                        <div class="pt-1.5 pb-3">
+                            <p class="text-sm font-semibold text-gray-800">Prioritizovat: kdo je nejblíž profilu Lačnova?</p>
+                            <p class="text-xs text-gray-500">Pavel + Jiří | Výstup: TOP 20 k oslovení</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step flex gap-4">
+                        <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0 text-purple-700 font-bold text-sm">6</div>
+                        <div class="pt-1.5 pb-3">
+                            <p class="text-sm font-semibold text-gray-800">Připravit personalizovaný email pro každou firmu</p>
+                            <p class="text-xs text-gray-500">Pavel | Výstup: 20 emailů</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step flex gap-4">
+                        <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0 text-amber-700 font-bold text-sm">7</div>
+                        <div class="pt-1.5 pb-3">
+                            <p class="text-sm font-semibold text-gray-800">Oslovit po dávkách (5/týden)</p>
+                            <p class="text-xs text-gray-500">Vít | Průběžně</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-purple-50 rounded-lg p-3 text-sm text-purple-800 mt-3">
+                    <i class="fa-solid fa-clock mr-1"></i>
+                    <strong>Časový odhad:</strong> Kroky 1-6 = cca 8-10 hodin Pavlovy práce. Kroky od Inreky = max 3-4 hodiny celkem.
+                </div>
+            </div>
+
+            <!-- LinkedIn Sales Navigator -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6">
+                <h3 class="text-base font-bold text-gray-800 mb-3 flex items-center gap-2">
+                    <i class="fa-brands fa-linkedin text-blue-600"></i>
+                    LinkedIn Sales Navigator (budoucí)
+                </h3>
+                <p class="text-sm text-gray-600 mb-3">Pokud se rozhodnou investovat (~100 USD/měsíc):</p>
+                <ul class="space-y-2 text-sm text-gray-600">
+                    <li class="flex gap-2"><i class="fa-solid fa-search text-blue-400 mt-0.5 text-xs"></i><span><strong>Vyhledávání:</strong> "vedoucí výroby" + "strojírenství" + "Česko" = stovky kontaktů</span></li>
+                    <li class="flex gap-2"><i class="fa-solid fa-bell text-blue-400 mt-0.5 text-xs"></i><span><strong>Lead alerts:</strong> Upozornění, když někdo změní pozici nebo firma roste</span></li>
+                    <li class="flex gap-2"><i class="fa-solid fa-envelope text-blue-400 mt-0.5 text-xs"></i><span><strong>InMail:</strong> Přímé oslovení bez nutnosti být propojený</span></li>
+                </ul>
+                <div class="bg-blue-50 rounded-lg p-3 text-sm text-blue-800 mt-3">
+                    <i class="fa-solid fa-info-circle mr-1"></i>
+                    <strong>Doporučení:</strong> Zatím NE. Nejdřív otestovat identifikaci přes ARES/Justice a osobní síť. LinkedIn až ve fázi 2.
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== SECTION 4: OBSAHOVÁ STRATEGIE ===================== -->
+        <div class="section-divider bg-gradient-to-r from-orange-400 via-amber-400 to-yellow-400" id="obsah"></div>
+
+        <section class="mb-8">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center">
+                    <i class="fa-solid fa-calendar-days text-orange-600 text-lg"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900">Obsahová strategie na 6 měsíců</h2>
+                    <p class="text-sm text-gray-500">Duben - září 2026</p>
+                </div>
+            </div>
+
+            <!-- 4.1 Newsletter -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 mb-5">
+                <h3 class="text-base font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-newspaper text-orange-500"></i>
+                    Newsletter (Ecomail, 1x za 2-3 měsíce)
+                </h3>
+
+                <!-- Calendar visual -->
+                <div class="grid sm:grid-cols-3 gap-4 mb-4">
+                    <div class="rounded-xl border-2 border-orange-200 bg-orange-50/50 p-4">
+                        <div class="text-xs font-bold text-orange-600 uppercase tracking-wider mb-1"><i class="fa-regular fa-calendar mr-1"></i> Duben 2026</div>
+                        <p class="text-sm font-semibold text-gray-800 mb-1">"5 věcí, které prodlouží životnost plošiny"</p>
+                        <p class="text-xs text-gray-500">Praktické tipy údržby. Ukázat servisní expertizu + zmínka AlmaCrawler JIBBI.</p>
+                    </div>
+                    <div class="rounded-xl border-2 border-amber-200 bg-amber-50/50 p-4">
+                        <div class="text-xs font-bold text-amber-600 uppercase tracking-wider mb-1"><i class="fa-regular fa-calendar mr-1"></i> Červen/Červenec 2026</div>
+                        <p class="text-sm font-semibold text-gray-800 mb-1">"Novinka: Plošina bez podpěr. JIBBI v naší nabídce"</p>
+                        <p class="text-xs text-gray-500">Představení produktu, parametry, foto. Generovat poptávky po JIBBI.</p>
+                    </div>
+                    <div class="rounded-xl border-2 border-yellow-200 bg-yellow-50/50 p-4">
+                        <div class="text-xs font-bold text-yellow-600 uppercase tracking-wider mb-1"><i class="fa-regular fa-calendar mr-1"></i> Září 2026</div>
+                        <p class="text-sm font-semibold text-gray-800 mb-1">"Plánujete nákup na 2027? Přijeďte se podívat"</p>
+                        <p class="text-xs text-gray-500">Pozvánka na Den otevřených dveří (podzim). Dostat lidi do Nivnice před rozpočtovým obdobím.</p>
+                    </div>
+                </div>
+
+                <details>
+                    <summary class="text-sm font-semibold text-gray-700 py-2">Databáze a čas</summary>
+                    <div class="detail-content mt-3">
+                        <p class="text-sm text-gray-600 mb-2"><strong>Databáze pro rozesílku:</strong></p>
+                        <ul class="space-y-1 text-sm text-gray-600 mb-3">
+                            <li class="flex gap-2"><i class="fa-solid fa-circle text-amber-400 mt-1.5" style="font-size:0.4rem"></i>Vítova databáze technických služeb z ORPček (8 krajů)</li>
+                            <li class="flex gap-2"><i class="fa-solid fa-circle text-amber-400 mt-1.5" style="font-size:0.4rem"></i>Emailová historie firmy (stávající zákazníci)</li>
+                            <li class="flex gap-2"><i class="fa-solid fa-circle text-amber-400 mt-1.5" style="font-size:0.4rem"></i>Nové kontakty z outreache (kdo souhlasí s newsletterem)</li>
+                        </ul>
+                        <div class="bg-amber-50 rounded-lg p-3 text-sm text-amber-800">
+                            <i class="fa-solid fa-clock mr-1"></i> <strong>Celkový čas Inreky na 1 newsletter:</strong> 30-60 minut (schválení + dodání 1-2 fotek).
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- 4.2 LinkedIn -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 mb-5">
+                <h3 class="text-base font-bold text-gray-800 mb-3 flex items-center gap-2">
+                    <i class="fa-brands fa-linkedin text-blue-600"></i>
+                    LinkedIn (1-2 posty měsíčně)
+                </h3>
+                <div class="bg-blue-50 rounded-lg p-3 text-sm text-blue-800 mb-4">
+                    <i class="fa-solid fa-info-circle mr-1"></i>
+                    <strong>Pozor:</strong> LinkedIn je sekundární kanál. Cílovka Inreky ("chlapy z provozu") tam moc není. ALE rozhodovatelé v korporátech (fleet manažeři, facility manažeři, ředitelé TS) tam JSOU. LinkedIn buduje značku a důvěryhodnost.
+                </div>
+
+                <details>
+                    <summary class="text-sm font-semibold text-gray-700 py-2">Plán postů duben - září 2026</summary>
+                    <div class="detail-content mt-3 overflow-x-auto">
+                        <table class="data-table">
+                            <thead><tr><th>Měsíc</th><th>Post 1</th><th>Post 2</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Duben</strong></td><td>Foto: Nová plošina k expedici + "25 let na trhu, stovky dodaných strojů"</td><td>Tip: "Víte, že plošina JIBBI nepotřebuje podpěry?" + foto</td></tr>
+                                <tr><td><strong>Květen</strong></td><td>Foto ze zákazky: "Právě jsme dodali [model] pro [typ práce]"</td><td>Sdílení: Článek o bezpečnosti práce ve výškách + komentář</td></tr>
+                                <tr><td><strong>Červen</strong></td><td>Video: 30s ukázka JIBBI v akci (úzký průjezd, gumové pásy)</td><td>Foto: Servisní tým v akci + "Servisujeme po celé ČR/SR"</td></tr>
+                                <tr><td><strong>Červenec</strong></td><td>Repost novinky od AlmaCrawler/Multitel + český komentář</td><td>Foto: Plošiny na dvoře + "Takhle vypadá naše zázemí v Nivnici"</td></tr>
+                                <tr><td><strong>Srpen</strong></td><td>Case study mini: "Jak jsme vyřešili [problém] pro [firmu]" (se souhlasem)</td><td>Foto z veletrhu / setkání s italskými partnery</td></tr>
+                                <tr><td><strong>Září</strong></td><td>Pozvánka na Den otevřených dveří</td><td>Foto z Dne OD + "Díky všem, kdo přijeli"</td></tr>
+                            </tbody>
+                        </table>
+                        <div class="grid sm:grid-cols-2 gap-3 mt-3">
+                            <div class="bg-blue-50 rounded-lg p-3 text-sm text-blue-800">
+                                <i class="fa-solid fa-pencil mr-1"></i> <strong>Kdo to dělá:</strong> Pavel připraví texty a grafiku. Vít/Jiří schválí a sdílí ze svých osobních profilů (větší dosah než firemní stránky).
+                            </div>
+                            <div class="bg-blue-50 rounded-lg p-3 text-sm text-blue-800">
+                                <i class="fa-solid fa-clock mr-1"></i> <strong>Čas Inreky:</strong> 10-15 minut/měsíc (schválení + sdílení).
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- 4.3 Case studies -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 mb-5">
+                <h3 class="text-base font-bold text-gray-800 mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-file-lines text-orange-500"></i>
+                    Case studies k sepsání
+                </h3>
+                <details>
+                    <summary class="text-sm font-semibold text-gray-700 py-2">3 case studies + formát a použití</summary>
+                    <div class="detail-content mt-3">
+                        <div class="space-y-3 mb-4">
+                            <div class="flex gap-3 p-3 bg-gray-50 rounded-lg items-start">
+                                <span class="inline-flex items-center justify-center w-7 h-7 rounded bg-red-100 text-red-600 font-bold text-xs flex-shrink-0">#1</span>
+                                <div>
+                                    <p class="text-sm font-semibold text-gray-800">Lačnov: Multiloader</p>
+                                    <p class="text-xs text-gray-500">Výrobní firma (holandský vlastník). "Vysokozdvih neprojede, Multiloader ano." Souhlas zákazníka (anonymizovat pokud nechce jméno).</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-3 p-3 bg-gray-50 rounded-lg items-start">
+                                <span class="inline-flex items-center justify-center w-7 h-7 rounded bg-yellow-100 text-yellow-600 font-bold text-xs flex-shrink-0">#2</span>
+                                <div>
+                                    <p class="text-sm font-semibold text-gray-800">Energetická firma</p>
+                                    <p class="text-xs text-gray-500">Stávající zákazník (ČEZ, E.ON). "Servisujeme X plošin, telemetrie Multitel = méně prostojů." Vybrat zákazníka s nejlepším vztahem.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-3 p-3 bg-gray-50 rounded-lg items-start">
+                                <span class="inline-flex items-center justify-center w-7 h-7 rounded bg-emerald-100 text-emerald-600 font-bold text-xs flex-shrink-0">#3</span>
+                                <div>
+                                    <p class="text-sm font-semibold text-gray-800">Technické služby [město]</p>
+                                    <p class="text-xs text-gray-500">Konkrétní TS, které koupily od Inreky. "Plošina do 3,5t, řidičák B, údržba VO a zeleně." Ředitel TS obvykle nemá problém s referencí.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-orange-50 rounded-lg p-3 text-sm text-orange-800">
+                            <p><i class="fa-solid fa-file-pdf mr-1"></i> <strong>Formát:</strong> 1 strana A4. Problém -> řešení -> výsledek -> citát zákazníka. S fotkou.</p>
+                            <p class="mt-1"><i class="fa-solid fa-share-nodes mr-1"></i> <strong>Použití:</strong> Email příloha, web, LinkedIn, na osobní schůzce jako handout.</p>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- 4.4 Video obsah -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 mb-5">
+                <h3 class="text-base font-bold text-gray-800 mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-clapperboard text-orange-500"></i>
+                    Video obsah
+                </h3>
+                <details>
+                    <summary class="text-sm font-semibold text-gray-700 py-2">5 videí k natočení (s prioritami)</summary>
+                    <div class="detail-content mt-3 overflow-x-auto">
+                        <table class="data-table">
+                            <thead><tr><th>Video</th><th>Délka</th><th>Co natočit</th><th>Priorita</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Prohlídka zázemí Nivnice</strong></td><td>2-3 min</td><td>Areál, hala, plošiny na dvoře, servis, tým</td><td><span class="bg-red-100 text-red-700 text-xs font-bold px-2 py-0.5 rounded">VYSOKÁ</span></td></tr>
+                                <tr><td><strong>JIBBI v akci</strong></td><td>60-90s</td><td>Úzký průjezd, variabilní šířka pásů, bez podpěr</td><td><span class="bg-red-100 text-red-700 text-xs font-bold px-2 py-0.5 rounded">VYSOKÁ</span></td></tr>
+                                <tr><td><strong>Multiloader demo</strong></td><td>60-90s</td><td>Dálkové ovládání, přeprava těžkého dílu, pásový pojezd</td><td><span class="bg-red-100 text-red-700 text-xs font-bold px-2 py-0.5 rounded">VYSOKÁ</span></td></tr>
+                                <tr><td><strong>"Technik radí"</strong></td><td>60s</td><td>Vít/Jiří vysvětlí jednu věc (údržba, revize, tip)</td><td><span class="bg-amber-100 text-amber-700 text-xs font-bold px-2 py-0.5 rounded">STŘEDNÍ</span></td></tr>
+                                <tr><td><strong>Zákaznický testimonial</strong></td><td>60s</td><td>Spokojený zákazník řekne 2 věty</td><td><span class="bg-gray-100 text-gray-600 text-xs font-bold px-2 py-0.5 rounded">NÍZKÁ</span></td></tr>
+                            </tbody>
+                        </table>
+                        <div class="grid sm:grid-cols-2 gap-3 mt-3">
+                            <div class="bg-orange-50 rounded-lg p-3 text-sm text-orange-800"><i class="fa-solid fa-mobile-screen mr-1"></i> <strong>Kdo natáčí:</strong> Chytrý telefon. Jiří/Vít natočí, Pavel sestříhá.</div>
+                            <div class="bg-orange-50 rounded-lg p-3 text-sm text-orange-800"><i class="fa-solid fa-share-nodes mr-1"></i> <strong>Kde publikovat:</strong> LinkedIn, email (odkaz), web, WhatsApp.</div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- 4.5 FAQ obsah -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6">
+                <h3 class="text-base font-bold text-gray-800 mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-circle-question text-orange-500"></i>
+                    FAQ obsah pro web / budoucí chatbot
+                </h3>
+                <details>
+                    <summary class="text-sm font-semibold text-gray-700 py-2">5 FAQ témat</summary>
+                    <div class="detail-content mt-3">
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                                <span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded">HOTOVO</span>
+                                <div>
+                                    <p class="text-sm font-semibold text-gray-800">FAQ JIBBI 1250 / 1670</p>
+                                    <p class="text-xs text-gray-500">Parametry, průjezdnost, podpěry, pohon, servis. Draft čeká na schválení.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                                <span class="bg-gray-100 text-gray-600 text-xs font-bold px-2 py-0.5 rounded">TODO</span>
+                                <div>
+                                    <p class="text-sm font-semibold text-gray-800">FAQ Multiloader</p>
+                                    <p class="text-xs text-gray-500">Nosnost, ovládání, terén, použití. Připravit po dodání manuálu.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                                <span class="bg-gray-100 text-gray-600 text-xs font-bold px-2 py-0.5 rounded">TODO</span>
+                                <div>
+                                    <p class="text-sm font-semibold text-gray-800">FAQ Spider (Platform Basket)</p>
+                                    <p class="text-xs text-gray-500">Dosah, podpěry, terén, přeprava. Připravit z datasheetů.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                                <span class="bg-gray-100 text-gray-600 text-xs font-bold px-2 py-0.5 rounded">TODO</span>
+                                <div>
+                                    <p class="text-sm font-semibold text-gray-800">FAQ "Jak vybrat plošinu"</p>
+                                    <p class="text-xs text-gray-500">Rozhodovací průvodce pro zákazníka. Základ pro budoucí konfigurátor.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                                <span class="bg-gray-100 text-gray-600 text-xs font-bold px-2 py-0.5 rounded">TODO</span>
+                                <div>
+                                    <p class="text-sm font-semibold text-gray-800">FAQ "Revize a servis"</p>
+                                    <p class="text-xs text-gray-500">Zákonné povinnosti, intervaly, co hrozí při nerevizi. Využitelné i v newsletteru.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- ===================== SECTION 5: KPIs ===================== -->
+        <div class="section-divider bg-gradient-to-r from-blue-400 via-sky-400 to-cyan-400" id="kpis"></div>
+
+        <section class="mb-8">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center">
+                    <i class="fa-solid fa-chart-line text-blue-600 text-lg"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900">Měřitelné cíle (KPIs)</h2>
+                    <p class="text-sm text-gray-500">Jednoduše, bez složitých nástrojů</p>
+                </div>
+            </div>
+
+            <!-- KPI Dashboard Cards -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fa-solid fa-paper-plane text-blue-500"></i>
+                        <p class="text-sm font-semibold text-gray-800">Cílené emaily</p>
+                    </div>
+                    <p class="text-3xl font-extrabold text-blue-500">100-150</p>
+                    <p class="text-xs text-gray-500 mt-1">za 6 měsíců (5-10 týdně)</p>
+                    <p class="text-xs text-gray-400">Měření: ručně nebo Ecomail</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fa-solid fa-envelope-open text-amber-500"></i>
+                        <p class="text-sm font-semibold text-gray-800">Open rate NL</p>
+                    </div>
+                    <p class="text-3xl font-extrabold text-amber-500">&gt;25%</p>
+                    <p class="text-xs text-gray-500 mt-1">průměr B2B v ČR je 20-25%</p>
+                    <p class="text-xs text-gray-400">Měření: Ecomail automaticky</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fa-solid fa-reply text-green-500"></i>
+                        <p class="text-sm font-semibold text-gray-800">Odpovědi na outreach</p>
+                    </div>
+                    <p class="text-3xl font-extrabold text-green-500">10-15</p>
+                    <p class="text-xs text-gray-500 mt-1">10% response rate = dobrý výsledek</p>
+                    <p class="text-xs text-gray-400">Měření: ručně</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 border-l-4 border-l-emerald-500">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fa-solid fa-building text-emerald-500"></i>
+                        <p class="text-sm font-semibold text-gray-800">Návštěvy v Nivnici</p>
+                    </div>
+                    <p class="text-3xl font-extrabold text-emerald-500">8-12</p>
+                    <p class="text-xs text-gray-500 mt-1">za 6 měsíců. Klíčový KPI (90% konverze)</p>
+                    <p class="text-xs text-gray-400">Měření: ručně (sešit/tabulka)</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fa-solid fa-handshake text-purple-500"></i>
+                        <p class="text-sm font-semibold text-gray-800">Nové obchodní příležitosti</p>
+                    </div>
+                    <p class="text-3xl font-extrabold text-purple-500">5-8</p>
+                    <p class="text-xs text-gray-500 mt-1">nových poptávek za 6 měsíců</p>
+                    <p class="text-xs text-gray-400">Měření: ručně</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fa-solid fa-trophy text-red-500"></i>
+                        <p class="text-sm font-semibold text-gray-800">Uzavřené obchody</p>
+                    </div>
+                    <p class="text-3xl font-extrabold text-red-500">2-4</p>
+                    <p class="text-xs text-gray-500 mt-1">nové obchody z outreache</p>
+                    <p class="text-xs text-gray-400">Realistický cíl pro první půlrok</p>
+                </div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4 mb-6">
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fa-brands fa-linkedin text-blue-600"></i>
+                        <p class="text-sm font-semibold text-gray-800">LinkedIn followers</p>
+                    </div>
+                    <p class="text-3xl font-extrabold text-blue-600">100-200</p>
+                    <p class="text-xs text-gray-500 mt-1">Start od nuly, budování postupně</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fa-solid fa-language text-indigo-500"></i>
+                        <p class="text-sm font-semibold text-gray-800">Přeložené manuály</p>
+                    </div>
+                    <p class="text-3xl font-extrabold text-indigo-500">3-5</p>
+                    <p class="text-xs text-gray-500 mt-1">Vedlejší KPI, ale důležitý pro efektivitu</p>
+                </div>
+            </div>
+
+            <!-- Vyhodnocení -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6">
+                <h3 class="text-base font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-calendar-check text-blue-500"></i>
+                    Vyhodnocení: kdy a jak
+                </h3>
+                <div class="space-y-3 mb-4">
+                    <div class="flex gap-4 items-start p-3 bg-gray-50 rounded-lg">
+                        <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0"><i class="fa-regular fa-calendar text-blue-600 text-xs"></i></div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-800">Konec každého měsíce</p>
+                            <p class="text-xs text-gray-500">Kolik emailů odesláno, kolik odpovědí, kolik návštěv. Pavel shrne, Vít/Jiří dodá čísla.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-start p-3 bg-amber-50 rounded-lg">
+                        <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-arrows-rotate text-amber-600 text-xs"></i></div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-800">Po 3 měsících (červenec 2026)</p>
+                            <p class="text-xs text-gray-500">Co funguje, co ne? Které segmenty reagují? Upravit strategii. Pavel + Jiří + Vít, 1h schůzka.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-start p-3 bg-green-50 rounded-lg">
+                        <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-flag-checkered text-green-600 text-xs"></i></div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-800">Po 6 měsících (říjen 2026)</p>
+                            <p class="text-xs text-gray-500">Celkové vyhodnocení: ROI, pokračovat / změnit. Pavel + Jiří + Vít, 1h schůzka.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-red-50 rounded-lg p-3 text-sm text-red-800">
+                    <i class="fa-solid fa-scale-balanced mr-1"></i>
+                    <strong>Pravidlo:</strong> Pokud po 3 měsících segment nereaguje vůbec (0 odpovědí z 20+ emailů), přesunout energii jinam. Pokud reaguje dobře, zdvojnásobit.
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== SECTION 6: ČAS A ROZPOČET ===================== -->
+        <div class="section-divider bg-gradient-to-r from-gray-400 via-slate-400 to-gray-500" id="cas"></div>
+
+        <section class="mb-8">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-gray-200 flex items-center justify-center">
+                    <i class="fa-solid fa-clock text-gray-600 text-lg"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900">Časová náročnost a rozpočet</h2>
+                    <p class="text-sm text-gray-500">Co kdo dělá a kolik to stojí</p>
+                </div>
+            </div>
+
+            <!-- Person cards -->
+            <div class="grid sm:grid-cols-3 gap-4 mb-6">
+                <!-- Jiří -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+                            <i class="fa-solid fa-user-tie text-blue-600"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-gray-800">Jiří Strnad</p>
+                            <p class="text-xs text-gray-500">Majitel</p>
+                        </div>
+                    </div>
+                    <div class="text-center mb-4">
+                        <p class="text-3xl font-extrabold text-blue-500">~45 min</p>
+                        <p class="text-xs text-gray-500">týdně + osobní schůzky</p>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex gap-2"><i class="fa-solid fa-check text-blue-400 mt-0.5 text-xs"></i><span>Schválení emailů (15 min)</span></li>
+                        <li class="flex gap-2"><i class="fa-solid fa-check text-blue-400 mt-0.5 text-xs"></i><span>Follow-up telefonáty, 2-3 hovory (30 min)</span></li>
+                        <li class="flex gap-2"><i class="fa-solid fa-check text-blue-400 mt-0.5 text-xs"></i><span>Osobní schůzky (individuálně)</span></li>
+                    </ul>
+                </div>
+
+                <!-- Vít -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+                            <i class="fa-solid fa-user text-green-600"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-gray-800">Vít Doležálek</p>
+                            <p class="text-xs text-gray-500">Obchod</p>
+                        </div>
+                    </div>
+                    <div class="text-center mb-4">
+                        <p class="text-3xl font-extrabold text-green-500">~1,5h</p>
+                        <p class="text-xs text-gray-500">týdně (většinu týdnů méně)</p>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex gap-2"><i class="fa-solid fa-check text-green-400 mt-0.5 text-xs"></i><span>Odeslání emailů, 5-10 firem (30 min)</span></li>
+                        <li class="flex gap-2"><i class="fa-solid fa-check text-green-400 mt-0.5 text-xs"></i><span>Follow-up telefonáty (30 min)</span></li>
+                        <li class="flex gap-2"><i class="fa-solid fa-check text-green-400 mt-0.5 text-xs"></i><span>Schválení LinkedIn postů (10 min)</span></li>
+                        <li class="flex gap-2"><i class="fa-solid fa-check text-green-400 mt-0.5 text-xs"></i><span>Dodání fotek 1x měsíčně (15 min)</span></li>
+                    </ul>
+                </div>
+
+                <!-- Pavel -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center">
+                            <i class="fa-solid fa-wand-magic-sparkles text-amber-600"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-gray-800">Pavel Horalík</p>
+                            <p class="text-xs text-gray-500">AI + marketing</p>
+                        </div>
+                    </div>
+                    <div class="text-center mb-4">
+                        <p class="text-3xl font-extrabold text-amber-500">~4-6h</p>
+                        <p class="text-xs text-gray-500">týdně (více na začátku)</p>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex gap-2"><i class="fa-solid fa-check text-amber-400 mt-0.5 text-xs"></i><span>Příprava emailů a obsahu (2-3h)</span></li>
+                        <li class="flex gap-2"><i class="fa-solid fa-check text-amber-400 mt-0.5 text-xs"></i><span>AI identifikace leadů (1-2h)</span></li>
+                        <li class="flex gap-2"><i class="fa-solid fa-check text-amber-400 mt-0.5 text-xs"></i><span>LinkedIn posty + správa (1h)</span></li>
+                        <li class="flex gap-2"><i class="fa-solid fa-check text-amber-400 mt-0.5 text-xs"></i><span>Newsletter (3-4h v daném týdnu)</span></li>
+                        <li class="flex gap-2"><i class="fa-solid fa-check text-amber-400 mt-0.5 text-xs"></i><span>Reporting (30 min)</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Monthly plan timeline -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 mb-5">
+                <h3 class="text-base font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-timeline text-gray-600"></i>
+                    Měsíční přehled: duben - září 2026
+                </h3>
+                <details>
+                    <summary class="text-sm font-semibold text-gray-700 py-2">Zobrazit měsíční plán</summary>
+                    <div class="detail-content mt-3 overflow-x-auto">
+                        <table class="data-table">
+                            <thead><tr><th>Měsíc</th><th>Jiří</th><th>Vít</th><th>Pavel</th><th>Speciální akce</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Duben</strong></td><td>3h</td><td>6h</td><td>20h</td><td>Setup Ecomail + první newsletter + AI identifikace leadů</td></tr>
+                                <tr><td><strong>Květen</strong></td><td>3h</td><td>6h</td><td>16h</td><td>Outreach průmyslové firmy + TS měst</td></tr>
+                                <tr><td><strong>Červen</strong></td><td>3h</td><td>6h</td><td>16h</td><td>Outreach pokračuje + 2. newsletter</td></tr>
+                                <tr><td><strong>Červenec</strong></td><td>2h</td><td>4h + 1h vyhodnocení</td><td>12h</td><td>Vyhodnocení 3 měsíců, úprava strategie</td></tr>
+                                <tr><td><strong>Srpen</strong></td><td>2h</td><td>4h</td><td>12h</td><td>Dovolené. Snížené tempo</td></tr>
+                                <tr><td><strong>Září</strong></td><td>3h + 5h DOD</td><td>6h + 5h DOD</td><td>16h</td><td>3. newsletter + Den otevřených dveří (podzim)</td></tr>
+                            </tbody>
+                        </table>
+                        <p class="text-xs text-gray-500 mt-2"><strong>DOD</strong> = Den otevřených dveří</p>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Budget -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6">
+                <h3 class="text-base font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-coins text-gray-600"></i>
+                    Finanční rozpočet
+                </h3>
+                <div class="grid sm:grid-cols-2 gap-3 mb-3">
+                    <div class="p-4 rounded-xl bg-gray-50 border border-gray-100">
+                        <p class="text-sm font-semibold text-gray-800"><i class="fa-solid fa-envelope text-gray-400 mr-1"></i> Ecomail.cz</p>
+                        <p class="text-lg font-bold text-gray-700">0 - 395 Kč/měsíc</p>
+                        <p class="text-xs text-gray-500">Zdarma do 200 kontaktů, pak Basic 395 Kč</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-gray-50 border border-gray-100">
+                        <p class="text-sm font-semibold text-gray-800"><i class="fa-solid fa-palette text-gray-400 mr-1"></i> Canva Pro</p>
+                        <p class="text-lg font-bold text-gray-700">329 Kč/měsíc</p>
+                        <p class="text-xs text-gray-500">Šablony pro NL, LinkedIn, materiály</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-gray-50 border border-gray-100">
+                        <p class="text-sm font-semibold text-gray-800"><i class="fa-brands fa-linkedin text-gray-400 mr-1"></i> LinkedIn Sales Navigator</p>
+                        <p class="text-lg font-bold text-gray-700">0 Kč (zatím)</p>
+                        <p class="text-xs text-gray-500">Až ve fázi 2, ~2 500 Kč/měsíc</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-gray-50 border border-gray-100">
+                        <p class="text-sm font-semibold text-gray-800"><i class="fa-solid fa-video text-gray-400 mr-1"></i> Video (natočení + střih)</p>
+                        <p class="text-lg font-bold text-gray-700">0 Kč</p>
+                        <p class="text-xs text-gray-500">Telefon + Pavel sestříhá</p>
+                    </div>
+                </div>
+                <div class="bg-green-50 border border-green-200 rounded-xl p-4 text-center">
+                    <p class="text-xs font-semibold text-green-600 uppercase tracking-wider">Celkem měsíčně (bez Pavla)</p>
+                    <p class="text-2xl font-extrabold text-green-700">~400 - 800 Kč</p>
+                    <p class="text-xs text-green-600">Minimální investice do nástrojů</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== SECTION 7: SHRNUTÍ - TOP 5 AKCÍ ===================== -->
+        <div class="section-divider bg-gradient-to-r from-amber-400 via-orange-500 to-red-500" id="shrnuti"></div>
+
+        <section class="mb-10">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center">
+                    <i class="fa-solid fa-rocket text-amber-600 text-lg"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900">Top 5 akcí, se kterými začít HNED</h2>
+                    <p class="text-sm text-gray-500">Konkrétní kroky s termíny a odpovědnostmi</p>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 flex gap-4 items-start segment-card">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center flex-shrink-0">
+                        <span class="text-white font-extrabold text-lg">1</span>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-gray-900 mb-1">Rozeslat 1. newsletter</h3>
+                        <p class="text-sm text-gray-600 mb-2">"5 věcí pro údržbu" + zmínka JIBBI</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full"><i class="fa-regular fa-calendar mr-0.5"></i> Duben 2026</span>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full"><i class="fa-solid fa-user mr-0.5"></i> Pavel pripraví, Vit schvalí, Ecomail rozešle</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2"><i class="fa-solid fa-lightbulb text-amber-400 mr-1"></i> Nejjednodušší start. Databáze existuje, draft je hotový.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 flex gap-4 items-start segment-card">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center flex-shrink-0">
+                        <span class="text-white font-extrabold text-lg">2</span>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-gray-900 mb-1">AI identifikace 20 firem pro Multiloader</h3>
+                        <p class="text-sm text-gray-600 mb-2">Profil "Lačnov": výrobní firmy se zahraničním vlastníkem</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded-full"><i class="fa-regular fa-calendar mr-0.5"></i> Duben 2026</span>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full"><i class="fa-solid fa-user mr-0.5"></i> Pavel</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2"><i class="fa-solid fa-lightbulb text-amber-400 mr-1"></i> Strategicky nejcennější. First mover advantage.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 flex gap-4 items-start segment-card">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center flex-shrink-0">
+                        <span class="text-white font-extrabold text-lg">3</span>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-gray-900 mb-1">Oslovit 10 technických služeb z Vítovy databáze ORPček</h3>
+                        <p class="text-sm text-gray-600 mb-2">Databáze UŽ existuje, stačí napsat a poslat</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full"><i class="fa-regular fa-calendar mr-0.5"></i> Květen 2026</span>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full"><i class="fa-solid fa-user mr-0.5"></i> Pavel pripraví email, Vit pošle</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 flex gap-4 items-start segment-card">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center flex-shrink-0">
+                        <span class="text-white font-extrabold text-lg">4</span>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-gray-900 mb-1">Natočit video zázemí Nivnice (2-3 min, telefonem)</h3>
+                        <p class="text-sm text-gray-600 mb-2">Jednorázová investice, trvalé použití</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full"><i class="fa-regular fa-calendar mr-0.5"></i> Květen 2026</span>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full"><i class="fa-solid fa-user mr-0.5"></i> Jiří/Vít natočí, Pavel sestříhá</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 flex gap-4 items-start segment-card">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-400 to-violet-600 flex items-center justify-center flex-shrink-0">
+                        <span class="text-white font-extrabold text-lg">5</span>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-gray-900 mb-1">Založit LinkedIn firemní stránku + první 2 posty</h3>
+                        <p class="text-sm text-gray-600 mb-2">1 hodina práce, trvalý kanál pro budoucí obsah</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-violet-100 text-violet-700 px-2 py-0.5 rounded-full"><i class="fa-regular fa-calendar mr-0.5"></i> Duben 2026</span>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full"><i class="fa-solid fa-user mr-0.5"></i> Pavel</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <div class="border-t border-gray-200 pt-6 pb-4 text-center">
+            <p class="text-sm text-gray-500">Tento dokument je živý. Budeme ho aktualizovat podle výsledků. Každé 3 měsíce vyhodnotíme, co funguje a co ne, a strategii upravíme.</p>
+            <p class="text-xs text-gray-400 mt-2">Připravil: Pavel Horalík | 26.3.2026</p>
+        </div>
+
     </main>
 </body>
 </html>
