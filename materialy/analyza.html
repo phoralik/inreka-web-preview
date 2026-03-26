@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kompletní analýza a návrhy — Inreka Plošiny</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .prose h1 { font-size: 2rem; font-weight: 800; margin-bottom: 1rem; color: #111; border-bottom: 3px solid #f5a623; padding-bottom: 0.5rem; }
+        .prose h2 { font-size: 1.5rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 0.75rem; color: #1b2d44; }
+        .prose h3 { font-size: 1.15rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #333; }
+        .prose h4 { font-size: 1rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.5rem; }
+        .prose p { margin-bottom: 0.75rem; line-height: 1.7; color: #374151; }
+        .prose ul, .prose ol { margin-bottom: 0.75rem; padding-left: 1.5rem; color: #374151; }
+        .prose li { margin-bottom: 0.35rem; line-height: 1.6; }
+        .prose table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; font-size: 0.9rem; }
+        .prose th { background: #1b2d44; color: white; padding: 10px 12px; text-align: left; font-weight: 600; }
+        .prose td { padding: 8px 12px; border-bottom: 1px solid #e5e7eb; }
+        .prose tr:hover td { background: #fefce8; }
+        .prose blockquote { border-left: 4px solid #f5a623; padding: 0.75rem 1rem; margin: 1rem 0; background: #fffbeb; color: #92400e; }
+        .prose code { background: #f3f4f6; padding: 2px 6px; border-radius: 4px; font-size: 0.87rem; }
+        .prose pre { background: #1e293b; color: #e2e8f0; padding: 1rem; border-radius: 8px; overflow-x: auto; margin-bottom: 1rem; }
+        .prose pre code { background: transparent; padding: 0; color: inherit; }
+        .prose hr { border: none; border-top: 2px solid #e5e7eb; margin: 2rem 0; }
+        .prose strong { color: #111; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <nav class="bg-gray-900 text-white py-3 px-6 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto flex items-center justify-between">
+            <a href="../" class="text-yellow-400 font-bold hover:text-yellow-300">← Zpět na přehled</a>
+            <span class="text-gray-400 text-sm">Inreka Plošiny — Materiály</span>
+        </div>
+    </nav>
+    <main class="max-w-5xl mx-auto px-6 py-10">
+        <div class="prose max-w-none">
+            <h1>Inreka Plosiny Servis — Komplexni analyza a navrhy</h1>
+<p><strong>Pripravil: Pavel Horalik | Datum: 24.3.2026</strong></p>
+<hr />
+<h2>CAST 0: PROFIL FIRMY (aktualizovany po schuzce 19.2.2026)</h2>
+<h3>Zakladni udaje</h3>
+<ul>
+<li><strong>Firma:</strong> INREKA PLOSINY SERVIS, s.r.o.</li>
+<li><strong>Sidlo:</strong> Nivnice u Uherskeho Brodu</li>
+<li><strong>Web:</strong> https://www.inrekaplosinyservis.cz</li>
+<li><strong>Cinnost:</strong> Vyroba, prodej, servis a pronajem pracovnich plosin</li>
+<li><strong>Tradice:</strong> 25+ let vyroby plosin na Morave</li>
+<li><strong>Klicovi lide:</strong> Jiri Strnad (majitel), Vit Dolezalek (obchod/zahranici)</li>
+<li><strong>Tym:</strong> maly (~10 lidi), obchod delaji fakticky 2 lide</li>
+<li><strong>Dalsi cinnosti:</strong> BOZP skoleni (Jozka, Martina) — desitky firem, stovky/tisice proskolenich lidi</li>
+<li><strong>Informacni system:</strong> Vlastni IS (funguje dobre), ALE modul nabidek 2 roky ceka na upgrade (nepodari se dostat za vyvojarem)</li>
+</ul>
+<h3>Klicove insighty ze schuzky 19.2.2026</h3>
+<ul>
+<li><strong>90% uspesnost pri osobni navsteve</strong> — zakaznik prijede, vidi zazemeni, servis, plosiny na dvore → 90% uzavreni obchodu</li>
+<li><strong>Jedna sance na nabidku</strong> — zakaznik neda druhou sanci. Nabidka musi byt perfektni napoprve, jinak "zapomene a uz se s tebou nebavi"</li>
+<li><strong>AI nenahrazuje, rozsiruje kapacity</strong> — "delame toho vic ve stejnem poctu, protoze nam pomaha" (Jiri Strnad)</li>
+<li><strong>Postup opatrne, metoda pokus-omyl</strong> — "nechceme si posrat jmeno" (Vit). Kazdy krok musi byt overeny, kvalitni</li>
+<li><strong>Spatne zkusenosti s externisty</strong> — za roky se "vytocilo x subjektu" co slibovali dotace a vsechno zaridi, nikdy nic nedotahli. Inreka je opatrna vuci externim slibum</li>
+<li><strong>Rozhodovaci proces u zakazniku je nepredvidatelny</strong> — nekdy rozhoduje vedouci udrzby, nekdy reditel, nekdy "Prazak z centraly". Tezko identifikovat decision makera</li>
+<li><strong>Dodavky podvozku jako bottleneck</strong> — Mercedes, Ford, Ranger se zpozduji (kveten → rijen). Neovlivnitelne, ale zpusobuje nerovnomerny chod firmy</li>
+</ul>
+<h3>Multitel telemetrie (dulezite pro knowledge base)</h3>
+<p>Kazda masina Multitel ma zabudovanou <strong>telemetrii</strong>. Stavajici technik:
+1. Zakaznik zavola s problemem
+2. Technik se podiva, nacte <strong>chybova hlaseni</strong> na dalku
+3. Kdyz nevi, <strong>pise do Multitelu</strong> (vyrobce)
+4. Multitel se <strong>pripoji vzdaleně</strong>, poradi, nastavi
+5. Problem vyresen bez fyzickeho vyjezdu</p>
+<p>→ Toto je zaklad pro budouci <strong>knowledge base</strong> — sbirani chybovych kodu a reseni do databaze</p>
+<h3>Vyhradni zastoupeni pro CR a SR</h3>
+<table>
+<thead>
+<tr>
+<th>Znacka</th>
+<th>Zeme</th>
+<th>Segment</th>
+<th>Spoluprace</th>
+<th>Poznamka</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Isoli</strong></td>
+<td>Italie</td>
+<td>Plosiny na podvozcich (dodavky, nakladaky)</td>
+<td>17 let, 500-600 ks dodano</td>
+<td>PT140 az PNT240, 14-24m. Firma prosla krizí (kolaps, odkoupeni Francouzi, dalsi problemy). Prezila, ale nestabilni historie</td>
+</tr>
+<tr>
+<td><strong>Multitel Pagliero</strong></td>
+<td>Italie (Piemont)</td>
+<td>Velke plosiny na podvozcich</td>
+<td>Od 2021</td>
+<td>Nejvetsi EU vyrobce, 13-77.5m, telemetrie v kazde masine, 2500 malych/rok. Piemont (ne jizani) = zodpovednost. Inreka je ve skupine top dealeru, konzultuje vyvoj</td>
+</tr>
+<tr>
+<td><strong>Platform Basket</strong></td>
+<td>Italie</td>
+<td>Samohybne pasove plosiny (Spider)</td>
+<td>Od 2019 (Bauma), 140 ks prodano</td>
+<td>Spider 13.80 az Spider 43T, pasove s dosahemi 13-43m</td>
+</tr>
+<tr>
+<td><strong>AlmaCrawler (Almac)</strong></td>
+<td>Italie (Viadana/Guastalla)</td>
+<td>Pasove plosiny JIBBI + Multiloadery</td>
+<td>NOVE (2025/2026)</td>
+<td>Bez podper, variabilni sirka pasu, JIBBI + Multiloader</td>
+</tr>
+<tr>
+<td><strong>KLUBB France</strong></td>
+<td>Francie</td>
+<td>Dodavkove plosiny</td>
+<td>?</td>
+<td>KL32, KL38P, K42P — 12.5 az 15m na dodavkach</td>
+</tr>
+<tr>
+<td><strong>IMER Group / VEMA</strong></td>
+<td>Italie/Finsko</td>
+<td>Hasicske plosiny</td>
+<td>?</td>
+<td>VEMA 32F az 60F — specialni hasicske</td>
+</tr>
+<tr>
+<td><strong>Slovacke Strojirny</strong></td>
+<td>CR</td>
+<td>Vlastni vyroba + repase</td>
+<td>Historicka</td>
+<td>Modely MP13, MP16, MP27</td>
+</tr>
+</tbody>
+</table>
+<h3>Kompletni portfolio produktu (z webu + schuzky)</h3>
+<p><strong>Plosiny do 3,5t (20 modelu):</strong> PK 14-7, ALU 145, PT160, PT160J, MT162EX, MXE170, PT180, PT190J, PT200, PT200J, HX200EX, PNT200HE3, MT204EX, PNT215, MJ226, PT230, MJE250, MZ250, MTE270, MX250 — dosah 14-27m</p>
+<p><strong>Plosiny nad 3,5t (10 modelu):</strong> PT190J, PNT230, MX290, MZ350, MJ375, MJ450, MJ525, MJ600, MJ700, MJ750 — dosah 19-75m</p>
+<p><strong>Samohybne/pasove (12 modelu):</strong> SMX 170, SMX 250, Spider 13.80 az Spider 43T, JIBBI 1670 EVO — dosah 13-43m</p>
+<p><strong>Dodavkove:</strong> KL32, KL38P, KL42P (KLUBB) — dosah 12.5-15m</p>
+<p><strong>Hasicske:</strong> VEMA 32F, 42F, 45F, 60F — dosah 32-60m</p>
+<p><strong>Repase a prestavby:</strong> Vlastni vyroba, generalni opravy, prestavby starsi techniky</p>
+<h3>Zakaznici (z webu - reference)</h3>
+<ul>
+<li>CEZ, a.s. a E.ON, a.s.</li>
+<li>Zapadoslovenska, Stredoslovenska, Vychodoslovenska energetika</li>
+<li>Elektromontazni firmy</li>
+<li>Technicke sluzby mest a obci</li>
+<li>Klempiri, natraci, pokryvaci</li>
+<li>Pujcovny pracovnich plosin</li>
+<li>Stovky servisovanych plosin</li>
+</ul>
+<hr />
+<h2>CAST 1: AUTOMATIZOVANY PREKLAD MANUALU</h2>
+<h3>Co mame k dispozici</h3>
+<table>
+<thead>
+<tr>
+<th>Soubor</th>
+<th>Jazyk</th>
+<th>Format</th>
+<th>Velikost</th>
+<th>Stran</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AAA_U&amp;M_JIBBI_1250_1670_2025-09_CZ.pdf</td>
+<td>Cestina</td>
+<td>PDF</td>
+<td>19.7 MB</td>
+<td>150</td>
+</tr>
+<tr>
+<td>AAA_U&amp;M_JIBBI_1250_1670_2025-09_EN.pdf</td>
+<td>Anglictina</td>
+<td>PDF</td>
+<td>20.1 MB</td>
+<td>149</td>
+</tr>
+<tr>
+<td>JIBBI_1250_1270_1570_1670_2024-07_complet.docx</td>
+<td>Anglictina</td>
+<td>DOCX</td>
+<td>43.8 MB</td>
+<td>~180</td>
+</tr>
+</tbody>
+</table>
+<h3>Analyza DOCX (klicovy soubor pro preklad)</h3>
+<ul>
+<li><strong>386 obrazku</strong> (204 PNG + 182 JPEG) — obrázky se NEPREKLADAJI, zustavaji</li>
+<li><strong>~45 847 slov</strong> anglickeho textu</li>
+<li><strong>~15 687 odstavcu</strong></li>
+<li><strong>116 tabulek</strong> (technicke udaje, parametry)</li>
+<li><strong>Struktura:</strong> 12 hlavnich kapitol (obecne info, technicke udaje, bezpecnost, obsluha, udrzba, likvidace, CE prohlaseni, evidence kontrol, schemata)</li>
+</ul>
+<h3>Navrzeny prekladovy pipeline</h3>
+<h4>VARIANTA A: "Chytry" AI preklad pres DOCX (DOPORUCENA)</h4>
+<pre><code>VSTUP: Anglicky DOCX od vyrobce
+         |
+    [1] Extrakce textu z DOCX XML
+         - python-docx knihovna
+         - Zachovani vsech run/paragraph/table struktur
+         - Identifikace textu vs. cisla vs. znacky (neprekladat)
+         |
+    [2] Sestaveni glosare z existujiciho CZ/EN paru
+         - Porovnani CZ PDF vs EN PDF (uz mame oba!)
+         - Extrakce terminologickych paru automaticky
+         - Napr: &quot;turret&quot; = &quot;vez&quot;, &quot;track&quot; = &quot;pas&quot;, &quot;jib&quot; = &quot;vloznik&quot;
+         - &quot;slewing ring&quot; = &quot;otocne lozisko&quot;, &quot;outreach&quot; = &quot;dosah&quot;
+         - Cca 200-500 odbornych terminu
+         |
+    [3] AI preklad po blocich s kontextem
+         - Claude/GPT s glosarem jako system prompt
+         - Preklad po odstavcich (zachovani formatovani)
+         - Technicke tabulky: pouze nazvy radku, cisla zustavaji
+         - Bezpecnostni varovani: zvlastni pozornost na presnost
+         |
+    [4] Zpetne vlozeni do DOCX
+         - Nahrazeni anglickych textu ceskymi v XML
+         - Zachovani VSECH: fonty, styly, tabulky, obrazky, hlavicky
+         - Zachovani cislovani stran (STRANA vs PAGE)
+         |
+    [5] Human review (Vit/Jiri)
+         - Kontrola 5-10 klicovych terminu
+         - Oprava specifickych vyrazu firmy
+         - Schvaleni
+         |
+VYSTUP: Cesky DOCX → export do PDF
+</code></pre>
+<p><strong>Casovy odhad prvniho prekladu:</strong> 4-8 hodin prace (vcetne sestaveni glosare)
+<strong>Kazdy dalsi manual:</strong> 2-4 hodiny (glosar uz existuje)</p>
+<h4>VARIANTA B: Jednodussi pristup pro zakatek</h4>
+<p>Pro PRVNI testovaci preklad (manualu Almac multiloader, ktery bude kratsi):</p>
+<pre><code>1. Vit posle EN DOCX manualu multiloaderu
+2. Pavel ho projene pres Claude s glosarem
+3. Vysledek preda Vitovi ke kontrole
+4. Opravy se zapracuji do glosare
+5. Hotovo za 2-4 hodiny
+</code></pre>
+<h3>Glosar — zaklad (extrahovan z CZ/EN manualu JIBBI)</h3>
+<table>
+<thead>
+<tr>
+<th>English</th>
+<th>Cestina</th>
+<th>Poznamka</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Aerial work platform / PLE</td>
+<td>Zdvihaci pracovni plosina</td>
+<td>Oficialní termin</td>
+</tr>
+<tr>
+<td>Track</td>
+<td>Pas</td>
+<td>Pasovy podvozek</td>
+</tr>
+<tr>
+<td>Track width / gauge</td>
+<td>Rozchod</td>
+<td>Sirka pasu</td>
+</tr>
+<tr>
+<td>Turret</td>
+<td>Vez</td>
+<td>Otocna cast</td>
+</tr>
+<tr>
+<td>Slewing ring</td>
+<td>Otocne lozisko</td>
+<td></td>
+</tr>
+<tr>
+<td>Main arm</td>
+<td>Hlavni rameno</td>
+<td></td>
+</tr>
+<tr>
+<td>Telescopic arm</td>
+<td>Teleskopicke rameno</td>
+<td>Vysuvny dil</td>
+</tr>
+<tr>
+<td>Jib</td>
+<td>Vloznik</td>
+<td></td>
+</tr>
+<tr>
+<td>Platform</td>
+<td>Plosina</td>
+<td>Pracovni kosik</td>
+</tr>
+<tr>
+<td>Outreach</td>
+<td>Dosah</td>
+<td>Horizontalni</td>
+</tr>
+<tr>
+<td>Working height</td>
+<td>Pracovni vyska</td>
+<td></td>
+</tr>
+<tr>
+<td>Translation (movement)</td>
+<td>Posuvny pohyb</td>
+<td>Pozor: NE "preklad"!</td>
+</tr>
+<tr>
+<td>Levelling</td>
+<td>Regulace vysky / nivelace</td>
+<td></td>
+</tr>
+<tr>
+<td>Dead man system</td>
+<td>System pro pripad nehody</td>
+<td></td>
+</tr>
+<tr>
+<td>Emergency stop</td>
+<td>Nouzove zastaveni</td>
+<td></td>
+</tr>
+<tr>
+<td>Overload</td>
+<td>Pretizeni</td>
+<td></td>
+</tr>
+<tr>
+<td>Hydraulic oil</td>
+<td>Hydraulicky olej</td>
+<td></td>
+</tr>
+<tr>
+<td>Traction battery</td>
+<td>Trakcni baterie</td>
+<td></td>
+</tr>
+<tr>
+<td>Crawler</td>
+<td>Pasovy (podvozek)</td>
+<td></td>
+</tr>
+<tr>
+<td>Stabilizer / outrigger</td>
+<td>Podpera / stabilizator</td>
+<td>AlmaCrawler je NEMA</td>
+</tr>
+<tr>
+<td>Ground clearance</td>
+<td>Svetla vyska podvozku</td>
+<td></td>
+</tr>
+<tr>
+<td>Load capacity</td>
+<td>Nosnost</td>
+<td></td>
+</tr>
+<tr>
+<td>Wiring diagram</td>
+<td>Schema zapojeni</td>
+<td></td>
+</tr>
+<tr>
+<td>Hydraulic scheme</td>
+<td>Hydraulicke schema</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3>Nastroje pro implementaci</h3>
+<table>
+<thead>
+<tr>
+<th>Nastroj</th>
+<th>Ucel</th>
+<th>Cena</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>python-docx</strong></td>
+<td>Cteni/zapis DOCX, zachovani formatovani</td>
+<td>Zdarma</td>
+</tr>
+<tr>
+<td><strong>Claude API</strong></td>
+<td>Preklad textu s glosarem a kontextem</td>
+<td>~$5-15 za manual</td>
+</tr>
+<tr>
+<td><strong>DeepL API</strong></td>
+<td>Alternativa/kontrola prekladu</td>
+<td>~$25/mesic</td>
+</tr>
+<tr>
+<td><strong>LibreOffice</strong></td>
+<td>DOCX → PDF konverze</td>
+<td>Zdarma</td>
+</tr>
+</tbody>
+</table>
+<h3>Dulezite: Co NEPREKLADAT</h3>
+<ul>
+<li>Cisla, jednotky (m, kg, bar, kW, dB)</li>
+<li>Nazvy modelu (JIBBI 1250, Yanmar 3TNM68-AS)</li>
+<li>Znacky (ALMAC, AlmaCrawler)</li>
+<li>Schemata a diagramy (jsou obrazky)</li>
+<li>CE prohlaseni (pravni dokument — konzultovat)</li>
+</ul>
+<hr />
+<h2>CAST 2: NENASILNA MARKETINGOVA STRATEGIE</h2>
+<h3>Situace (ze schuzky)</h3>
+<ul>
+<li>Marketing <strong>prakticky nedelaji</strong> — "minimum, naprosto minimum proaktivne"</li>
+<li>Jsou <strong>dva na vsechno</strong> (Jiri + Vit)</li>
+<li>Cold calling nefunguje (lidi jsou vytoceni z telesalesu)</li>
+<li>Hromadny email nefunguje (priklad: kolega Polonsky dostal zadani FV firmy, poslal 200-300 mailu = 1-2 odezvy, zadny obchod)</li>
+<li>Cilova skupina: "chlapy z provozu, daleko k pocitaci"</li>
+<li>Jedna sance na nabidku — musi byt perfektni napoprve</li>
+<li>Chteji: "nenasilna forma, pokud mozno co nejmene nasi prace, aby to jelo samo na pozadi"</li>
+<li><strong>Zakaznik prijede osobne → 90% uspech</strong> — zazemeni, plosiny na dvore, servis → prodej. Marketing by mel smerovat k OSOBNI NAVSTEVE</li>
+<li><strong>Jiz existuji dve databaze:</strong> (1) Vitova databaze technickych sluzeb z ORPcek (8 z 13 kraju), (2) emailova historie firmy</li>
+<li>Zakaznici nekdy hledaji sami na webu a oslovi Inreku primo — web je dulezity kanal</li>
+</ul>
+<h3>Strategicky ramec</h3>
+<p><strong>Cil marketingu NENI</strong> masovy reach. Cil je:
+1. <strong>Zustat v povedomi</strong> existujicim kontaktum (newsletter)
+2. <strong>Dostat zakaznika na navstevu</strong> do Nivnice (90% konverze!)
+3. <strong>Byt nalezitelny</strong> na webu kdyz nekdo hleda (SEO, chatbot, FAQ)
+4. <strong>Neznicit reputaci</strong> — "nechceme si posrat jmeno" (Vit)</p>
+<h3>Navrh: "Hodnotovy newsletter" + systematicke osloveni</h3>
+<h4>Princip</h4>
+<p>Neposílat reklamu. Posilat HODNOTU. Zakaznik si odnese neco uzitecneho a ZÁROVEŇ vidi, ze Inreka existuje a umi.</p>
+<h4>Frekvence</h4>
+<p>1x za 2-3 mesice (MAX). Radsi mene a kvalitne nez casto a otravne.</p>
+<h4>Format</h4>
+<p>Kratky email (max 2 minuty cteni) s:
+- 1 uzitecna informace / tip
+- 1-2 fotky (nova masina, zajimava zakazka, akce)
+- Diskretni CTA ("Mate dotaz? Ozvete se.")</p>
+<h4>Obsahove napady (12 mesicu dopredu)</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Tema</th>
+<th>Hodnota pro zakaznika</th>
+<th>Skryty cil</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>"5 veci, ktere prodlouzi zivotnost vasi plosiny"</td>
+<td>Usetri penize za opravy</td>
+<td>Ukazat servisni expertizu</td>
+</tr>
+<tr>
+<td>2</td>
+<td>"Nova legislativa revizi 2026 — co se meni"</td>
+<td>Informuje o povinnostech</td>
+<td>Pripomenout servis/revize</td>
+</tr>
+<tr>
+<td>3</td>
+<td>"Fotoreportaz: dodavka pro [zakaznik]"</td>
+<td>Inspirace, co je mozne</td>
+<td>Ukazat reference</td>
+</tr>
+<tr>
+<td>4</td>
+<td>"Jak vybrat plosinu na terenimu podkladu"</td>
+<td>Prakticka rada</td>
+<td>Ukazat portfolio (4x4, pasky)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>"Novinka v sortimentu: AlmaCrawler JIBBI"</td>
+<td>Informace o novem produktu</td>
+<td>Prodat novou znacku</td>
+</tr>
+<tr>
+<td>6</td>
+<td>"Zimni udrzba plosiny — checklist"</td>
+<td>Sezonni relevance</td>
+<td>Nabidnout servis pred zimou</td>
+</tr>
+</tbody>
+</table>
+<h4>Sber kontaktu</h4>
+<ul>
+<li>Z existujici Vitovy databaze (ORPcky, technicke sluzby)</li>
+<li>Z navstevniku webu (formular "Chci odebírat novinky")</li>
+<li>Z veletrhu kontaktu</li>
+<li>Z emailove historie firmy</li>
+</ul>
+<h4>Nastroje</h4>
+<ul>
+<li><strong>Ecomail.cz</strong> nebo <strong>Mailchimp</strong> — cesky nastroj na newslettery, GDPR compliant</li>
+<li><strong>Canva</strong> — sablona emailu ve firemnim stylu (jednou udelat, pak jen menit obsah)</li>
+<li><strong>AI (Claude)</strong> — generovani draftu obsahu, Pavel zkontroluje, Vit/Jiri schvali</li>
+</ul>
+<h4>Casova narocnost pro Inreku</h4>
+<ul>
+<li>Prvni nastaveni: 4-6 hodin (sablona, import kontaktu)</li>
+<li>Kazdy newsletter: 30-60 minut Vitova/Jirkova casu (schvaleni obsahu + dodani fotek)</li>
+<li>Zbytek pripravi Pavel</li>
+</ul>
+<h3>Doplnek: LinkedIn profil firmy</h3>
+<ul>
+<li>Inreka pravdepodobne nema aktivni LinkedIn</li>
+<li>Zalozit firemni stranku</li>
+<li>1-2 posty mesicne (foto hotove zakazky, novinka, veletrh)</li>
+<li>Cil: byti videt pro B2B rozhodovace (vedouci udrzby, technicti reditele)</li>
+</ul>
+<h3>Doplnek: FAQ / caste dotazy ke kazdemu typu plosiny</h3>
+<p><strong>Napad primo ze schuzky</strong> (Vit navrhl): Ke kazdemu modelu/typu plosiny pripravit sadu FAQ:
+- Zakladni technicke parametry (dosah, nosnost, hmotnost, typ pohonu)
+- "Projede dvermi?" / "Potrebuje podpery?" / "Na jake podloze muze stat?"
+- Inspirace: <strong>Multitel piktogramy</strong> — na 2 strankach vidis vsechno bez sloziteho popisu
+- Vyuziti: na webu, jako podklad pro chatbota, v nabidkach, v emailech zakaznikum
+- <strong>AI muze vygenerovat draft</strong> z existujicich datasheetu a manualu → Vit/Jiri zkontroluje</p>
+<h3>Doplnek: Sledovani legislativy</h3>
+<p>Ze schuzky: Vit zmínil, ze by bylo uzitecne <strong>sledovat legislativni zmeny</strong> relevantni pro provoz plosin:
+- Normy (CSN/EN), zmeny v revizich, bezpecnostni predpisy
+- AI muze monitorovat a shrnovat zmeny → Inreka bude mit prehled driv nez konkurence
+- Toto se da spojit s newsletterem (tema #2: "Nova legislativa revizi 2026")</p>
+<hr />
+<h2>CAST 3: IDENTIFIKACE ZAKAZNICKYCH SEGMENTU</h2>
+<h3>3A: Segmenty pro CELE portfolio Inreky</h3>
+<h4>Primarni segmenty (uz obsluhuje)</h4>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Produkt Inreky</th>
+<th>Potencial</th>
+<th>Poznamka</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Energetika (CEZ, E.ON, SK distributori)</strong></td>
+<td>Plosiny na podvozcich (Isoli, Multitel) do 27m</td>
+<td>VYSOKY, jiz obsluhuje</td>
+<td>Stovky servisovanych plosin</td>
+</tr>
+<tr>
+<td><strong>Elektromontazni firmy</strong></td>
+<td>Plosiny do 3,5t (Isoli PT-serie)</td>
+<td>VYSOKY</td>
+<td>Hlavni zakaznicka baze</td>
+</tr>
+<tr>
+<td><strong>Technicke sluzby mest/obci</strong></td>
+<td>Plosiny do 3,5t, dodavkove (KLUBB)</td>
+<td>STREDNI</td>
+<td>Vit uz ma databazi z ORPcek</td>
+</tr>
+<tr>
+<td><strong>Pujcovny plosin</strong></td>
+<td>Vsechny typy</td>
+<td>STREDNI</td>
+<td>Kupuji ve vetsim</td>
+</tr>
+</tbody>
+</table>
+<h4>Sekundarni segmenty (prostor pro rust)</h4>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Produkt Inreky</th>
+<th>Potencial</th>
+<th>Jak oslovit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Stavebni firmy</strong></td>
+<td>Spider (Platform Basket), JIBBI (Almac)</td>
+<td>VYSOKY</td>
+<td>Pasove plosiny pro stavebniste — bez podper!</td>
+</tr>
+<tr>
+<td><strong>Telekomunikace</strong></td>
+<td>Dodavkove (KLUBB), do 3,5t</td>
+<td>STREDNI</td>
+<td>Udrzba antennich veži, 5G infrastruktura</td>
+</tr>
+<tr>
+<td><strong>Verejne osvetleni</strong></td>
+<td>Dodavkove (KLUBB), do 3,5t</td>
+<td>STREDNI</td>
+<td>Kazde mesto/obec</td>
+</tr>
+<tr>
+<td><strong>Sprava budov / facility management</strong></td>
+<td>Spider, JIBBI (kompaktni)</td>
+<td>STREDNI</td>
+<td>Cisteni fasad, udrzba budov</td>
+</tr>
+<tr>
+<td><strong>Fotovoltaika</strong></td>
+<td>Plosiny do 3,5t</td>
+<td>STREDNI-NIZKY</td>
+<td>Boom z 2022-23 utichol, ale instalace pokracuji</td>
+</tr>
+<tr>
+<td><strong>Hasici / IZS</strong></td>
+<td>VEMA hasicske (32-60m)</td>
+<td>SPECIALNI</td>
+<td>Stale aktualni segment, dlouhe tendry</td>
+</tr>
+</tbody>
+</table>
+<h4>Nove / neobjevene segmenty</h4>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Produkt Inreky</th>
+<th>Potencial</th>
+<th>Proc to dava smysl</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Prumyslove firmy (interni manipulace)</strong></td>
+<td>AlmaCrawler Multiloader</td>
+<td>VYSOKY</td>
+<td>Viz pripad Tlacnov — firma sama netusila, ze to existuje</td>
+</tr>
+<tr>
+<td><strong>Logistika / sklady</strong></td>
+<td>Multiloader 1.5-6.0 FX/RT/BL</td>
+<td>STREDNI</td>
+<td>Manipulace s tezkymi predmety v uzavrenyh prostorech</td>
+</tr>
+<tr>
+<td><strong>Zemedelstvi</strong></td>
+<td>Spider (orez stromu), plosiny na podvozcich</td>
+<td>NIZKY-STREDNI</td>
+<td>Sezonni prace, mensi budget</td>
+</tr>
+<tr>
+<td><strong>Filmovy / eventkovy prumysl</strong></td>
+<td>Spider (kompaktni), Multiloader</td>
+<td>NIZKY</td>
+<td>Specificke projekty, zajimava reference</td>
+</tr>
+<tr>
+<td><strong>Ocelove konstrukce / mosty</strong></td>
+<td>Velke plosiny Multitel (MJ450-MJ750)</td>
+<td>SPECIALNI</td>
+<td>Inspekce mostu, montaz OK</td>
+</tr>
+</tbody>
+</table>
+<h3>3B: Segmenty specificky pro AlmaCrawler (novy partner)</h3>
+<h4>JIBBI serie (pasove plosiny 12-16m bez podper)</h4>
+<p><strong>Klicova konkurencni vyhoda:</strong> Variabilni sirka pasu (JIBBI 1250: 1.15-1.95m, JIBBI 1670: 1.35-2.45m) — projede uzkymi prujezdy, nevyzaduje podpery.</p>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Proc JIBBI</th>
+<th>Konkretni situace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Restaurovani / pamatkova pece</strong></td>
+<td>Uzke ulicky, krehke povrchy</td>
+<td>Historicka centra mest, kostely</td>
+</tr>
+<tr>
+<td><strong>Interier velkych budov</strong></td>
+<td>Projede dvermi (1.15m!), neposkobuji podlahu</td>
+<td>Nakupni centra, letistni haly, vystavni haly</td>
+</tr>
+<tr>
+<td><strong>Zahrady / parky</strong></td>
+<td>Nenici travnik (gumove pasy)</td>
+<td>Udrzba vysokych stromu ve mestech</td>
+</tr>
+<tr>
+<td><strong>Prumyslova udrzba</strong></td>
+<td>Kompaktni, bez podper</td>
+<td>Udrzba ve fabrikach, cisteni</td>
+</tr>
+<tr>
+<td><strong>Solární parky</strong></td>
+<td>Tereni pasovy podvozek</td>
+<td>Instalace/udrzba panelu na neupravenem terenu</td>
+</tr>
+</tbody>
+</table>
+<h4>Multiloader serie (pasove nosce na DO, 1.5-6t)</h4>
+<p><strong>Uplne novy produkt pro cesky trh</strong> — nikdo to tu nenabizi.</p>
+<p>Modely dle webu AlmaCrawler:
+- Multiloader 1.5 FX (1.5t)
+- Multiloader 3.0 FX / RT / BL (3t)
+- Multiloader 6.0 BL (6t)</p>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Proc Multiloader</th>
+<th>Konkretni situace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hasici / IZS</strong></td>
+<td>Vytazeni horicich aut z podzemich garazi</td>
+<td>Dalky ovladany, neohrozuje hasice</td>
+</tr>
+<tr>
+<td><strong>Povodne / katastrofy</strong></td>
+<td>Preprava materialau v tezkych podminkach</td>
+<td>Pasovy podvozek, 1-6t nosnost</td>
+</tr>
+<tr>
+<td><strong>Vyrobni firmy</strong></td>
+<td>Preprava tezkych polotovaru v halach</td>
+<td>Viz pripad Tlacnov nize</td>
+</tr>
+<tr>
+<td><strong>Sklady / logistika</strong></td>
+<td>Manipulace tam, kde vysokozdvih neprojede</td>
+<td>Uzke uličky, neurovnany teren</td>
+</tr>
+<tr>
+<td><strong>Kamenolomy / doly</strong></td>
+<td>Preprava na neupravenem terenu</td>
+<td>Extremni podminky</td>
+</tr>
+<tr>
+<td><strong>Stavebnictvi</strong></td>
+<td>Preprava materialu na stavebniste bez cest</td>
+<td>Tereny prace</td>
+</tr>
+</tbody>
+</table>
+<h4>Pripad z praxe: Tlacnov (prvni zakaznik na Multiloader)</h4>
+<p>Vyrobni firma v Tlacnove (holandskeho vlastnika), maji masiny za miliony EUR:
+- <strong>Problem:</strong> Prevazeli 6m late vysokozdvihem. Po hasicske kontrole rozdelili halu na 3 pozarni useky (nove steny). Vysokozdvih uz neprojede — nemuze jet podelne.
+- <strong>Jak nasli Almac:</strong> Hledali sami na internetu, dostali se na AlmaCrawler, ti je prehodili na Inreku (lokalni servis)
+- <strong>Proc chteli lokalniho dodavatele:</strong> Uz si prosli tim, ze koupili primo od Italiu a servis byl nemozny
+- <strong>Klicovy insight (Jiri Strnad):</strong> "Nas by NIKDY nenapadlo, ze takovy zakaznik muze potrebovat multiloader. Takovych firem muze byt v republice 100."
+- → Toto je idealni <strong>use case pro AI identifikaci zakazniku</strong> — firmy, ktere ani nevi, ze reseni existuje</p>
+<h4>Dalsi AlmaCrawler produkty (z webu, ktere Inreka MUZE nabidnout)</h4>
+<p><strong>BIBI serie (pasove nuzky):</strong> BIBI 850-BL az BIBI 1490 — nuzková plosiny na pasech
+<strong>BA-LINE (kloubove):</strong> B1570-A, B2190-A, B2490-A — vetsi kloubove pasove
+<strong>BT-LINE:</strong> B1570 VISUAL, B1890 QUICK-PRO
+<strong>CRANE-LINE:</strong> T-CRANE 1060, TJ-CRANE 1060, M-CRANE 1030 RT — jeraby na pasech!
+<strong>ALMACTECH AJ-LINE:</strong> AJ 15 ELC, AJ 17 ELC — elektricke</p>
+<p>→ <strong>Doporuceni:</strong> Probrat s Almac, ktere dalsi modely muze Inreka nabizet v ramci vyhradniho zastoupeni. Rada CRANE je velmi zajimava pro cesky trh.</p>
+<hr />
+<h2>CAST 4: PRUZKUM TRHU — KONKURENCE V CR/SK</h2>
+<h3>Hlavni konkurenti Inreky</h3>
+<table>
+<thead>
+<tr>
+<th>Firma</th>
+<th>Sidlo</th>
+<th>Zameceni</th>
+<th>Znacky</th>
+<th>Pozice na trhu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ROTHLEHNER</strong></td>
+<td>Praha (Horni Pocernice)</td>
+<td>Prodej + pronajem + servis</td>
+<td><strong>Haulotte</strong> (30-50% EU trhu!), PB Lifttechnik, Europe Lift, Denkalift</td>
+<td><strong>Nejvetsi hrac</strong> — 4500+ plosin prodanych od 1992, nemecka skupina</td>
+</tr>
+<tr>
+<td><strong>STATECH / mateco</strong></td>
+<td>Dolni Berkovice, pobocky v 6 mestech</td>
+<td>Pronajem + prodej</td>
+<td>Safelift, ruzne</td>
+<td><strong>Nejvetsi pujcovna</strong> — 17000 zakazniku, od 1.1.2026 soucasti mateco (DE)</td>
+</tr>
+<tr>
+<td><strong>Inreka Plosiny s.r.o.</strong></td>
+<td>?</td>
+<td>Vyroba plosin</td>
+<td>Vlastni znacka INREKA</td>
+<td>Pozor — JINA firma nez Inreka Plosiny Servis! Vyrabce.</td>
+</tr>
+<tr>
+<td><strong>Rental plosiny s.r.o.</strong></td>
+<td>CR</td>
+<td>Prodej + pronajem</td>
+<td>?</td>
+<td>Mensi hrac</td>
+</tr>
+<tr>
+<td><strong>Plosiny Rybacek</strong></td>
+<td>CR</td>
+<td>Prodej + pronajem</td>
+<td>?</td>
+<td>25+ let na trhu</td>
+</tr>
+<tr>
+<td><strong>Plosiny Muller</strong></td>
+<td>CR</td>
+<td>Pronajem</td>
+<td>?</td>
+<td>Regionalni pujcovna</td>
+</tr>
+</tbody>
+</table>
+<h3>Globalni vyrobci na ceskem trhu (importeri)</h3>
+<ul>
+<li><strong>Haulotte</strong> (FR) — pres ROTHLEHNER, dominantni na EU trhu</li>
+<li><strong>JLG</strong> (US) — ruzni dealeri</li>
+<li><strong>Genie / Terex</strong> (US) — ruzni dealeri</li>
+<li><strong>Manitou</strong> (FR) — 1050 dealeru svetove</li>
+<li><strong>Palfinger</strong> (AT) — vlastni sit</li>
+<li><strong>Sinoboom</strong> (CN) — nova cinska konkurence, rostouci</li>
+</ul>
+<h3>Cinska konkurence — rostouci hrozba (ze schuzky)</h3>
+<p>Jiri Strnad a Vit Dolezalek vnimaji cinskou konkurenci jako <strong>strategickou hrozbu</strong>:</p>
+<ul>
+<li><strong>Bauma 2019:</strong> Cinske vyrobky jeste "hodne remeslne", malo vystavovatelyu, jasny rozdil v kvalite</li>
+<li><strong>Bauma 2022:</strong> "Vyrazne horsi" — nektere znacky (Oil&amp;Steel aj.) uz tezko odlisitelne od cinskich kopii</li>
+<li><strong>Bauma 2025 (posledni):</strong> "Nepoznas rozdil" — cinske vyrobky vizualne i kvalitne srovnatelne, obrovske mnozstvi</li>
+<li><strong>Priklad z regionu:</strong> Firma Taurus u Slavickych strojiren — prodava cinske traktory, elektroskutry, techniku. Kontejner za kontejnerem. Traktor za 100-150 tis. Kc vs. zahradni traktor Stiga za 100 tis.</li>
+<li><strong>Proc je to hrozba:</strong> Cinska pile (9-9, 6 dni/tyden), nizke naklady, rychly vyvoj. "Co tady trva 3 roky, oni udelaji za rok."</li>
+<li><strong>Ochrana Inreky:</strong> Specializovana technika = vyssi naroky na servis, bezpecnost, legislativu. Zakaznik potrebuje lokalniho partnera. Ale u standardnich stroju uz je tlak obrovský</li>
+</ul>
+<h3>Konkurencni vyhoda Inreky</h3>
+<table>
+<thead>
+<tr>
+<th>Oblast</th>
+<th>Inreka</th>
+<th>Rothlehner</th>
+<th>Statech</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vlastni vyroba</td>
+<td>ANO</td>
+<td>NE (jen prodej)</td>
+<td>NE</td>
+</tr>
+<tr>
+<td>Servis v terenu</td>
+<td>ANO (mobilni)</td>
+<td>ANO</td>
+<td>ANO</td>
+</tr>
+<tr>
+<td>Pasove plosiny</td>
+<td>ANO (Platform Basket + AlmaCrawler)</td>
+<td>OMEZENE</td>
+<td>NE</td>
+</tr>
+<tr>
+<td>Hasicske plosiny</td>
+<td>ANO (VEMA)</td>
+<td>NE</td>
+<td>NE</td>
+</tr>
+<tr>
+<td>Velke plosiny 45m+</td>
+<td>ANO (Multitel az 75m)</td>
+<td>ANO (Haulotte)</td>
+<td>ANO (pronajem)</td>
+</tr>
+<tr>
+<td>Regionalni fokus</td>
+<td>Morava + CR/SK</td>
+<td>Celá CR</td>
+<td>Celá CR</td>
+</tr>
+<tr>
+<td>Know-how (17 let s Italy)</td>
+<td>UNIKATNI</td>
+<td>NE</td>
+<td>NE</td>
+</tr>
+</tbody>
+</table>
+<h3>Tržni kontext (ze schuzky — insider pohled)</h3>
+<ul>
+<li><strong>Ochlazeni na zapade Evropy:</strong> Anglie/Nemecko/Francie — velke firmy zastavily nakupy (konec boomu vysokorychlostniho internetu, utlum stavebnictvi). Second hand plosiny zaplavuji trh.</li>
+<li><strong>Cesky/slovensky trh relativne stabilni</strong> — Inreka porad prodava, ale dodaci doby kolisaji (2-6 mesicu). V prosinci 2025 objednavky explodovaly — "kazdy tyden mesic dopředu vyprodan"</li>
+<li><strong>Problemy dodavatelského retezce:</strong> Automobilky (Renault aj.) zkratily splatnosti z 12 mesicu na 1 mesic → cash flow krize u vyrobcu plosin (Isoli)</li>
+<li><strong>Skladove zasoby jako konkurencni vyhoda:</strong> "Kdyz to mas na dvore, prodas. Kdyz zakaznik musi cekat, jde jinam."</li>
+<li><strong>Trend: Zakaznici hledaji na webu</strong> — "dostali jsme se do situace, ze i tato specialni technika je jako mobily — vecer si vyberes, kliknes, objednas" (Vit)</li>
+</ul>
+<p><strong>Hlavni diferenciator Inreky:</strong> Primarni prístup k italske technologii (Multitel, Isoli, Platform Basket, AlmaCrawler) + vlastni vyroba/prestavby + servisní schopnost od malych dodavkovych az po hasicske 60m plosiny. Toto zadna jina firma v CR/SK neumi.</p>
+<hr />
+<h2>CAST 5: DOPORUCENE DALSI KROKY</h2>
+<h3>Krátkodobě (brezen-duben 2026)</h3>
+<ol>
+<li><strong>[ ] Preklad testovaci manual</strong> — az Vit posle Almac multiloader manual, prelozit pres AI (2-4h)</li>
+<li><strong>[ ] Sestavit glosar</strong> — z existujicich CZ/EN JIBBI manualu (~200 terminu)</li>
+<li><strong>[ ] Druha schuzka s Inrekou</strong> — prezentovat tento dokument, domluvit priority</li>
+<li><strong>[ ] Zalozit LinkedIn stranku</strong> firmy (1-2h prace)</li>
+<li><strong>[ ] FAQ ke klicovym modelum</strong> — draft casto kladenych dotazu (JIBBI, Multiloader, top 5 Isoli modelu) z datasheetu</li>
+</ol>
+<h3>Strednedobe (duben-cerven 2026)</h3>
+<ol>
+<li><strong>[ ] Prvni newsletter</strong> — "Novinka: AlmaCrawler v sortimentu" + foto</li>
+<li><strong>[ ] Identifikace 50 potencialnich zakazniku</strong> pro Multiloader (pomoci AI analyzy)</li>
+<li><strong>[ ] Prekladovy pipeline</strong> — zautomatizovat DOCX preklad, otestovat na 2-3 manualech</li>
+<li><strong>[ ] Chatbot koncept</strong> — na bazi FAQ, zakladni parametry plosin, dostupnost</li>
+<li><strong>[ ] Legislativni monitoring</strong> — nastavit AI sledovani zmen v normach/revizich pro plosiny</li>
+<li><strong>[ ] Analyza modulu nabidek v IS</strong> — zjistit, zda AI muze pomoci s nabidkami (obejit cekani na vyvojare)</li>
+</ol>
+<h3>Dlouhodobe (cervenec-prosinec 2026)</h3>
+<ol>
+<li><strong>[ ] Systematicky outreach</strong> — newsletter 1x za 2-3 mesice</li>
+<li><strong>[ ] Knowledge base</strong> pro servisni techniky (chybove kody Multitel, postupy oprav, diagnostika)</li>
+<li><strong>[ ] Rozsireni portfolio Almac</strong> — probrat s Almac dalsi modely (CRANE-LINE!)</li>
+<li><strong>[ ] Case studies</strong> — 2-3 uspesne zakazky jako marketingovy material</li>
+<li><strong>[ ] Strategie proti cinske konkurenci</strong> — zvyraznit hodnotu lokalniho servisu, certifikaci, legislativni znalosti</li>
+</ol>
+<hr />
+<h2>ZDROJE</h2>
+<ul>
+<li>Prepisy schuzky 19.2.2026 (3 casti)</li>
+<li>Web: https://www.inrekaplosinyservis.cz</li>
+<li>Web: https://www.almac-italia.com</li>
+<li>Manualy JIBBI 1250/1670 (CZ + EN PDF, EN DOCX)</li>
+<li>Web: https://www.rothlehner.cz</li>
+<li>Web: https://www.statech.cz</li>
+<li>Web: https://multitelgroup.com</li>
+<li>Web: https://www.platformbasket.com</li>
+<li>Web: https://www.isoli.com</li>
+<li>Web: https://www.klubb.com</li>
+<li>Web: https://vema.fi</li>
+</ul>
+<hr />
+<p><em>Pripraveno: 24.3.2026, aktualizovano: 24.3.2026 (v2 — doplneny vsechny insighty ze schuzky) | Pavel Horalik</em></p>
+        </div>
+    </main>
+    <footer class="text-center py-8 text-gray-400 text-sm">
+        Připravil Pavel Horalík — Březen 2026
+    </footer>
+</body>
+</html>
