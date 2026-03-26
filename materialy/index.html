@@ -11,11 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script>
         tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
-                }
-            }
+            theme: { extend: { fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] } } }
         }
     </script>
     <style>
@@ -34,25 +30,61 @@
                 Inreka Plošiny Servis
             </h1>
             <p class="text-base md:text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
-                Materiály ke spolupráci &mdash; AI překlady, marketing, analýzy a návrhy nového webu. Vše na jednom místě.
+                Materiály ke spolupráci &mdash; co jsme probrali, co je připraveno, a kam můžeme jít dál.
             </p>
         </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-6 py-12 space-y-16">
+    <main class="max-w-4xl mx-auto px-6 py-12 space-y-14">
 
-        <!-- Section 1: Key Outputs -->
+        <!-- SEKCE 1: Co jsme probrali na schůzce -->
         <section>
-            <div class="flex items-center gap-3 mb-6">
+            <div class="flex items-center gap-3 mb-2">
                 <span class="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center">
-                    <i class="fas fa-star text-amber-500 text-sm"></i>
+                    <i class="fas fa-comments text-amber-500 text-sm"></i>
                 </span>
-                <h2 class="text-xs font-bold tracking-[0.2em] uppercase text-gray-400">Co jsme pro vás připravili</h2>
+                <h2 class="text-xs font-bold tracking-[0.2em] uppercase text-gray-400">Ze schůzky 19. února</h2>
             </div>
+            <p class="text-gray-400 text-sm mb-5 ml-11">Co jsme probrali, vaše situace, kde vidíte mezery &mdash; a co z toho vzešlo.</p>
 
             <div class="grid sm:grid-cols-2 gap-4">
+                <a href="body-schuzky.html" class="card-hover group block bg-white border border-gray-200 rounded-xl p-6 hover:border-amber-300">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-lg bg-amber-50 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-clipboard-list text-amber-600"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 group-hover:text-amber-700 transition">Body z jednání</h3>
+                            <p class="text-gray-500 text-sm mt-1.5 leading-relaxed">Shrnutí toho, o čem jsme mluvili &mdash; vaše situace, co funguje, co ne, a na čem se chceme zaměřit.</p>
+                        </div>
+                    </div>
+                </a>
 
-                <!-- Ukázka AI překladu -->
+                <a href="prehled.html" class="card-hover group block bg-white border border-gray-200 rounded-xl p-6 hover:border-amber-300">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-lg bg-amber-50 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-handshake text-amber-600"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 group-hover:text-amber-700 transition">Přehled spolupráce</h3>
+                            <p class="text-gray-500 text-sm mt-1.5 leading-relaxed">Co nabízíme, jak to funguje, jaké jsou další kroky. Kompaktní přehled.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- SEKCE 2: Hotové výstupy — překlady a obsah -->
+        <section>
+            <div class="flex items-center gap-3 mb-2">
+                <span class="w-8 h-8 rounded-lg bg-green-50 flex items-center justify-center">
+                    <i class="fas fa-check-circle text-green-600 text-sm"></i>
+                </span>
+                <h2 class="text-xs font-bold tracking-[0.2em] uppercase text-gray-400">Hotové výstupy</h2>
+            </div>
+            <p class="text-gray-400 text-sm mb-5 ml-11">Konkrétní věci, které jsme připravili &mdash; překlad, glosář, newsletter, FAQ. Ke schválení.</p>
+
+            <div class="grid sm:grid-cols-2 gap-4">
                 <a href="preklad.html" class="card-hover group block bg-white border border-gray-200 rounded-xl p-6 hover:border-green-300">
                     <div class="flex items-start gap-4">
                         <div class="w-10 h-10 rounded-lg bg-green-50 flex items-center justify-center flex-shrink-0">
@@ -60,12 +92,11 @@
                         </div>
                         <div>
                             <h3 class="font-semibold text-gray-900 group-hover:text-green-700 transition">Ukázka AI překladu</h3>
-                            <p class="text-gray-500 text-sm mt-1.5 leading-relaxed">Reálná sekce manuálu JIBBI přeložená AI &mdash; porovnání s oficiálním překladem. <span class="text-green-600 font-medium">100% shoda terminologie.</span></p>
+                            <p class="text-gray-500 text-sm mt-1.5 leading-relaxed">Reálná sekce manuálu JIBBI přeložená AI &mdash; porovnání s vaším oficiálním překladem. <span class="text-green-600 font-medium">100% shoda.</span></p>
                         </div>
                     </div>
                 </a>
 
-                <!-- Glosář -->
                 <a href="glosar.html" class="card-hover group block bg-white border border-gray-200 rounded-xl p-6 hover:border-blue-300">
                     <div class="flex items-start gap-4">
                         <div class="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
@@ -73,12 +104,11 @@
                         </div>
                         <div>
                             <h3 class="font-semibold text-gray-900 group-hover:text-blue-700 transition">Glosář &mdash; 270 termínů</h3>
-                            <p class="text-gray-500 text-sm mt-1.5 leading-relaxed">Kompletní CZ/EN slovník technických termínů v 9 kategoriích. Základ pro KAŽDÝ budoucí překlad.</p>
+                            <p class="text-gray-500 text-sm mt-1.5 leading-relaxed">Kompletní CZ/EN slovník technických termínů v 9 kategoriích. Základ pro každý budoucí překlad.</p>
                         </div>
                     </div>
                 </a>
 
-                <!-- Newsletter -->
                 <a href="newsletter.html" class="card-hover group block bg-white border border-gray-200 rounded-xl p-6 hover:border-purple-300">
                     <div class="flex items-start gap-4">
                         <div class="w-10 h-10 rounded-lg bg-purple-50 flex items-center justify-center flex-shrink-0">
@@ -86,12 +116,11 @@
                         </div>
                         <div>
                             <h3 class="font-semibold text-gray-900 group-hover:text-purple-700 transition">Newsletter &mdash; 2 varianty</h3>
-                            <p class="text-gray-500 text-sm mt-1.5 leading-relaxed">Draft prvního čísla. Varianta A: novinka AlmaCrawler. Varianta B: 5 tipů pro údržbu plošiny. Ke schválení.</p>
+                            <p class="text-gray-500 text-sm mt-1.5 leading-relaxed">Draft prvního čísla. Varianta A: novinka AlmaCrawler. Varianta B: 5 tipů pro údržbu plošiny.</p>
                         </div>
                     </div>
                 </a>
 
-                <!-- FAQ -->
                 <a href="faq.html" class="card-hover group block bg-white border border-gray-200 rounded-xl p-6 hover:border-orange-300">
                     <div class="flex items-start gap-4">
                         <div class="w-10 h-10 rounded-lg bg-orange-50 flex items-center justify-center flex-shrink-0">
@@ -103,17 +132,16 @@
                         </div>
                     </div>
                 </a>
-
             </div>
         </section>
 
-        <!-- Section 2: AI Translator (Star Feature) -->
+        <!-- SEKCE 3: AI Překladač -->
         <section>
-            <div class="flex items-center gap-3 mb-6">
+            <div class="flex items-center gap-3 mb-5">
                 <span class="w-8 h-8 rounded-lg bg-green-50 flex items-center justify-center">
                     <i class="fas fa-wand-magic-sparkles text-green-600 text-sm"></i>
                 </span>
-                <h2 class="text-xs font-bold tracking-[0.2em] uppercase text-gray-400">AI Překladač manuálů</h2>
+                <h2 class="text-xs font-bold tracking-[0.2em] uppercase text-gray-400">AI nástroj pro Inreku</h2>
             </div>
 
             <a href="prekladac.html" class="card-hover group block bg-white border-2 border-green-200 rounded-xl p-8 hover:border-green-400 relative overflow-hidden">
@@ -133,82 +161,74 @@
                             Vlastní aplikace pro Inreku &mdash; nahrajete PDF manuál v jakémkoli jazyce, AI ho přeloží do češtiny s odborným glosářem. <span class="text-green-700 font-medium">Minuty místo dnů, desítky korun místo tisíců.</span>
                         </p>
                         <div class="flex flex-wrap items-center gap-x-6 gap-y-2 mt-4 text-sm text-gray-400">
-                            <span class="flex items-center gap-1.5"><i class="fas fa-bolt text-amber-500"></i> Rychlý překlad</span>
-                            <span class="flex items-center gap-1.5"><i class="fas fa-coins text-amber-500"></i> Nízké náklady</span>
-                            <span class="flex items-center gap-1.5"><i class="fas fa-check-circle text-green-500"></i> Odborný glosář</span>
+                            <span class="flex items-center gap-1.5"><i class="fas fa-bolt text-amber-500"></i> 7 jazyků</span>
+                            <span class="flex items-center gap-1.5"><i class="fas fa-coins text-amber-500"></i> ~50&ndash;200 Kč za manuál</span>
+                            <span class="flex items-center gap-1.5"><i class="fas fa-check-circle text-green-500"></i> 270+ odborných termínů</span>
                         </div>
                     </div>
                 </div>
             </a>
         </section>
 
-        <!-- Section 3: Analysis & Strategy -->
+        <!-- SEKCE 4: Marketing a strategie -->
         <section>
-            <div class="flex items-center gap-3 mb-6">
-                <span class="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center">
-                    <i class="fas fa-chart-line text-gray-500 text-sm"></i>
+            <div class="flex items-center gap-3 mb-2">
+                <span class="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center">
+                    <i class="fas fa-bullseye text-indigo-500 text-sm"></i>
                 </span>
-                <h2 class="text-xs font-bold tracking-[0.2em] uppercase text-gray-400">Analýzy a strategie</h2>
+                <h2 class="text-xs font-bold tracking-[0.2em] uppercase text-gray-400">Marketing a strategie</h2>
             </div>
+            <p class="text-gray-400 text-sm mb-5 ml-11">Jak aktivně oslovovat firmy, které mohou vaše plošiny potřebovat. Plus kompletní analýza trhu.</p>
 
-            <div class="grid sm:grid-cols-2 gap-4">
-
-                <a href="prehled.html" class="card-hover group block bg-white border border-gray-200 rounded-xl p-6 hover:border-amber-300">
+            <div class="space-y-4">
+                <a href="marketing.html" class="card-hover group block bg-white border-2 border-indigo-200 rounded-xl p-6 hover:border-indigo-400 relative overflow-hidden">
+                    <div class="absolute top-4 right-4">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-indigo-100 text-indigo-700 text-xs font-semibold rounded-full">
+                            <span class="w-1.5 h-1.5 bg-indigo-500 rounded-full animate-pulse"></span>
+                            NOVÉ
+                        </span>
+                    </div>
                     <div class="flex items-start gap-4">
-                        <div class="w-10 h-10 rounded-lg bg-amber-50 flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-handshake text-amber-600"></i>
+                        <div class="w-10 h-10 rounded-lg bg-indigo-50 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-rocket text-indigo-600"></i>
                         </div>
-                        <div>
-                            <h3 class="font-semibold text-gray-900 group-hover:text-amber-700 transition">Přehled spolupráce</h3>
-                            <p class="text-gray-500 text-sm mt-1.5 leading-relaxed">Co nabízíme, jak to funguje, jaké jsou další kroky. Kompaktní přehled pro schůzku.</p>
+                        <div class="pr-16">
+                            <h3 class="font-bold text-lg text-gray-900 group-hover:text-indigo-700 transition">Marketingová a outreach strategie</h3>
+                            <p class="text-gray-500 text-sm mt-1.5 leading-relaxed">Konkrétní plán: kdo oslovit, s čím, jakým kanálem. 6 zákaznických segmentů, AI identifikace leadů, obsahový kalendář, měřitelné cíle. Realistický rozpočet času.</p>
                         </div>
                     </div>
                 </a>
 
-                <a href="body-schuzky.html" class="card-hover group block bg-white border border-gray-200 rounded-xl p-6 hover:border-gray-300">
+                <a href="analyza.html" class="card-hover group block bg-white border border-gray-200 rounded-xl p-6 hover:border-red-300">
                     <div class="flex items-start gap-4">
-                        <div class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-clipboard-list text-gray-500"></i>
+                        <div class="w-10 h-10 rounded-lg bg-red-50 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-file-lines text-red-500"></i>
                         </div>
                         <div>
-                            <h3 class="font-semibold text-gray-900 group-hover:text-gray-700 transition">Body z jednání 19.2.</h3>
-                            <p class="text-gray-500 text-sm mt-1.5 leading-relaxed">Shrnutí toho, co jsme probrali &mdash; vaše situace, kde vidíte mezery, na čem jsme se dohodli.</p>
+                            <div class="flex items-center gap-3">
+                                <h3 class="font-semibold text-gray-900 group-hover:text-red-600 transition">Kompletní analýza</h3>
+                                <span class="text-xs font-medium text-red-500 bg-red-50 px-2 py-0.5 rounded-full">20 stran</span>
+                            </div>
+                            <p class="text-gray-500 text-sm mt-1.5 leading-relaxed">Profil firmy, překladový pipeline, zákaznické segmenty pro celé portfolio, průzkum konkurence ČR/SK, čínská hrozba, tržní kontext.</p>
                         </div>
                     </div>
                 </a>
-
             </div>
-
-            <a href="analyza.html" class="card-hover group block bg-white border border-gray-200 rounded-xl p-6 hover:border-red-300 mt-4">
-                <div class="flex items-start gap-4">
-                    <div class="w-10 h-10 rounded-lg bg-red-50 flex items-center justify-center flex-shrink-0">
-                        <i class="fas fa-file-lines text-red-500"></i>
-                    </div>
-                    <div>
-                        <div class="flex items-center gap-3">
-                            <h3 class="font-semibold text-gray-900 group-hover:text-red-600 transition">Kompletní analýza</h3>
-                            <span class="text-xs font-medium text-red-500 bg-red-50 px-2 py-0.5 rounded-full">20 stran</span>
-                        </div>
-                        <p class="text-gray-500 text-sm mt-1.5 leading-relaxed">Profil firmy, překladový pipeline, marketingová strategie, zákaznické segmenty pro celé portfolio, průzkum konkurence ČR/SK, čínská hrozba, tržní kontext.</p>
-                    </div>
-                </div>
-            </a>
         </section>
 
-        <!-- Section 4: Web Design Proposals -->
+        <!-- SEKCE 5: Bonus — Web -->
         <section>
-            <div class="flex items-center gap-3 mb-3">
+            <div class="flex items-center gap-3 mb-2">
                 <span class="w-8 h-8 rounded-lg bg-violet-50 flex items-center justify-center">
                     <i class="fas fa-palette text-violet-500 text-sm"></i>
                 </span>
                 <h2 class="text-xs font-bold tracking-[0.2em] uppercase text-gray-400">Bonus &mdash; Návrhy nového webu</h2>
             </div>
-            <p class="text-gray-400 text-sm mb-6 ml-11 leading-relaxed">
+            <p class="text-gray-400 text-sm mb-5 ml-11">
                 Podíval jsem se na váš současný web a upřímně &mdash; neodráží úroveň, na které jste. Vy jste firma se 25letou tradicí a výhradním zastoupením 7 italských značek. Tak jsem si nechal udělat 3 vizuální návrhy. Je to jen ukázka, nic závazného.
             </p>
 
             <div class="grid sm:grid-cols-3 gap-4">
-
                 <a href="../varianta-1.html" class="card-hover group block bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-blue-300">
                     <div class="h-1.5 bg-gradient-to-r from-blue-900 via-blue-700 to-amber-500"></div>
                     <div class="p-5">
@@ -235,7 +255,6 @@
                         <p class="text-gray-400 text-xs mt-1.5">Žluto-černá, monospace, divočina</p>
                     </div>
                 </a>
-
             </div>
         </section>
 
@@ -250,7 +269,7 @@
             </div>
             <a href="../index.html" class="inline-flex items-center gap-2 text-sm font-medium text-amber-600 hover:text-amber-700 transition whitespace-nowrap">
                 <i class="fas fa-arrow-left text-xs"></i>
-                Zpět na přehled variant
+                Zpět na přehled
             </a>
         </div>
     </footer>
